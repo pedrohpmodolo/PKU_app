@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../theme.dart'; 
+import '../../theme.dart';
+import 'sign_in_tab.dart';
+import 'sign_up_tab.dart';
 
 class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
@@ -49,7 +51,8 @@ class AuthScreen extends StatelessWidget {
               const Expanded(
                 child: TabBarView(
                   children: [
-                  
+                    SignInTab(),
+                    SignUpTab(),
                   ],
                 ),
               ),
