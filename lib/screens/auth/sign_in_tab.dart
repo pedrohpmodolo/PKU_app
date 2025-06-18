@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../home/home_screen.dart'; // Use this to navigate after successful login
+import 'complete_profile_screen.dart';
 
 /// SignInTab: Allows users to log in via email/password or Google OAuth.
 class SignInTab extends StatefulWidget {
@@ -33,8 +34,8 @@ class _SignInTabState extends State<SignInTab> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Signed in successfully!')),
         );
-        // Navigate to HomeScreen, replacing this screen
-        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+        // Navigate to Comple Profile Screen, replacing this screen
+        Navigator.of(context).pushReplacementNamed(CompleteProfileScreen.routeName);
       }
     } on AuthException catch (e) {
       // Display any errors from Supabase

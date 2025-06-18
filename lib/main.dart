@@ -7,8 +7,11 @@ import 'screens/auth/auth_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/home/settings/settings.dart';
 import 'screens/home/settings/account_settings.dart';
+import 'screens/auth/complete_profile_screen.dart';
 import 'theme.dart';
-import 'screens/home/chat/chat_screen.dart';
+
+// Global navigator key to enable navigation from outside widget tree
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   // Ensure Flutter binding is initialized before any async or plugin calls
@@ -46,12 +49,29 @@ class _PKUAppState extends State<PKUApp> {
     super.initState();
 
     // Auth state listener (sign in / sign out) for routing decisions
-    Supabase.instance.client.auth.onAuthStateChange.listen((data) {
+    Supabase.instance.client.auth.onAuthStateChange.listen((data) async {
       final event = data.event;
-      if (event == AuthChangeEvent.signedIn) {
-        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      final session = data.session;
+
+      if (event == AuthChangeEvent.signedIn && session != null) {
+        final userId = session.user.id;
+
+        final response = await Supabase.instance.client
+            .from('profiles')
+            .select('gender') // change this if you prefer another field
+            .eq('id', userId)
+            .maybeSingle();
+
+        final hasCompletedProfile =
+            response != null && response['gender'] != null;
+
+        navigatorKey.currentState?.pushReplacementNamed(
+          hasCompletedProfile
+              ? HomeScreen.routeName
+              : CompleteProfileScreen.routeName,
+        );
       } else if (event == AuthChangeEvent.signedOut) {
-        Navigator.pushReplacementNamed(context, AuthScreen.routeName);
+        navigatorKey.currentState?.pushReplacementNamed(AuthScreen.routeName);
       }
     });
   }
@@ -70,6 +90,9 @@ class _PKUAppState extends State<PKUApp> {
       darkTheme: darkThemeData,
       themeMode: _themeMode,
 
+      // Inject global navigation control
+      navigatorKey: navigatorKey,
+
       // Determine initial screen based on auth session
       initialRoute: session != null
           ? HomeScreen.routeName
@@ -80,9 +103,11 @@ class _PKUAppState extends State<PKUApp> {
         OnboardingScreen.routeName: (ctx) => OnboardingScreen(
               onToggleTheme: (newMode) => setState(() => _themeMode = newMode),
             ),
-        AuthScreen.routeName: (ctx)     => const AuthScreen(),
-        HomeScreen.routeName: (ctx)     => const HomeScreen(),
+        AuthScreen.routeName: (ctx) => const AuthScreen(),
+        HomeScreen.routeName: (ctx) => const HomeScreen(),
         SettingsScreen.routeName: (ctx) => const SettingsScreen(),
+        CompleteProfileScreen.routeName: (ctx) =>
+            const CompleteProfileScreen(),
       },
     );
   }
