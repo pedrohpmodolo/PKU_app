@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../home/home_screen.dart'; // For navigating to HomeScreen after signup
+import 'dart:async';
+import '../home/home_screen.dart';
 
-/// SignUpTab: A form allowing users to register via email/password or Google.
 class SignUpTab extends StatefulWidget {
   const SignUpTab({Key? key}) : super(key: key);
 
@@ -11,11 +13,19 @@ class SignUpTab extends StatefulWidget {
 }
 
 class _SignUpTabState extends State<SignUpTab> {
-  final _formKey = GlobalKey<FormState>();           // Key for form validation
-  final _firstNameController = TextEditingController(); 
-  final _middleNameController = TextEditingController(); // Optional
+  final _formKey = GlobalKey<FormState>();
+  final _firstNameController = TextEditingController();
+  final _middleNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  String? _selectedCountry;                           // Stores dropdown selection
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmController = TextEditingController();
+  DateTime? _selectedDOB;
+  String? _selectedCountry;
+  bool _loading = false;
+  bool _waitingForEmailVerification = false;
+  Timer? _emailCheckTimer;
+  
   final _countries = const [                          // Alphabetical order country list
   'Afghanistan',
   'Albania',
@@ -212,172 +222,248 @@ class _SignUpTabState extends State<SignUpTab> {
   'Zimbabwe',
 ];
 
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmController = TextEditingController();
+   final Map<String, String> isoCountryMap = {
+    'US': 'United States',
+    'BR': 'Brazil',
+    'GB': 'United Kingdom',
+    'AU': 'Australia',
+    'CA': 'Canada',
+  };
 
-  bool _loading = false; // Tracks submission state
+  @override
+  void initState() {
+    super.initState();
+    final localeCountryCode = WidgetsBinding.instance.window.locale.countryCode;
+    final mapped = isoCountryMap[localeCountryCode ?? ''] ?? '';
+    if (_countries.contains(mapped)) {
+      _selectedCountry = mapped;
+    }
+  }
 
-  /// Handle email/password signup
+  @override
+  void dispose() {
+    _emailCheckTimer?.cancel();
+    super.dispose();
+  }
+
+  void _startEmailConfirmationPolling() {
+    _emailCheckTimer = Timer.periodic(const Duration(seconds: 5), (timer) async {
+      final userResponse = await Supabase.instance.client.auth.getUser();
+      final user = userResponse.user;
+      if (user?.emailConfirmedAt != null) {
+        timer.cancel();
+        setState(() => _waitingForEmailVerification = false);
+        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      }
+    });
+  }
+
   Future<void> _submit() async {
-    // Validate form fields
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     setState(() => _loading = true);
     try {
-      // Call Supabase to create a new user
+      final fullName = [
+        _firstNameController.text.trim(),
+        _middleNameController.text.trim(),
+        _lastNameController.text.trim()
+      ].where((part) => part.isNotEmpty).join(' ');
+
       final res = await Supabase.instance.client.auth.signUp(
         email: _emailController.text.trim(),
         password: _passwordController.text,
         data: {
-          'first_name': _firstNameController.text.trim(),
-          'middle_name': _middleNameController.text.trim(),
-          'last_name': _lastNameController.text.trim(),
-          'country': _selectedCountry!,
+          'name': fullName,
+          'dob': _selectedDOB?.toIso8601String(),
+          'country': _selectedCountry ?? '',
         },
+        emailRedirectTo: 'pkuwise://login-callback',
       );
 
-      // Show success or next steps
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            res.user != null
-                ? 'Confirmation sent to your email!'
-                : 'Sign-up initiated.',
-          ),
-        ),
-      );
-
-      // If user object is returned, navigate to HomeScreen
-      if (res.user != null) {
-        Navigator.of(context)
-            .pushReplacementNamed(HomeScreen.routeName);
+      if (res.session != null) {
+        Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      } else {
+        setState(() => _waitingForEmailVerification = true);
+        _startEmailConfirmationPolling();
       }
     } on AuthException catch (e) {
-      // Display any errors
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.message)));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
     } finally {
       setState(() => _loading = false);
     }
   }
 
-  /// Handle Google OAuth signup
   Future<void> _googleSignUp() async {
-    // Start the Google OAuth flow
     await Supabase.instance.client.auth.signInWithOAuth(
       OAuthProvider.google,
+      redirectTo: 'pkuwise://login-callback',
     );
-    // After OAuth completes, go to HomeScreen
-    Navigator.of(context)
-        .pushReplacementNamed(HomeScreen.routeName);
+
+    final user = Supabase.instance.client.auth.currentUser;
+    final metadata = user?.userMetadata ?? {};
+
+    String fullName = '';
+    if (metadata.containsKey('full_name')) {
+      fullName = metadata['full_name'];
+    } else {
+      fullName = [
+        metadata['first_name'] ?? '',
+        metadata['middle_name'] ?? '',
+        metadata['last_name'] ?? ''
+      ].where((part) => part.toString().trim().isNotEmpty).join(' ');
+    }
+
+    await Supabase.instance.client.from('profiles').upsert({
+      'id': user?.id,
+      'name': fullName,
+      'country': metadata['country'] ?? '',
+      'created_at': DateTime.now().toIso8601String(),
+    });
+
+    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+  }
+
+  Widget _emailConfirmationWaitingWidget() {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 24),
+              const Text(
+                'We’ve sent a confirmation email to your inbox. Once confirmed, you’ll be automatically redirected.',
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              TextButton(
+                onPressed: () async {
+                  await Supabase.instance.client.auth.signInWithOtp(
+                    email: _emailController.text.trim(),
+                    emailRedirectTo: 'pkuwise://login-callback',
+                  );
+                },
+                child: const Text('Resend Email'),
+              ),
+              TextButton(
+                onPressed: () {
+                  _emailCheckTimer?.cancel();
+                  setState(() => _waitingForEmailVerification = false);
+                },
+                child: const Text('Back'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(24), // Form padding
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // The registration form
-            Form(
-              key: _formKey,
+    return _waitingForEmailVerification
+        ? _emailConfirmationWaitingWidget()
+        : Padding(
+            padding: const EdgeInsets.all(24),
+            child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // First Name
-                  TextFormField(
-                    controller: _firstNameController,
-                    decoration:
-                        const InputDecoration(labelText: 'First Name'),
-                    validator: (v) =>
-                        (v == null || v.isEmpty) ? 'Enter first name' : null,
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _firstNameController,
+                          decoration: const InputDecoration(labelText: 'First Name'),
+                          validator: (v) => (v == null || v.isEmpty) ? 'Enter first name' : null,
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _middleNameController,
+                          decoration: const InputDecoration(labelText: 'Middle Name (optional)'),
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _lastNameController,
+                          decoration: const InputDecoration(labelText: 'Last Name'),
+                          validator: (v) => (v == null || v.isEmpty) ? 'Enter last name' : null,
+                        ),
+                        const SizedBox(height: 16),
+                        DropdownButtonFormField<String>(
+                          decoration: const InputDecoration(labelText: 'Country'),
+                          value: _selectedCountry,
+                          items: _countries.map((country) => DropdownMenuItem(value: country, child: Text(country))).toList(),
+                          onChanged: (value) => setState(() => _selectedCountry = value),
+                          validator: (v) => (v == null) ? 'Select a country' : null,
+                        ),
+                        const SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () async {
+                            final now = DateTime.now();
+                            final firstDate = DateTime(now.year - 120);
+                            final lastDate = DateTime(now.year - 1);
+                            final picked = await showDatePicker(
+                              context: context,
+                              initialDate: now.subtract(const Duration(days: 365 * 18)),
+                              firstDate: firstDate,
+                              lastDate: lastDate,
+                            );
+                            if (picked != null) {
+                              setState(() => _selectedDOB = picked);
+                            }
+                          },
+                          child: AbsorbPointer(
+                            child: TextFormField(
+                              decoration: const InputDecoration(labelText: 'Date of Birth', hintText: 'Tap to select'),
+                              validator: (_) => _selectedDOB == null ? 'Please select your date of birth' : null,
+                              controller: TextEditingController(
+                                text: _selectedDOB != null
+                                    ? "${_selectedDOB!.year}-${_selectedDOB!.month.toString().padLeft(2, '0')}-${_selectedDOB!.day.toString().padLeft(2, '0')}"
+                                    : '',
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _emailController,
+                          decoration: const InputDecoration(labelText: 'Email'),
+                          validator: (v) => (v == null || v.isEmpty) ? 'Enter email' : null,
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _passwordController,
+                          decoration: const InputDecoration(labelText: 'Password'),
+                          obscureText: true,
+                          validator: (v) => (v == null || v.length < 6) ? 'Min 6 chars' : null,
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _confirmController,
+                          decoration: const InputDecoration(labelText: 'Confirm Password'),
+                          obscureText: true,
+                          validator: (v) => v != _passwordController.text ? 'Must match' : null,
+                        ),
+                        const SizedBox(height: 24),
+                        ElevatedButton(
+                          onPressed: _loading ? null : _submit,
+                          child: Text(_loading ? 'Registering…' : 'Sign Up'),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  // Middle Name (optional)
-                  TextFormField(
-                    controller: _middleNameController,
-                    decoration: const InputDecoration(
-                        labelText: 'Middle Name (optional)'),
-                  ),
-                  const SizedBox(height: 16),
-                  // Last Name
-                  TextFormField(
-                    controller: _lastNameController,
-                    decoration:
-                        const InputDecoration(labelText: 'Last Name'),
-                    validator: (v) =>
-                        (v == null || v.isEmpty) ? 'Enter last name' : null,
-                  ),
-                  const SizedBox(height: 16),
-                  // Country Dropdown
-                  DropdownButtonFormField<String>(
-                    decoration:
-                        const InputDecoration(labelText: 'Country'),
-                    value: _selectedCountry,
-                    items: _countries
-                        .map((country) => DropdownMenuItem(
-                              value: country,
-                              child: Text(country),
-                            ))
-                        .toList(),
-                    onChanged: (value) =>
-                        setState(() => _selectedCountry = value),
-                    validator: (v) =>
-                        (v == null) ? 'Select a country' : null,
-                  ),
-                  const SizedBox(height: 16),
-                  // Email
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(labelText: 'Email'),
-                    validator: (v) =>
-                        (v == null || v.isEmpty) ? 'Enter email' : null,
-                  ),
-                  const SizedBox(height: 16),
-                  // Password
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration:
-                        const InputDecoration(labelText: 'Password'),
-                    obscureText: true,
-                    validator: (v) =>
-                        (v == null || v.length < 6) ? 'Min 6 chars' : null,
-                  ),
-                  const SizedBox(height: 16),
-                  // Confirm Password
-                  TextFormField(
-                    controller: _confirmController,
-                    decoration: const InputDecoration(
-                        labelText: 'Confirm Password'),
-                    obscureText: true,
-                    validator: (v) =>
-                        v != _passwordController.text ? 'Must match' : null,
-                  ),
-                  const SizedBox(height: 24),
-                  // Sign Up button
-                  ElevatedButton(
-                    onPressed: _loading ? null : _submit,
-                    child: Text(_loading ? 'Registering…' : 'Sign Up'),
+                  OutlinedButton.icon(
+                    onPressed: _googleSignUp,
+                    icon: Image.asset('lib/assets/icons/google_logo.png', height: 24, width: 24),
+                    label: const Text('Continue with Google'),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-            // Google sign-up
-            OutlinedButton.icon(
-              onPressed: _googleSignUp,
-              icon: Image.asset(
-                'lib/assets/icons/google_logo.png',
-                height: 24,
-                width: 24,
-              ),
-              label: const Text('Continue with Google'),
-            ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

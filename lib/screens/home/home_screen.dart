@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';  // Supabase client SDK (not used directly here)
 import 'settings/settings.dart';                         // Import your hierarchical SettingsScreen
+import 'chat/conversation_list.dart';                       // Import the ConversationListScreen
 
 /// HomeScreen: hosts a fixed bottom tab bar to switch between
 /// the main dashboard content ("Home") and the Settings hierarchy.
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   /// The pages to display for each tab index.
   final List<Widget> _pages = [
     const _HomePageContent(),  // Your dashboard / main content
+    ConversationListScreen(),  // The chat screen
     const SettingsScreen(),    // The hierarchical Settings screen
   ];
 
@@ -40,10 +42,20 @@ class _HomeScreenState extends State<HomeScreen> {
           _currentIndex = index;
         }),
         items: const [
+
+          //Home button NavBar
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
+
+          // Chat button NavBar
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble),
+            label: 'Chat',
+          ),
+
+          // Settings button NavBar
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',

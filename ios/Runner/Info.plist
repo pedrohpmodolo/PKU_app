@@ -45,18 +45,30 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- URL schemes for Google Sign-In and Supabase deep link -->
 	<key>CFBundleURLTypes</key>
 	<array>
+		<!-- Google Sign-In -->
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<!-- TODO Replace this value: -->
-				<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
 				<string>com.googleusercontent.apps.162436677120-ed8t6r73mo03e9elrbjjno6ob8ejh5f7</string>
 			</array>
 		</dict>
+
+		<!-- Supabase deep link -->
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>pkuwise</string>
+			</array>
+		</dict>
 	</array>
+
 </dict>
 </plist>
