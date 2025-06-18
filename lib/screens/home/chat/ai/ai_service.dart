@@ -1,21 +1,26 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'prompt_builder.dart';
 import 'profile_context.dart';
 
 class AIService {
+  final openAiKey = dotenv.env['OPENAI_API_KEY'];
   final PromptBuilder _promptBuilder = PromptBuilder();
 
+  /// Sends user input + profile context to OpenAI and gets an AI reply.
   Future<String> getAIResponse(String userInput, Map<String, dynamic> profile) async {
     final profileContext = ProfileContext.fromProfile(profile);
-    final prompt = _promptBuilder.build(userInput: userInput, profileContext: profileContext);
+    final prompt = _promptBuilder.build(
+      userInput: userInput,
+      profileContext: profileContext,
+    );
 
-    // Send to OpenAI (example for GPT-4, update with your key/endpoint)
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'),
       headers: {
-        'Authorization': 'Bearer YOUR_OPENAI_API_KEY',
+        'Authorization': 'Bearer $openAiKey',
         'Content-Type': 'application/json',
       },
       body: jsonEncode({

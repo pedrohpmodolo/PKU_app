@@ -51,30 +51,49 @@ class _ChatScreenState extends State<ChatScreen> {
 
   /// Handles sending a user message and appending an AI response
   Future<void> _handleSend() async {
-    final text = _textController.text.trim();
-    if (text.isEmpty) return;
+  final text = _textController.text.trim();
+  if (text.isEmpty) return;
 
-    _textController.clear();
-    setState(() => _isTyping = true);
+  _textController.clear();
+  setState(() => _isTyping = true);
 
-    // Save the user message
-    await _chatService.sendMessage(
-      conversationId: widget.conversationId,
-      sender: 'user',
-      text: text,
-    );
-    await _loadMessages();
+  // Send the user message
+  await _chatService.sendMessage(
+    conversationId: widget.conversationId,
+    sender: 'user',
+    text: text,
+  );
+  await _loadMessages();
 
-    // Generate and save an AI reply
-    final aiReply = await _aiService.getAIResponse(text);
-    await _chatService.sendMessage(
-      conversationId: widget.conversationId,
-      sender: 'assistant',
-      text: aiReply,
-    );
-    setState(() => _isTyping = false);
-    await _loadMessages();
-  }
+  // Get the logged-in user profile
+  final profile = await _chatService.getUserProfile();
+  print('Profile used in AI prompt: $profile'); 
+    if (profile == null) {
+      await _chatService.sendMessage(
+        conversationId: widget.conversationId,
+        sender: 'assistant',
+        text: 'Sorry, I couldn’t retrieve your profile to provide a personalized answer.',
+      );
+      setState(() => _isTyping = false);
+      await _loadMessages();
+      return;
+    }
+
+
+  // Get AI's reply using the personalized context
+  final aiReply = await _aiService.getAIResponse(text, profile);
+
+  // Save the AI message
+  await _chatService.sendMessage(
+    conversationId: widget.conversationId,
+    sender: 'assistant',
+    text: aiReply,
+  );
+
+  setState(() => _isTyping = false);
+  await _loadMessages();
+}
+
 
   /// Renders a chat bubble for each message
   Widget _buildMessage(Map<String, dynamic> msg) {
@@ -119,7 +138,16 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+          title: FutureBuilder(
+            future: _chatService.getUserProfile(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) return Text(widget.title);
+              final name = snapshot.data?['name'] ?? 'you';
+              return Text("Chat with you, $name");
+            },
+          ),
+        ),
       body: Column(
         children: [
           // Message list
