@@ -92,8 +92,8 @@ class ProfileContext {
     if (dob != null) buffer.writeln("Date of Birth: \${dob!.toIso8601String().split('T').first}");
     if (gender != null) buffer.writeln("Gender: $gender");
     buffer.writeln("Uses Imperial Units: $usesImperial");
-    if (weightKg != null) buffer.writeln("Weight: ${weightKg} kg");
-    if (heightCm != null) buffer.writeln("Height: ${heightCm} cm");
+    if (weightKg != null) buffer.writeln("Weight: $weightKg kg");
+    if (heightCm != null) buffer.writeln("Height: $heightCm cm");
     if (bmr != null) buffer.writeln("BMR: ${bmr!.toStringAsFixed(2)} kcal/day");
     if (pheToleranceMg != null) buffer.writeln("PHE Tolerance: $pheToleranceMg mg/day");
     if (proteinGoalG != null) buffer.writeln("Protein Goal: $proteinGoalG g/day");

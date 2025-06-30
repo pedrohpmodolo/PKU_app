@@ -5,7 +5,7 @@ import 'complete_profile_screen.dart';
 
 /// SignInTab: Allows users to log in via email/password or Google OAuth.
 class SignInTab extends StatefulWidget {
-  const SignInTab({Key? key}) : super(key: key);
+  const SignInTab({super.key});
 
   @override
   State<SignInTab> createState() => _SignInTabState();

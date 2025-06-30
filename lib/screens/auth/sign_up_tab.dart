@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:async';
 import '../home/home_screen.dart';
 
 class SignUpTab extends StatefulWidget {
-  const SignUpTab({Key? key}) : super(key: key);
+  const SignUpTab({super.key});
 
   @override
   State<SignUpTab> createState() => _SignUpTabState();
