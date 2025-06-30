@@ -25,10 +25,10 @@ class SettingGroupScreen extends StatelessWidget {
   final List<SettingItem> items;
 
   const SettingGroupScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.items,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class SettingGroupScreen extends StatelessWidget {
 
 /// Stub screens for the “General” group:
 class ControlCenterSettingsScreen extends StatelessWidget {
-  const ControlCenterSettingsScreen({Key? key}) : super(key: key);
+  const ControlCenterSettingsScreen({super.key});
   @override
   Widget build(BuildContext c) => Scaffold(
         appBar: AppBar(title: const Text('Control Center')),
@@ -79,7 +79,7 @@ class ControlCenterSettingsScreen extends StatelessWidget {
 }
 
 class DisplayBrightnessSettingsScreen extends StatelessWidget {
-  const DisplayBrightnessSettingsScreen({Key? key}) : super(key: key);
+  const DisplayBrightnessSettingsScreen({super.key});
   @override
   Widget build(BuildContext c) => Scaffold(
         appBar: AppBar(title: const Text('Display & Brightness')),
@@ -88,7 +88,7 @@ class DisplayBrightnessSettingsScreen extends StatelessWidget {
 }
 
 class HomeScreenSettingsScreen extends StatelessWidget {
-  const HomeScreenSettingsScreen({Key? key}) : super(key: key);
+  const HomeScreenSettingsScreen({super.key});
   @override
   Widget build(BuildContext c) => Scaffold(
         appBar: AppBar(title: const Text('Home Screen')),
@@ -97,7 +97,7 @@ class HomeScreenSettingsScreen extends StatelessWidget {
 }
 
 class AccessibilitySettingsScreen extends StatelessWidget {
-  const AccessibilitySettingsScreen({Key? key}) : super(key: key);
+  const AccessibilitySettingsScreen({super.key});
   @override
   Widget build(BuildContext c) => Scaffold(
         appBar: AppBar(title: const Text('Accessibility')),
@@ -106,7 +106,7 @@ class AccessibilitySettingsScreen extends StatelessWidget {
 }
 
 class WallpaperSettingsScreen extends StatelessWidget {
-  const WallpaperSettingsScreen({Key? key}) : super(key: key);
+  const WallpaperSettingsScreen({super.key});
   @override
   Widget build(BuildContext c) => Scaffold(
         appBar: AppBar(title: const Text('Wallpaper')),
@@ -157,7 +157,7 @@ const _settingsTree = <SettingItem>[
 /// Entry‐point for Settings tab.
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings';
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ import '../../../screens/onboarding_screen.dart'; // Navigate to onboarding afte
 /// and logout.
 class AccountSettings extends StatefulWidget {
   static const routeName = '/settings/account';
-  const AccountSettings({Key? key}) : super(key: key);
+  const AccountSettings({super.key});
 
   @override
   State<AccountSettings> createState() => _AccountSettingsState();

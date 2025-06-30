@@ -6,7 +6,6 @@ import 'screens/onboarding_screen.dart';
 import 'screens/auth/auth_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/home/settings/settings.dart';
-import 'screens/home/settings/account_settings.dart';
 import 'screens/auth/complete_profile_screen.dart';
 import 'theme.dart';
 

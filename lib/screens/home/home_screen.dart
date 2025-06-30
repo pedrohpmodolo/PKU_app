@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   /// Named route for navigation
   static const routeName = '/home';
 
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
 /// Placeholder widget for the Home tab’s content.
 /// Replace this with your real home/dashboard UI.
 class _HomePageContent extends StatelessWidget {
-  const _HomePageContent({Key? key}) : super(key: key);
+  const _HomePageContent();
 
   @override
   Widget build(BuildContext context) {
