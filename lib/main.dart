@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'screens/onboarding_screen.dart';
 import 'screens/auth/auth_screen.dart';
+import 'screens/home/scanner/food_list_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/home/settings/settings.dart';
 import 'screens/home/settings/account_settings.dart';

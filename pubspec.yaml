@@ -17,6 +17,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  google_ml_kit: ^0.20.0
+  image_picker: ^1.1.2
+  image: ^4.5.4
+  http: ^1.4.0
+  provider: ^6.1.5
 
 dev_dependencies:
   flutter_test:
