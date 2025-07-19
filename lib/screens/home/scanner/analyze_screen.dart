@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pkuapp/screens/home/scanner/models/calculator_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'scanner_page.dart';
 import 'models/food_model.dart';
+import 'models/calculator_model.dart';
 
 class AnalyzeScreen extends StatefulWidget {
   const AnalyzeScreen({super.key});
@@ -14,7 +16,33 @@ class AnalyzeScreen extends StatefulWidget {
 
 class _AnalyzeScreenState extends State<AnalyzeScreen> {
   final TextEditingController _controller = TextEditingController();
-  final ImagePicker _picker = ImagePicker();
+  //final ImagePicker _picker = ImagePicker();
+  final TextEditingController _feedbackController = TextEditingController();
+
+  void _submitFeedback() async {
+    final text = _feedbackController.text.trim();
+    if (text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter your feedback before submitting.')),
+      );
+      return;
+    }
+
+    try{
+      await Supabase.instance.client
+          .from('feedback')
+          .insert({'message': text, 'created_at': DateTime.now().toIso8601String()});
+
+      _feedbackController.clear();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Feedback submitted successfully!')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error submitting feedback: $e')),
+      );
+    }
+  }
 
   // Manual search logic
   Future<void> _manualSearch() async {
@@ -30,7 +58,7 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
 
     if (rows.isNotEmpty) {
       final food = FoodItem.fromMap(rows.first);
-      final double protein = (food.proteingG ?? 0.0) as double;
+      final double protein = (food.proteinG ?? 0.0) as double;
       final double phe = protein * 50; // Assuming 50mg PHE per gram
       String risk = 'Unknown';
       if (phe < 50) {
@@ -44,9 +72,13 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
       showDialog(
         context: context,
         builder: (_) => AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: Text(food.name ?? 'Unknown Food',
-          style: const TextStyle(fontWeight: FontWeight.w600),),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: Text(
+            food.name ?? 'Unknown Food',
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +88,7 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
               Text('Estimated PHE: ${phe.toStringAsFixed(0)} g'),
               Text('Energy: ${food.energyKcal ?? 'Unknown'} kcal'),
               Text('Carbs: ${food.carbsG ?? 'Unknown'} g'),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   const Text(
@@ -64,28 +96,20 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    risk, 
+                    risk,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: risk == 'Low Risk'
-                      ? Colors.green
-                      : risk == 'Moderate Risk'
-                      ? Colors.orange
-                      : Colors.red,
+                          ? Colors.green
+                          : risk == 'Moderate Risk'
+                          ? Colors.orange
+                          : Colors.red,
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
-          // content: Text(
-            // 'Category: ${food.category ?? 'Unknown'}\n'
-            // 'Protein: ${protein.toStringAsFixed(1)} g\n'
-            // 'Estimated PHE: ${phe.toStringAsFixed(0)} mg\n'
-            // 'Energy: ${food.energyKcal ?? 'Unknown'} Kcal\n'
-            // 'Carbs: ${food.carbsG ?? 'Unknown'} g\n'
-            // 'Risk Level: $risk',
-          // ),
         ),
       );
     } else {
@@ -135,17 +159,48 @@ class _AnalyzeScreenState extends State<AnalyzeScreen> {
               ],
             ),
             const SizedBox(height: 20),
+            const Divider(),
             const SizedBox(height: 10),
+            
             const Text(
               "Or Scan a Label:",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
             ),
             const SizedBox(height: 10),
-            const ScannerWidget(), // ⬅️ Scanner logic embedded here
+            
+            const ScannerWidget(),
+            const Divider(),
+
+            const SizedBox(height: 20),
+            const Text(
+              'Or Calculate Manually:',
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+            ),
+            //const SizedBox(height: 10),
+            const CalculatorWidget(),
+            const SizedBox(height: 32),
+            const Divider(),
+            const Text(
+              'Something wrong? Send feedback:',
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: _feedbackController,
+              maxLines: 3,
+              decoration: InputDecoration(
+                hintText: 'Enter your feedback here...',
+                border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.send),
+                  onPressed: _submitFeedback,
+              ),
+              ),
+                
+            ),
           ],
         ),
       ),
     );
   }
 }
-

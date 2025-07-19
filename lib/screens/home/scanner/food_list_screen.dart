@@ -71,7 +71,7 @@ class _FoodListScreenState extends State<FoodListScreen> {
                 return ListTile(
                   title: Text(food.name ?? 'Unknown Food'),
                   subtitle: Text(
-                    '${food.category} • ${food.proteingG} g protein,'
+                    '${food.category} • ${food.proteinG} g protein,'
                     '${food.carbsG} g carbs, ${food.energyKcal} Kcal'),
                     // '${food.category} * ${food['protein_g']} g protein, ${food['carbohydrates_g']} g carbs'),
                 );

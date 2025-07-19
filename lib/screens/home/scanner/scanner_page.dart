@@ -1,4 +1,3 @@
-// scanner_widget.dart
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -86,6 +85,7 @@ class _ScannerWidgetState extends State<ScannerWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // const Divider(),
               ElevatedButton.icon(
                 icon: const Icon(Icons.camera_alt),
                 label: const Text('Take Photo'),
@@ -93,10 +93,10 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                     ? null
                     : () => _scan(ImageSource.camera),
               ),
-              const SizedBox(height: 10),
+              // const SizedBox(height: 10),
               ElevatedButton.icon(
                 icon: const Icon(Icons.photo_library),
-                label: const Text('Import from Gallery'),
+                label: const Text('From Gallery'),
                 onPressed: _isProcessing
                     ? null
                     : () => _scan(ImageSource.gallery),
@@ -117,11 +117,10 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                   ),
                 ),
                 const SizedBox(height: 25),
+                Text('📄 Full OCR Text Output:', style: nutrStyle),
+                const SizedBox(height: 8),
+                Text(scannedText),
               ],
-              const Divider(),
-              Text('📄 Full OCR Text Output:', style: nutrStyle),
-              const SizedBox(height: 8),
-              Text(scannedText),
             ],
           ),
         ),
