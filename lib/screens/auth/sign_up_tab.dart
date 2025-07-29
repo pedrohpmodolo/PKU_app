@@ -242,7 +242,13 @@ class _SignUpTabState extends State<SignUpTab> {
 
   @override
   void dispose() {
-    _emailCheckTimer?.cancel();
+    _emailCheckTimer?.cancel(); 
+    _firstNameController.dispose();
+    _middleNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmController.dispose();
     super.dispose();
   }
 
@@ -404,7 +410,7 @@ class _SignUpTabState extends State<SignUpTab> {
                           onTap: () async {
                             final now = DateTime.now();
                             final firstDate = DateTime(now.year - 120);
-                            final lastDate = DateTime(now.year - 1);
+                            final lastDate = now;
                             final picked = await showDatePicker(
                               context: context,
                               initialDate: now.subtract(const Duration(days: 365 * 18)),

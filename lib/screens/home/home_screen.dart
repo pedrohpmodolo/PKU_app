@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';  // Supabase client SDK (not used directly here)
 import 'settings/settings.dart';                         // Import your hierarchical SettingsScreen
 import 'chat/conversation_list.dart';                       // Import the ConversationListScreen
+import 'phecalculator/phe_calculator_screen.dart';
 
 /// HomeScreen: hosts a fixed bottom tab bar to switch between
 /// the main dashboard content ("Home") and the Settings hierarchy.
@@ -26,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     const _HomePageContent(),  // Your dashboard / main content
     ConversationListScreen(),  // The chat screen
+    const PheCalculatorScreen(), // PHE_Calculator screen
     const SettingsScreen(),    // The hierarchical Settings screen
   ];
 
@@ -41,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: (index) => setState(() {       // Update index on tap
           _currentIndex = index;
         }),
+        type: BottomNavigationBarType.fixed, // Added this for better layout with 4 items
         items: const [
 
           //Home button NavBar
@@ -53,6 +56,11 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_bubble),
             label: 'Chat',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calculate),
+            label: 'Calculator',
           ),
 
           // Settings button NavBar

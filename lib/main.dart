@@ -58,12 +58,12 @@ class _PKUAppState extends State<PKUApp> {
 
         final response = await Supabase.instance.client
             .from('profiles')
-            .select('gender') // change this if you prefer another field
+            .select('weight_kg') // change this if you prefer another field
             .eq('id', userId)
             .maybeSingle();
 
         final hasCompletedProfile =
-            response != null && response['gender'] != null;
+            response != null && response['weight_kg'] != null;
 
         navigatorKey.currentState?.pushReplacementNamed(
           hasCompletedProfile
