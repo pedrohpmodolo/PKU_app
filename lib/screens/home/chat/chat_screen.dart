@@ -1,8 +1,17 @@
 // chat_screen.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'chat_service.dart';   // Supabase interaction (messages, conversations)
-import 'ai/ai_service.dart';     // AI response logic (mocked or connected to OpenAI)
+import 'package:supabase_flutter/supabase_flutter.dart'; // Needed for Supabase.instance.client
+import 'chat_service.dart'; // Your updated ChatService now handles everything
+
+/// A data model for messages to make the code cleaner
+class Message {
+  final String content;
+  final bool isMine;
+  final DateTime timestamp;
+
+  Message({required this.content, required this.isMine, required this.timestamp});
+}
 
 
 /// The main chat screen for a selected conversation.
@@ -18,23 +27,33 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final ChatService _chatService = ChatService();
-  final AIService _aiService = AIService();
   final TextEditingController _textController = TextEditingController();  // Controls user input
   final ScrollController _scrollController = ScrollController();          // For auto-scroll to bottom
 
-  List<Map<String, dynamic>> _messages = [];  // List of messages to display
-  bool _isTyping = false;                     // Flag to show typing indicator
+  // Using a typed list of Message objects is safer and cleaner
+  List<Message> _messages = [];
+  bool _isTyping = false;
 
   @override
   void initState() {
     super.initState();
-    _loadMessages();  // Load messages when the screen first appears
+    _loadMessages();
   }
 
   /// Fetch messages from the conversation and scroll to the bottom
   Future<void> _loadMessages() async {
-    final messages = await _chatService.getMessages(widget.conversationId);
-    setState(() => _messages = messages);
+    final messageData = await _chatService.getMessages(widget.conversationId);
+    
+    // Convert the map data from Supabase into a list of Message objects
+    final currentUserId = Supabase.instance.client.auth.currentUser?.id;
+    setState(() {
+      _messages = messageData.map((msg) => Message(
+        content: msg['content'],
+        isMine: msg['sender'] == currentUserId || msg['sender'] == 'user',
+        timestamp: DateTime.parse(msg['created_at']).toLocal(),
+      )).toList();
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
   }
 
@@ -42,62 +61,66 @@ class _ChatScreenState extends State<ChatScreen> {
   void _scrollToBottom() {
     if (_scrollController.hasClients) {
       _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent + 60,
+        _scrollController.position.maxScrollExtent + 100, // Added some buffer
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
     }
   }
 
-  /// Handles sending a user message and appending an AI response
+  /// --- THIS IS THE UPDATED FUNCTION ---
+  /// Handles sending a user message and getting a RAG response from your backend.
   Future<void> _handleSend() async {
-  final text = _textController.text.trim();
-  if (text.isEmpty) return;
+    final text = _textController.text.trim();
+    if (text.isEmpty) return;
 
-  _textController.clear();
-  setState(() => _isTyping = true);
+    final currentUserId = Supabase.instance.client.auth.currentUser?.id;
+    if (currentUserId == null) return; // Can't send if not logged in
 
-  // Send the user message
-  await _chatService.sendMessage(
-    conversationId: widget.conversationId,
-    sender: 'user',
-    text: text,
-  );
-  await _loadMessages();
+    _textController.clear();
+    
+    // 1. Add user's message to UI and Supabase
+    await _chatService.sendMessage(
+      conversationId: widget.conversationId,
+      sender: currentUserId, // Use the actual user ID
+      text: text,
+    );
+    await _loadMessages(); // Reload messages to show the user's new message
 
-  // Get the logged-in user profile
-  final profile = await _chatService.getUserProfile();
-  print('Profile used in AI prompt: $profile'); 
-    if (profile == null) {
-      await _chatService.sendMessage(
-        conversationId: widget.conversationId,
-        sender: 'assistant',
-        text: 'Sorry, I couldn’t retrieve your profile to provide a personalized answer.',
-      );
-      setState(() => _isTyping = false);
-      await _loadMessages();
-      return;
+    setState(() => _isTyping = true);
+
+    // 2. Prepare the chat history for the RAG backend
+    // It needs a list of maps with "role" and "content"
+    List<Map<String, String>> chatHistory = _messages.map((msg) {
+      return {
+        "role": msg.isMine ? "user" : "assistant",
+        "content": msg.content,
+      };
+    }).toList();
+
+    // To keep the request from getting too big, you can limit the history
+    if (chatHistory.length > 10) {
+      chatHistory = chatHistory.sublist(chatHistory.length - 10);
     }
 
+    // 3. Call your new RAG backend service to get the AI reply
+    final aiReply = await _chatService.getRAGResponse(text, currentUserId, chatHistory);
 
-  // Get AI's reply using the personalized context
-  final aiReply = await _aiService.getAIResponse(text, profile);
+    // 4. Add the AI's message to UI and Supabase
+    await _chatService.sendMessage(
+      conversationId: widget.conversationId,
+      sender: 'assistant',
+      text: aiReply,
+    );
 
-  // Save the AI message
-  await _chatService.sendMessage(
-    conversationId: widget.conversationId,
-    sender: 'assistant',
-    text: aiReply,
-  );
-
-  setState(() => _isTyping = false);
-  await _loadMessages();
-}
+    setState(() => _isTyping = false);
+    await _loadMessages(); // Reload to show the AI's new message
+  }
 
 
   /// Renders a chat bubble for each message
-  Widget _buildMessage(Map<String, dynamic> msg) {
-    final isUser = msg['sender'] == 'user';
+  Widget _buildMessage(Message msg) {
+    final isUser = msg.isMine;
     final bgColor = isUser ? Theme.of(context).colorScheme.primary : Colors.grey.shade300;
     final textColor = isUser ? Colors.white : Colors.black87;
     final alignment = isUser ? Alignment.centerRight : Alignment.centerLeft;
@@ -108,26 +131,29 @@ class _ChatScreenState extends State<ChatScreen> {
       bottomRight: isUser ? Radius.zero : const Radius.circular(16),
     );
 
-    final timestamp = DateFormat('hh:mm a').format(DateTime.parse(msg['created_at']).toLocal());
+    final timestamp = DateFormat('hh:mm a').format(msg.timestamp);
 
     return Align(
       alignment: alignment,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         padding: const EdgeInsets.all(12),
-        constraints: const BoxConstraints(maxWidth: 280),
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: radius,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
           children: [
-            Text(msg['content'], style: TextStyle(color: textColor)),
+            Text(msg.content, style: TextStyle(color: textColor, fontSize: 16)),
             const SizedBox(height: 4),
-            Text(
-              timestamp,
-              style: TextStyle(fontSize: 10, color: Colors.grey.shade200.withOpacity(0.7)),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                timestamp,
+                style: TextStyle(fontSize: 10, color: isUser ? Colors.white70 : Colors.black54),
+              ),
             ),
           ],
         ),
@@ -139,27 +165,18 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: FutureBuilder(
-            future: _chatService.getUserProfile(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) return Text(widget.title);
-              final name = snapshot.data?['name'] ?? 'you';
-              return Text("Chat with you, $name");
-            },
-          ),
-        ),
+        title: Text(widget.title),
+      ),
       body: Column(
         children: [
           // Message list
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
-              reverse: false,
               padding: const EdgeInsets.only(top: 8, bottom: 16),
               itemCount: _messages.length + (_isTyping ? 1 : 0),
               itemBuilder: (ctx, index) {
                 if (_isTyping && index == _messages.length) {
-                  // Display typing animation
                   return Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -169,7 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         color: Colors.grey.shade200,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Text('Typing...'),
+                      child: const Text('PKU Wise is typing...'),
                     ),
                   );
                 }
@@ -190,7 +207,6 @@ class _ChatScreenState extends State<ChatScreen> {
               top: false,
               child: Row(
                 children: [
-                  // Input field
                   Expanded(
                     child: TextField(
                       controller: _textController,
@@ -198,7 +214,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       onSubmitted: (_) => _handleSend(),
                     ),
                   ),
-                  // Send button
                   IconButton(
                     icon: const Icon(Icons.send),
                     onPressed: _handleSend,
