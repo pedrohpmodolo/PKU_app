@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Make sure to create and import the new screen we designed
 import 'package:pkuapp/screens/home/phecalculator/infant_calculator_screen.dart'; 
 import 'package:pkuapp/utils/food_service.dart';
+import 'package:pkuapp/models/food_item.dart';
 
 class PheCalculatorScreen extends StatefulWidget {
   const PheCalculatorScreen({super.key});
