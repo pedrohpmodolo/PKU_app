@@ -27,9 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     const _HomePageContent(), // Your dashboard / main content
     ConversationListScreen(),
-    AnalyzeScreen(), // The chat screen
+    AnalyzeScreen(food: null,), // The analyze food screen
     const SettingsScreen(), // The hierarchical Settings screen
-    // const AnalyzeScreen(),  //The screen for scanning and analyzing food items
   ];
 
   @override
