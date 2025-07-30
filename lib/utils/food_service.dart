@@ -1,36 +1,9 @@
 // lib/services/food_service.dart
 
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:pkuapp/models/food_item.dart'; // <-- This now correctly imports the model
 
-// A data model for a food item from your Supabase table
-class FoodItem {
-  final String name;
-  final String? category;
-  final double proteinG;
-  final double carbsG;
-  final double energyKcal;
-  // We calculate Phe from protein (1g protein = approx 50mg Phe)
-  double get pheMg => proteinG * 50;
-
-  FoodItem({
-    required this.name,
-    this.category,
-    required this.proteinG,
-    required this.carbsG,
-    required this.energyKcal,
-  });
-
-  factory FoodItem.fromJson(Map<String, dynamic> json) {
-    return FoodItem(
-      name: json['name'] ?? 'Unknown',
-      category: json['category'],
-      proteinG: (json['protein_g'] as num?)?.toDouble() ?? 0.0,
-      carbsG: (json['carbs_g'] as num?)?.toDouble() ?? 0.0,
-      energyKcal: (json['energy_kcal'] as num?)?.toDouble() ?? 0.0,
-    );
-  }
-}
-
+// The duplicate FoodItem class definition has been removed from this file.
 
 class FoodService {
   final SupabaseClient _supabase = Supabase.instance.client;
@@ -46,6 +19,7 @@ class FoodService {
         params: {'search_term': searchTerm},
       );
 
+      // This now uses the single, correct FoodItem.fromJson constructor
       final foodList = (response as List)
           .map((item) => FoodItem.fromJson(item as Map<String, dynamic>))
           .toList();

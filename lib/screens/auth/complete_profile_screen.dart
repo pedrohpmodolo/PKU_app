@@ -177,7 +177,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
       
       // --- THIS IS THE CORRECTED LINE ---
       final summaryResponse = await http.post(
-        Uri.parse('http://192.168.0.208:8000/generate-profile-summary'), // ADDED THE PORT :8000
+        Uri.parse('http://192.168.1.185:8000/generate-profile-summary'), // ADDED THE PORT :8000
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(summaryDataForApi),
       );

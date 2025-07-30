@@ -92,9 +92,10 @@ class ChatService {
   // --- NEW FUNCTION ADDED FOR RAG BACKEND ---
 
   // Sets the correct IP address depending on the platform (Android Emulator vs iOS Simulator).
-  final String _apiUrl = Platform.isAndroid
-      ? 'http://10.0.2.2:8000/chat'
-      : 'http://127.0.0.1:8000/chat';
+  final String _apiUrl = "http://192.168.1.185:8000/chat";
+  //Platform.isAndroid
+      //? 'http://10.0.2.2:8000/chat'
+      //: 'http://127.0.0.1:8000/chat';
 
   /// Sends the user's query and history to your RAG backend and gets the AI's response.
   Future<String> getRAGResponse(String query, String userId, List<Map<String, String>> history) async {
