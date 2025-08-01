@@ -1,10 +1,9 @@
 // chat_screen.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:supabase_flutter/supabase_flutter.dart'; // Needed for Supabase.instance.client
-import 'chat_service.dart'; // Your updated ChatService now handles everything
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'chat_service.dart';
 
-/// A data model for messages to make the code cleaner
 class Message {
   final String content;
   final bool isMine;
@@ -13,11 +12,9 @@ class Message {
   Message({required this.content, required this.isMine, required this.timestamp});
 }
 
-
-/// The main chat screen for a selected conversation.
 class ChatScreen extends StatefulWidget {
-  final String conversationId; // ID of the conversation to load messages from
-  final String title;          // Title of the chat (shown in app bar)
+  final String conversationId;
+  final String title;
 
   const ChatScreen({super.key, required this.conversationId, required this.title});
 
@@ -27,12 +24,12 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final ChatService _chatService = ChatService();
-  final TextEditingController _textController = TextEditingController();  // Controls user input
-  final ScrollController _scrollController = ScrollController();          // For auto-scroll to bottom
+  final TextEditingController _textController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
-  // Using a typed list of Message objects is safer and cleaner
   List<Message> _messages = [];
   bool _isTyping = false;
+  bool _isLoading = true; // Added for initial load
 
   @override
   void initState() {
@@ -40,123 +37,195 @@ class _ChatScreenState extends State<ChatScreen> {
     _loadMessages();
   }
 
-  /// Fetch messages from the conversation and scroll to the bottom
   Future<void> _loadMessages() async {
+    if (mounted) setState(() => _isLoading = true);
     final messageData = await _chatService.getMessages(widget.conversationId);
     
-    // Convert the map data from Supabase into a list of Message objects
     final currentUserId = Supabase.instance.client.auth.currentUser?.id;
-    setState(() {
-      _messages = messageData.map((msg) => Message(
-        content: msg['content'],
-        isMine: msg['sender'] == currentUserId || msg['sender'] == 'user',
-        timestamp: DateTime.parse(msg['created_at']).toLocal(),
-      )).toList();
-    });
+    if (mounted) {
+      setState(() {
+        _messages = messageData.map((msg) => Message(
+          content: msg['content'],
+          isMine: msg['sender'] == currentUserId || msg['sender'] == 'user',
+          timestamp: DateTime.parse(msg['created_at']).toLocal(),
+        )).toList();
+        _isLoading = false;
+      });
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
   }
 
-  /// Scroll the chat to the latest message
   void _scrollToBottom() {
     if (_scrollController.hasClients) {
       _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent + 100, // Added some buffer
+        _scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
     }
   }
 
-  /// --- THIS IS THE UPDATED FUNCTION ---
-  /// Handles sending a user message and getting a RAG response from your backend.
   Future<void> _handleSend() async {
     final text = _textController.text.trim();
     if (text.isEmpty) return;
 
     final currentUserId = Supabase.instance.client.auth.currentUser?.id;
-    if (currentUserId == null) return; // Can't send if not logged in
+    if (currentUserId == null) return;
 
+    final userMessage = Message(content: text, isMine: true, timestamp: DateTime.now());
+    setState(() {
+      _messages.add(userMessage);
+      _isTyping = true;
+    });
     _textController.clear();
-    
-    // 1. Add user's message to UI and Supabase
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+
+    // Send to Supabase in the background
     await _chatService.sendMessage(
       conversationId: widget.conversationId,
-      sender: currentUserId, // Use the actual user ID
+      sender: currentUserId,
       text: text,
     );
-    await _loadMessages(); // Reload messages to show the user's new message
 
-    setState(() => _isTyping = true);
-
-    // 2. Prepare the chat history for the RAG backend
-    // It needs a list of maps with "role" and "content"
     List<Map<String, String>> chatHistory = _messages.map((msg) {
-      return {
-        "role": msg.isMine ? "user" : "assistant",
-        "content": msg.content,
-      };
+      return {"role": msg.isMine ? "user" : "assistant", "content": msg.content};
     }).toList();
 
-    // To keep the request from getting too big, you can limit the history
     if (chatHistory.length > 10) {
       chatHistory = chatHistory.sublist(chatHistory.length - 10);
     }
-
-    // 3. Call your new RAG backend service to get the AI reply
-    final aiReply = await _chatService.getRAGResponse(text, currentUserId, chatHistory);
-
-    // 4. Add the AI's message to UI and Supabase
+    
+    // Get AI reply and add it to the list
+    final aiReply = await _chatService.getRAGResponse(query: text, history: chatHistory);
+    final assistantMessage = Message(content: aiReply, isMine: false, timestamp: DateTime.now());
+    
+    if(mounted) {
+      setState(() {
+        _messages.add(assistantMessage);
+        _isTyping = false;
+      });
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+    
+    // Save AI reply to Supabase in the background
     await _chatService.sendMessage(
       conversationId: widget.conversationId,
       sender: 'assistant',
       text: aiReply,
     );
-
-    setState(() => _isTyping = false);
-    await _loadMessages(); // Reload to show the AI's new message
   }
 
+  // --- WIDGETS REBUILT WITH MODERN STYLING ---
 
-  /// Renders a chat bubble for each message
-  Widget _buildMessage(Message msg) {
+  Widget _buildMessage(Message msg, {bool isLast = false}) {
+    final theme = Theme.of(context);
     final isUser = msg.isMine;
-    final bgColor = isUser ? Theme.of(context).colorScheme.primary : Colors.grey.shade300;
-    final textColor = isUser ? Colors.white : Colors.black87;
-    final alignment = isUser ? Alignment.centerRight : Alignment.centerLeft;
+
+    final bgColor = isUser ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant;
+    final textColor = isUser ? theme.colorScheme.onPrimary : theme.colorScheme.onSurfaceVariant;
+    final alignment = isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     final radius = BorderRadius.only(
-      topLeft: const Radius.circular(16),
-      topRight: const Radius.circular(16),
-      bottomLeft: isUser ? const Radius.circular(16) : Radius.zero,
-      bottomRight: isUser ? Radius.zero : const Radius.circular(16),
+      topLeft: const Radius.circular(18),
+      topRight: const Radius.circular(18),
+      bottomLeft: isUser ? const Radius.circular(18) : const Radius.circular(4),
+      bottomRight: isUser ? const Radius.circular(4) : const Radius.circular(18),
     );
 
-    final timestamp = DateFormat('hh:mm a').format(msg.timestamp);
+    return Container(
+      margin: EdgeInsets.only(
+        top: 4,
+        bottom: isLast ? 12 : 4, // Add extra padding for the last message
+        left: isUser ? 60 : 12,
+        right: isUser ? 12 : 60,
+      ),
+      child: Column(
+        crossAxisAlignment: alignment,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            decoration: BoxDecoration(color: bgColor, borderRadius: radius),
+            child: Text(msg.content, style: TextStyle(color: textColor, fontSize: 16)),
+          ),
+          const SizedBox(height: 4),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              DateFormat('h:mm a').format(msg.timestamp),
+              style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey.shade600),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-    return Align(
-      alignment: alignment,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        padding: const EdgeInsets.all(12),
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: radius,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+  Widget _buildInputBar() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, -5),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: Row(
           children: [
-            Text(msg.content, style: TextStyle(color: textColor, fontSize: 16)),
-            const SizedBox(height: 4),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                timestamp,
-                style: TextStyle(fontSize: 10, color: isUser ? Colors.white70 : Colors.black54),
+            Expanded(
+              child: TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  hintText: 'Message PKU Wise...',
+                  filled: true,
+                  fillColor: Theme.of(context).scaffoldBackgroundColor,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                onSubmitted: (_) => _handleSend(),
+              ),
+            ),
+            const SizedBox(width: 8),
+            IconButton.filled(
+              icon: const Icon(Icons.send),
+              onPressed: _handleSend,
+              style: IconButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.chat_bubble_outline, size: 80, color: Colors.grey.shade400),
+          const SizedBox(height: 16),
+          Text(
+            'PKU Wise',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Ask me anything about your PKU diet,\nfood lookups, or recipe ideas.',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey.shade600),
+          ),
+        ],
       ),
     );
   }
@@ -169,59 +238,28 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: [
-          // Message list
           Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              padding: const EdgeInsets.only(top: 8, bottom: 16),
-              itemCount: _messages.length + (_isTyping ? 1 : 0),
-              itemBuilder: (ctx, index) {
-                if (_isTyping && index == _messages.length) {
-                  return Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(16),
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _messages.isEmpty
+                    ? _buildEmptyState()
+                    : ListView.builder(
+                        controller: _scrollController,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        itemCount: _messages.length + (_isTyping ? 1 : 0),
+                        itemBuilder: (ctx, index) {
+                          if (_isTyping && index == _messages.length) {
+                            return _buildMessage(Message(
+                              content: '...',
+                              isMine: false,
+                              timestamp: DateTime.now(),
+                            ));
+                          }
+                          return _buildMessage(_messages[index], isLast: index == _messages.length -1);
+                        },
                       ),
-                      child: const Text('PKU Wise is typing...'),
-                    ),
-                  );
-                }
-                return _buildMessage(_messages[index]);
-              },
-            ),
           ),
-          // Input bar
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              boxShadow: [
-                BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(0, -2)),
-              ],
-            ),
-            child: SafeArea(
-              top: false,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _textController,
-                      decoration: const InputDecoration.collapsed(hintText: 'Message...'),
-                      onSubmitted: (_) => _handleSend(),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.send),
-                    onPressed: _handleSend,
-                  ),
-                ],
-              ),
-            ),
-          )
+          _buildInputBar(),
         ],
       ),
     );

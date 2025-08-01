@@ -1,147 +1,27 @@
 // lib/screens/home/settings/settings.dart
 
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart'; // <-- 1. ADD THIS IMPORT
-import 'package:pkuapp/screens/onboarding_screen.dart';   // <-- 2. ADD THIS IMPORT
-import 'account_settings.dart';
+import 'package:pkuapp/screens/onboarding_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// A node in the settings hierarchy: either a leaf (page) or a group (children).
-class SettingItem {
-  final String title;
-  final IconData icon;
-  final Widget? page;
-  final List<SettingItem>? children;
+import 'account_screen.dart'; // New screen for credentials
+import 'diet_profile_screen.dart'; // New screen for PKU details
+import 'reports_list_screen.dart';
+import 'notifications_screen.dart';
+import 'about_screen.dart';
 
-  const SettingItem({
-    required this.title,
-    required this.icon,
-    this.page,
-    this.children,
-  }) : assert((page == null) ^ (children == null),
-            'Either page or children must be non-null, but not both');
-}
-
-/// Reusable screen for a group of settings items.
-class SettingGroupScreen extends StatelessWidget {
-  final String title;
-  final List<SettingItem> items;
-
-  const SettingGroupScreen({
-    Key? key,
-    required this.title,
-    required this.items,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: ListView.separated(
-        itemCount: items.length,
-        separatorBuilder: (_, __) => const Divider(height: 1),
-        itemBuilder: (context, i) {
-          final item = items[i];
-          return ListTile(
-            leading: Icon(item.icon),
-            title: Text(item.title),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              if (item.children != null) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => SettingGroupScreen(
-                      title: item.title,
-                      items: item.children!,
-                    ),
-                  ),
-                );
-              } else {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => item.page!),
-                );
-              }
-            },
-          );
-        },
-      ),
-    );
-  }
-}
-
-// ... (All your other placeholder screens like ControlCenterSettingsScreen remain the same) ...
-
-class ControlCenterSettingsScreen extends StatelessWidget {
-  const ControlCenterSettingsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext c) => Scaffold(
-        appBar: AppBar(title: const Text('Control Center')),
-        body: const Center(child: Text('Control Center settings here')),
-      );
-}
-
-class DisplayBrightnessSettingsScreen extends StatelessWidget {
-  const DisplayBrightnessSettingsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext c) => Scaffold(
-        appBar: AppBar(title: const Text('Display & Brightness')),
-        body: const Center(child: Text('Display & Brightness settings here')),
-      );
-}
-
-class HomeScreenSettingsScreen extends StatelessWidget {
-  const HomeScreenSettingsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext c) => Scaffold(
-        appBar: AppBar(title: const Text('Home Screen')),
-        body: const Center(child: Text('Home Screen settings here')),
-      );
-}
-
-class AccessibilitySettingsScreen extends StatelessWidget {
-  const AccessibilitySettingsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext c) => Scaffold(
-        appBar: AppBar(title: const Text('Accessibility')),
-        body: const Center(child: Text('Accessibility settings here')),
-      );
-}
-
-class WallpaperSettingsScreen extends StatelessWidget {
-  const WallpaperSettingsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext c) => Scaffold(
-        appBar: AppBar(title: const Text('Wallpaper')),
-        body: const Center(child: Text('Wallpaper settings here')),
-      );
-}
-
-
-/// The root of your settings hierarchy.
-const _settingsTree = <SettingItem>[
-  SettingItem(
-    title: 'General',
-    icon: Icons.settings,
-    children: [
-      // ... (your general settings remain here)
-    ],
-  ),
-  SettingItem(
-    title: 'Account',
-    icon: Icons.person,
-    page: AccountSettings(),
-  ),
-];
-
-// --- 3. THIS WIDGET HAS BEEN UPDATED ---
-/// Entry‐point for Settings tab.
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   static const routeName = '/settings';
   const SettingsScreen({Key? key}) : super(key: key);
 
-  Future<void> _logout(BuildContext context) async {
-    // Show a confirmation dialog before logging out
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  final _supabase = Supabase.instance.client;
+
+  Future<void> _logout() async {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -157,8 +37,8 @@ class SettingsScreen extends StatelessWidget {
       ),
     );
 
-    if (confirm == true && context.mounted) {
-      await Supabase.instance.client.auth.signOut();
+    if (confirm == true && mounted) {
+      await _supabase.auth.signOut();
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const OnboardingScreen(onToggleTheme: null)),
@@ -167,45 +47,151 @@ class SettingsScreen extends StatelessWidget {
     }
   }
 
+  // Helper widget for section headers like "ACCOUNT", "APP".
+  Widget _buildSectionHeader(String title) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
+      child: Text(
+        title.toUpperCase(),
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold,
+            ),
+      ),
+    );
+  }
+
+  // Helper widget for a single, tappable setting item.
+  Widget _buildSettingsTile({
+    required String title,
+    required IconData icon,
+    VoidCallback? onTap,
+    Color? color,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: color ?? Theme.of(context).colorScheme.primary),
+      title: Text(title, style: TextStyle(color: color)),
+      trailing: color == null ? const Icon(Icons.chevron_right, size: 18) : null,
+      onTap: onTap,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = _supabase.auth.currentUser;
+    final userName = user?.userMetadata?['name'] ?? 'PKU Wise User';
+    final userEmail = user?.email ?? 'No email found';
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: AppBar(title: const Text('Settings & Profile')),
       body: ListView(
         children: [
-          // Build the original settings list
-          for (final item in _settingsTree)
-            ListTile(
-              leading: Icon(item.icon),
-              title: Text(item.title),
-              trailing: const Icon(Icons.chevron_right),
+          // --- User Profile Header Card ---
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                  child: Text(userName.isNotEmpty ? userName[0].toUpperCase() : 'U',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer)),
+                ),
+                const SizedBox(width: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(userName, style: Theme.of(context).textTheme.titleLarge),
+                    Text(userEmail, style: Theme.of(context).textTheme.bodyMedium),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          _buildSectionHeader('Diet'),
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: _buildSettingsTile(
+              title: 'Edit Diet & Goals',
+              icon: Icons.local_dining_outlined,
               onTap: () {
-                if (item.children != null) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => SettingGroupScreen(
-                        title: item.title,
-                        items: item.children!,
-                      ),
-                    ),
-                  );
-                } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => item.page!),
-                  );
-                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const DietProfileScreen()),
+                );
               },
             ),
-          
-          // Add a divider and the new Log Out button
-          const Divider(height: 1),
-          ListTile(
-            leading: const Icon(Icons.logout, color: Colors.red),
-            title: const Text('Log Out', style: TextStyle(color: Colors.red)),
-            onTap: () => _logout(context),
           ),
+
+          _buildSectionHeader('Reports'),
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: _buildSettingsTile(
+              title: 'View My Reports',
+              icon: Icons.bar_chart_outlined,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const ReportsListScreen()),
+                );
+              },
+            ),
+          ),
+          
+          _buildSectionHeader('Account & Security'),
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: _buildSettingsTile(
+              title: 'Privacy & Credentials',
+              icon: Icons.security_outlined,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AccountScreen()),
+                );
+              },
+            ),
+          ),
+          
+          _buildSectionHeader('App'),
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                _buildSettingsTile(
+                  title: 'Notifications',
+                  icon: Icons.notifications_outlined,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const NotificationsScreen()),
+                  ),
+                ),
+                const Divider(height: 1, indent: 56),
+                _buildSettingsTile(
+                  title: 'About',
+                  icon: Icons.info_outline,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const AboutScreen()),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 32),
+          
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: TextButton(
+              onPressed: _logout,
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.all(16),
+                backgroundColor: Colors.red.withOpacity(0.1),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+              child: const Text('Log Out', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+            ),
+          ),
+          const SizedBox(height: 32),
         ],
       ),
     );

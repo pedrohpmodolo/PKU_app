@@ -54,6 +54,7 @@ class _PKUAppState extends State<PKUApp> {
       final session = data.session;
 
       if (event == AuthChangeEvent.signedIn && session != null) {
+        
         final userId = session.user.id;
 
         final response = await Supabase.instance.client
