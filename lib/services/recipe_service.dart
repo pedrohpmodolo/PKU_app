@@ -1,36 +1,33 @@
 // lib/services/recipe_service.dart
 
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'dart:io';
+import 'package:logging/logging.dart';
 
 class RecipeService {
-  final String _apiUrl = Platform.isAndroid 
-      ? 'http://10.0.2.2:8000/generate-recipes' 
-      : 'http://192.168.1.185:8000/generate-recipes'; // <-- REMEMBER TO USE YOUR IP
+  final _logger = Logger('RecipeService');
 
-  Future<String> getRecipesForFood(String foodName) async {
-    final userId = Supabase.instance.client.auth.currentUser?.id;
-    if (userId == null) throw Exception('User not logged in');
-
+  /// Generates recipe ideas by calling the 'generate-recipes' Edge Function.
+  ///
+  /// Takes an optional [query] to specify the type of recipes desired
+  /// (e.g., "breakfast ideas", "chicken recipes").
+  /// Returns a list of recipe maps.
+  Future<List<dynamic>> getRecipes({String? query}) async {
     try {
-      final response = await http.post(
-        Uri.parse(_apiUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'food_name': foodName,
-          'user_id': userId,
-        }),
+      final response = await Supabase.instance.client.functions.invoke(
+        'generate-recipes',
+        body: {'query': query ?? 'any type of meal'},
       );
 
-      if (response.statusCode == 200) {
-        return jsonDecode(response.body)['recipes'] ?? 'Could not generate recipes.';
-      } else {
-        return 'Error from server: ${response.statusCode}';
-      }
-    } catch (e) {
-      return 'Error connecting to the server: $e';
+      // The backend returns a JSON object like {"recipes": [...]}
+      // The data is already parsed from JSON into a List by the client.
+      return response.data['recipes'] as List<dynamic>;
+
+    } on FunctionException catch (e, stackTrace) {
+      _logger.severe('Supabase function error in getRecipes:', e, stackTrace);
+      return []; // Return an empty list on error
+    } catch (e, stackTrace) {
+      _logger.severe('Generic error in getRecipes:', e, stackTrace);
+      return []; // Return an empty list on error
     }
   }
 }

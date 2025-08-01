@@ -83,7 +83,10 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
     }
 
     final queryForAI = "Analyze this product: ${_scannedFood!.name} (Protein: ${_scannedFood!.proteinG}g/100g)";
-    final aiAnalysis = await _chatService.getRAGResponse(queryForAI, currentUserId, []);
+    final aiAnalysis = await _chatService.getRAGResponse(
+      query: queryForAI, 
+      history: [],
+    );
     
     if(mounted) {
       setState(() {

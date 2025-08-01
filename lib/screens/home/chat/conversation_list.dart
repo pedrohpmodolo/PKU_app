@@ -1,9 +1,9 @@
-// conversation_list.dart
+// lib/screens/home/chat/conversation_list.dart
 import 'package:flutter/material.dart';
-import 'chat_screen.dart';      // Chat screen for selected conversation
-import 'chat_service.dart';    // Handles Supabase logic for chat data
+import 'package:intl/intl.dart';
+import 'chat_screen.dart';
+import 'chat_service.dart';
 
-/// Displays a list of user conversations with preview and edit/delete options
 class ConversationListScreen extends StatefulWidget {
   const ConversationListScreen({super.key});
 
@@ -14,20 +14,29 @@ class ConversationListScreen extends StatefulWidget {
 class _ConversationListScreenState extends State<ConversationListScreen> {
   final ChatService _chatService = ChatService();
 
-  List<Map<String, dynamic>> _conversations = []; // Full list of user conversations
-  Map<String, Map<String, dynamic>> _lastMessages = {}; // Last message for each conversation (for preview)
+  bool _isLoading = true;
+  String _userName = 'there';
+  List<Map<String, dynamic>> _conversations = [];
+  Map<String, Map<String, dynamic>> _lastMessages = {};
 
   @override
   void initState() {
     super.initState();
-    _loadConversations(); // Load chats on screen start
+    _loadData();
   }
 
-  /// Fetches user's conversations and loads the most recent message for each
-  Future<void> _loadConversations() async {
-    final convos = await _chatService.getUserConversations();
-    final Map<String, Map<String, dynamic>> previews = {};
+  Future<void> _loadData() async {
+    if (mounted) setState(() => _isLoading = true);
+    
+    // Fetch conversations and user profile concurrently
+    final profileFuture = _chatService.getUserProfile();
+    final convosFuture = _chatService.getUserConversations();
+    final results = await Future.wait([profileFuture, convosFuture]);
 
+    final profile = results[0] as Map<String, dynamic>?;
+    final convos = results[1] as List<Map<String, dynamic>>;
+    
+    final Map<String, Map<String, dynamic>> previews = {};
     for (final convo in convos) {
       final messages = await _chatService.getMessages(convo['id']);
       if (messages.isNotEmpty) {
@@ -35,46 +44,49 @@ class _ConversationListScreenState extends State<ConversationListScreen> {
       }
     }
 
-    setState(() {
-      _conversations = convos;
-      _lastMessages = previews;
-    });
-  }
-
-  /// Creates a new chat and navigates directly to it
-  Future<void> _createNewConversation() async {
-    final id = await _chatService.createConversation('New Chat');
-    if (id != null) {
-      await _loadConversations();
-      if (context.mounted) {
-        final convo = _conversations.firstWhere((c) => c['id'] == id);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => ChatScreen(
-              conversationId: id,
-              title: convo['title'] ?? 'Chat',
-            ),
-          ),
-        );
-      }
+    if (mounted) {
+      setState(() {
+        _userName = profile?['name'] ?? 'there';
+        _conversations = convos;
+        _lastMessages = previews;
+        _isLoading = false;
+      });
     }
   }
 
-  /// Shows rename dialog and updates the conversation title
-  void _showRenameDialog(String id, String oldTitle) async {
+  Future<void> _createNewConversation() async {
+    final newTitle = 'Chat on ${DateFormat.yMMMd().format(DateTime.now())}';
+    final id = await _chatService.createConversation(newTitle);
+    if (id != null && mounted) {
+      // Navigate to the new chat screen immediately for a better UX
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => ChatScreen(conversationId: id, title: newTitle),
+        ),
+      ).then((_) => _loadData()); // Refresh the list when returning
+    }
+  }
+
+  void _showRenameDialog(String id, String oldTitle) {
     final controller = TextEditingController(text: oldTitle);
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('Rename Conversation'),
-        content: TextField(controller: controller),
+        content: TextField(controller: controller, autofocus: true),
         actions: [
-          TextButton(
+           TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
             onPressed: () async {
-              await _chatService.renameConversation(id, controller.text);
-              if (context.mounted) Navigator.pop(ctx);
-              await _loadConversations();
+              if (controller.text.trim().isNotEmpty) {
+                await _chatService.renameConversation(id, controller.text.trim());
+                if (mounted) Navigator.pop(ctx);
+                _loadData();
+              }
             },
             child: const Text('Save'),
           ),
@@ -83,20 +95,24 @@ class _ConversationListScreenState extends State<ConversationListScreen> {
     );
   }
 
-  /// Shows delete confirmation and removes the conversation
-  void _showDeleteConfirmation(String id) async {
+  void _showDeleteConfirmation(String id) {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('Delete Conversation?'),
-        content: const Text('This cannot be undone.'),
+        content: const Text('This action cannot be undone.'),
         actions: [
           TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
             onPressed: () async {
               await _chatService.deleteConversation(id);
-              if (context.mounted) Navigator.pop(ctx);
-              await _loadConversations();
+              if (mounted) Navigator.pop(ctx);
+              _loadData();
             },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),
         ],
@@ -104,7 +120,6 @@ class _ConversationListScreenState extends State<ConversationListScreen> {
     );
   }
 
-  /// Bottom sheet to choose between rename or delete options
   void _showContextMenu(String id, String title) {
     showModalBottomSheet(
       context: context,
@@ -112,7 +127,7 @@ class _ConversationListScreenState extends State<ConversationListScreen> {
         child: Wrap(
           children: [
             ListTile(
-              leading: const Icon(Icons.edit),
+              leading: const Icon(Icons.edit_outlined),
               title: const Text('Rename'),
               onTap: () {
                 Navigator.pop(ctx);
@@ -120,7 +135,7 @@ class _ConversationListScreenState extends State<ConversationListScreen> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.delete),
+              leading: const Icon(Icons.delete_outline),
               title: const Text('Delete'),
               onTap: () {
                 Navigator.pop(ctx);
@@ -133,56 +148,91 @@ class _ConversationListScreenState extends State<ConversationListScreen> {
     );
   }
 
-  /// UI: Lists all user chats with preview and menu options
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.chat_bubble_outline, size: 80, color: Colors.grey),
+          const SizedBox(height: 20),
+          Text(
+            'No Conversations Yet',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Tap the + button to start a new chat.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey.shade600),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton.icon(
+            icon: const Icon(Icons.add),
+            label: const Text('Start New Chat'),
+            onPressed: _createNewConversation,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildConversationCard(Map<String, dynamic> convo) {
+    final preview = _lastMessages[convo['id']];
+    final title = convo['title'] ?? 'Untitled';
+
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+        subtitle: preview != null
+            ? Text(
+                preview['content'],
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              )
+            : Text('No messages yet', style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey.shade600)),
+        trailing: IconButton(
+          icon: const Icon(Icons.more_vert),
+          onPressed: () => _showContextMenu(convo['id'], title),
+        ),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ChatScreen(conversationId: convo['id'], title: title),
+          ),
+        ).then((_) => _loadData()),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  title: FutureBuilder(
-    future: _chatService.getUserProfile(),
-    builder: (context, snapshot) {
-      if (!snapshot.hasData) return const Text("Chat");
-      final profile = snapshot.data!;
-      final name = profile['name'] ?? 'there';
-      return Text("Chat with me, $name!");
-    },
-  ),
-  actions: [
-    IconButton(
-      icon: const Icon(Icons.add),
-      onPressed: _createNewConversation,
-    ),
-  ],
-),
-      body: ListView.builder(
-        itemCount: _conversations.length,
-        itemBuilder: (ctx, index) {
-          final convo = _conversations[index];
-          final preview = _lastMessages[convo['id']];
-
-          return GestureDetector(
-            onLongPress: () => _showContextMenu(convo['id'], convo['title']),
-            child: ListTile(
-              title: Text(convo['title'] ?? 'Untitled'),
-              subtitle: preview != null
-                  ? Text(preview['content'], maxLines: 1, overflow: TextOverflow.ellipsis)
-                  : null,
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ChatScreen(
-                    conversationId: convo['id'],
-                    title: convo['title'] ?? 'Chat',
+        title: Text('Chat with me, $_userName!'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            tooltip: 'New Chat',
+            onPressed: _createNewConversation,
+          ),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: _loadData,
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : _conversations.isEmpty
+                ? _buildEmptyState()
+                : ListView.builder(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    itemCount: _conversations.length,
+                    itemBuilder: (ctx, index) {
+                      final convo = _conversations[index];
+                      return _buildConversationCard(convo);
+                    },
                   ),
-                ),
-              ).then((_) => _loadConversations()),
-              trailing: IconButton(
-                icon: const Icon(Icons.more_vert),
-                onPressed: () => _showContextMenu(convo['id'], convo['title']),
-              ),
-            ),
-          );
-        },
       ),
     );
   }

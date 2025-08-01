@@ -11,11 +11,24 @@ class ProfileUtils {
     return usesImperial ? w * 0.453592 : w;
   }
 
-  static double? convertToCm(String height, bool usesImperial) {
-    final h = double.tryParse(height);
-    if (h == null) return null;
-    return usesImperial ? h * 2.54 : h;
+  // --- THIS IS THE UPDATED METHOD ---
+  /// Converts height to cm. Handles a single value for metric, or feet and inches for imperial.
+  static double? convertToCm(String height, bool usesImperial, {String? inches}) {
+    if (!usesImperial) {
+      // For metric, just parse the single value as cm
+      return double.tryParse(height);
+    } else {
+      // For imperial, parse feet and inches and convert both to cm
+      final feetValue = double.tryParse(height);
+      final inchesValue = double.tryParse(inches ?? '0'); // Default to 0 if inches is null or empty
+      
+      if (feetValue == null || inchesValue == null) return null;
+
+      // 1 foot = 30.48 cm, 1 inch = 2.54 cm
+      return (feetValue * 30.48) + (inchesValue * 2.54);
+    }
   }
+  // ------------------------------------
 
   static int calculateAgeFromDate(DateTime birthDate) {
     final today = DateTime.now();
@@ -36,7 +49,6 @@ class ProfileUtils {
     }
   }
 
-  // --- THIS FUNCTION IS NOW SIMPLER ---
   /// Calculates BMR (Basal Metabolic Rate) using Mifflin-St Jeor Equation
   static double? calculateBMR({
     required String gender,
@@ -53,7 +65,6 @@ class ProfileUtils {
     }
   }
   
-  // This function is no longer needed for the auto-calculation but can be kept for other uses
   static double calculateCalories(double? bmr, String activityLevel) {
     if (bmr == null) return 0.0;
     switch (activityLevel.toLowerCase()) {
@@ -65,12 +76,11 @@ class ProfileUtils {
     }
   }
 
-  /// --- UPDATED METHOD: Generates a comprehensive PDF from all profile data ---
+  /// Generates a comprehensive PDF from all profile data
   static Future<Uint8List> generateProfilePdf(Map<String, dynamic> profileData, String llmSummary) async {
     final pdf = pw.Document();
 
     pw.Widget buildRow(String title, String value) {
-      // Helper function to avoid adding a row if the value is null or empty
       if (value.isEmpty || value == 'N/A') return pw.SizedBox.shrink();
       return pw.Padding(
         padding: const pw.EdgeInsets.symmetric(vertical: 4),
@@ -86,7 +96,6 @@ class ProfileUtils {
       );
     }
     
-    // Helper for boolean values
     String boolToString(bool? value) => value == true ? 'Yes' : 'No';
 
     pdf.addPage(
@@ -112,7 +121,6 @@ class ProfileUtils {
               pw.Header(level: 1, text: 'Profile Details'),
               pw.Divider(),
               
-              // Personal Information
               buildRow('Name', profileData['name'] ?? 'N/A'),
               buildRow('Age', age),
               buildRow('Date of Birth', profileData['dob']?.split('T')[0] ?? 'N/A'),
@@ -121,7 +129,6 @@ class ProfileUtils {
               pw.SizedBox(height: 10),
               pw.Divider(),
               
-              // Measurements
               buildRow('Weight', '${profileData['weight_kg']?.toStringAsFixed(1) ?? 'N/A'} kg'),
               buildRow('Height', '${profileData['height_cm']?.toStringAsFixed(1) ?? 'N/A'} cm'),
               buildRow('BMR', '${profileData['bmr']?.toStringAsFixed(0) ?? 'N/A'} kcal'),
@@ -129,7 +136,6 @@ class ProfileUtils {
               pw.SizedBox(height: 10),
               pw.Divider(),
 
-              // Diagnosis Information
               buildRow('Diagnosis Date', profileData['diagnosis_date']?.split('T')[0] ?? 'N/A'),
               buildRow('PKU Severity', profileData['pku_severity'] ?? 'N/A'),
               buildRow('Primary Hospital', profileData['metabolic_center'] ?? 'N/A'),
@@ -137,7 +143,6 @@ class ProfileUtils {
               pw.SizedBox(height: 10),
               pw.Divider(),
               
-              // Dietary Information
               buildRow('Diet Type', profileData['diet_type'] ?? 'N/A'),
               buildRow('Formula', profileData['formula_type'] ?? 'N/A'),
               buildRow('Daily PHE Tolerance', '${profileData['phe_tolerance_mg'] ?? 'N/A'} mg'),
@@ -150,7 +155,6 @@ class ProfileUtils {
               pw.SizedBox(height: 10),
               pw.Divider(),
 
-              // Status & Preferences
               buildRow('Currently Pregnant', boolToString(profileData['pregnancy_status'])),
               buildRow('Currently Breastfeeding', boolToString(profileData['breastfeeding'])),
               buildRow('Needs Visual Aids', boolToString(profileData['needs_visual_aids'])),
