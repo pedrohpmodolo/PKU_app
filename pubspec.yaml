@@ -17,6 +17,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  pdf: ^3.10.8
+  printing: ^5.12.0
 
 dev_dependencies:
   flutter_test:
@@ -28,4 +30,4 @@ flutter:
 
   assets:
     - lib/assets/icons/
-  # - .env
+    - .env

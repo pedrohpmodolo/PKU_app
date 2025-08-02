@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/auth/auth_screen.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/home/ingredient_input_screen.dart';
 import 'screens/home/settings/settings.dart';
 import 'screens/auth/complete_profile_screen.dart';
 import 'theme.dart';
@@ -93,9 +94,10 @@ class _PKUAppState extends State<PKUApp> {
       navigatorKey: navigatorKey,
 
       // Determine initial screen based on auth session
-      initialRoute: session != null
-          ? HomeScreen.routeName
-          : OnboardingScreen.routeName,
+      initialRoute: IngredientInputScreen.routeName, // Temporarily bypass auth for testing
+      // initialRoute: session != null
+      //     ? HomeScreen.routeName
+      //     : OnboardingScreen.routeName,
 
       // Define available routes
       routes: {
@@ -107,6 +109,10 @@ class _PKUAppState extends State<PKUApp> {
         SettingsScreen.routeName: (ctx) => const SettingsScreen(),
         CompleteProfileScreen.routeName: (ctx) =>
             const CompleteProfileScreen(),
+
+        // 🧠 NEW:
+        IngredientInputScreen.routeName: (ctx) => IngredientInputScreen(),
+
       },
     );
   }

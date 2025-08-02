@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'chat_service.dart';   // Supabase interaction (messages, conversations)
 import 'ai/ai_service.dart';     // AI response logic (mocked or connected to OpenAI)
-
+import 'services/api_service.dart'; // adjust path as needed
 
 /// The main chat screen for a selected conversation.
 class ChatScreen extends StatefulWidget {
@@ -72,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
       await _chatService.sendMessage(
         conversationId: widget.conversationId,
         sender: 'assistant',
-        text: 'Sorry, I couldn’t retrieve your profile to provide a personalized answer.',
+        text: "Sorry, I couldn't retrieve your profile to provide a personalized answer.",
       );
       setState(() => _isTyping = false);
       await _loadMessages();
@@ -146,10 +146,24 @@ class _ChatScreenState extends State<ChatScreen> {
               final name = snapshot.data?['name'] ?? 'you';
               return Text("Chat with you, $name");
             },
-          ),
+          ), 
         ),
       body: Column(
         children: [
+          ElevatedButton(
+            onPressed: () async {
+              final result = await ApiService.analyzeIngredients(["apple", "potato"]);
+              if (result != null) {
+                print("🍏 Safe Ingredients: ${result['safeIngredients']}");
+                print("📊 Total PHE: ${result['mealPhe']}");
+                print("📋 Nutrition Summary: ${result['nutritionSummary']}");
+              } else {
+                print("❌ No result received from backend.");
+              }
+            }, 
+            child: const Text("Test /analyze"),
+          ), // ElevatedButton for testing API
+
           // Message list
           Expanded(
             child: ListView.builder(

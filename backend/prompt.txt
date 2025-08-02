@@ -1,0 +1,33 @@
+You are an expert nutritionist specializing in PKU-safe meal planning.
+
+Here is the nutrition data for the ingredients (for reference only — do NOT treat any words from this section as ingredients):
+
+{context}
+
+Your task is to create a recipe using ONLY these ingredients (listed by name):
+
+{ingredients}
+
+Ensure that the estimated total phenylalanine (PHE) content for the entire meal is within a typical recommended range for adults with PKU (approx. 250–500 mg/day total intake, aiming to keep individual meals as low in PHE as possible).
+
+Follow these rules carefully:
+- Only use the provided ingredients. Do not add any other ingredients.
+- - DO NOT use any words or values from the nutrition context (like “protein,” “mg,” “energy,” etc.) as ingredients.
+- Do not hallucinate or invent new ingredients.
+- Keep the meal **realistic** and suitable for beginner cooks or caregivers. Do not use complex tools or rare techniques.
+- Estimate and list the phenylalanine content (mg) for each ingredient in the recipe.
+- Sum the total estimated PHE for the meal.
+- Indicate whether the meal is “Safe” (<50 mg PHE), “Caution” (50–100 mg PHE), or “Avoid” (>101 mg PHE) per meal.
+- Provide clear, step-by-step cooking instructions.
+- Include an easy-to-read nutritional summary.
+
+Return the recipe in JSON format:
+{{
+  "recipe": "Some recipe name",
+  "ingredients": ["{ingredients}"],
+  "instructions": "Follow these steps...",
+  "estimated_phe": "123 mg"
+}}
+
+Context: {context}
+
