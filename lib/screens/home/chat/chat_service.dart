@@ -1,19 +1,11 @@
-// chat_service.dart
-
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:logging/logging.dart'; // 1. Import the new package
+import 'package:logging/logging.dart';
 
-/// A service class that handles interaction with Supabase for chat-related operations.
 class ChatService {
-  // 2. Create a logger instance for this class
   final _logger = Logger('ChatService');
-
-  // Supabase client instance to send queries
   final SupabaseClient _supabase = Supabase.instance.client;
 
-  // --- YOUR EXISTING FUNCTIONS ---
   Future<List<Map<String, dynamic>>> getUserConversations() async {
-    // ... no changes here
     final userId = _supabase.auth.currentUser?.id;
     if (userId == null) return [];
 
@@ -27,7 +19,6 @@ class ChatService {
   }
 
   Future<List<Map<String, dynamic>>> getMessages(String conversationId) async {
-    // ... no changes here
     final response = await _supabase
         .from('messages')
         .select()
@@ -37,21 +28,31 @@ class ChatService {
     return List<Map<String, dynamic>>.from(response);
   }
 
-  Future<void> sendMessage({
+  /// Sends a message and returns the newly created message ID.
+  Future<String?> sendMessage({
     required String conversationId,
     required String sender,
     required String text,
   }) async {
-    // ... no changes here
-    await _supabase.from('messages').insert({
-      'conversation_id': conversationId,
-      'sender': sender,
-      'content': text,
-    });
+    try {
+      final response = await _supabase
+          .from('messages')
+          .insert({
+            'conversation_id': conversationId,
+            'sender': sender,
+            'content': text,
+          })
+          .select('id') // Select ID to return it
+          .single();
+
+      return response['id'] as String;
+    } catch (e, stackTrace) {
+      _logger.severe('Error sending message', e, stackTrace);
+      return null;
+    }
   }
 
   Future<String?> createConversation(String title) async {
-    // ... no changes here
     final userId = _supabase.auth.currentUser?.id;
     if (userId == null) return null;
 
@@ -68,12 +69,10 @@ class ChatService {
   }
 
   Future<void> deleteConversation(String conversationId) async {
-    // ... no changes here
     await _supabase.from('conversations').delete().eq('id', conversationId);
   }
 
   Future<void> renameConversation(String conversationId, String newTitle) async {
-    // ... no changes here
     await _supabase
         .from('conversations')
         .update({'title': newTitle})
@@ -81,18 +80,11 @@ class ChatService {
   }
 
   Future<Map<String, dynamic>?> getUserProfile() async {
-    // ... no changes here
     final userId = _supabase.auth.currentUser?.id;
     if (userId == null) return null;
-
-    final response =
-        await _supabase.from('profiles').select().eq('id', userId).single();
-
-    return response;
+    return await _supabase.from('profiles').select().eq('id', userId).single();
   }
-  
-  // --- UPDATED FUNCTION WITH PROPER LOGGING ---
-  /// Sends the user's query and history to the 'chat' Edge Function and gets the AI's response.
+
   Future<String> getRAGResponse({
     required String query,
     required List<Map<String, String>> history,
@@ -106,14 +98,35 @@ class ChatService {
         },
       );
       return response.data['reply'] as String;
-
     } on FunctionException catch (e, stackTrace) {
-      // 3. Use the logger to log severe errors
       _logger.severe('Supabase function error:', e, stackTrace);
       return 'Error from server: ${e.details}';
     } catch (e, stackTrace) {
       _logger.severe('Generic error calling chat function:', e, stackTrace);
       return 'Sorry, an unexpected error occurred. Please try again.';
+    }
+  }
+
+  // --- NEW METHODS FOR EDIT/DELETE ---
+
+  Future<void> deleteMessage(String messageId) async {
+    try {
+      await _supabase.from('messages').delete().eq('id', messageId);
+    } catch (e, stackTrace) {
+      _logger.severe('Error deleting message:', e, stackTrace);
+      rethrow;
+    }
+  }
+
+  Future<void> editMessage(String messageId, String newContent) async {
+    try {
+      await _supabase
+          .from('messages')
+          .update({'content': newContent})
+          .eq('id', messageId);
+    } catch (e, stackTrace) {
+      _logger.severe('Error editing message:', e, stackTrace);
+      rethrow;
     }
   }
 }
