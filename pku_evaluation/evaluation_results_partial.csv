@@ -1,0 +1,1872 @@
+scenario_id,food_items,portion_description _Our Method,phe_Our_Method_mg
+1,"Breast Milk, human (mature), Phenex-1","Hi there! Let's work through this together to ensure you're getting the right amount of breast milk and Phenex-1 formula for your daily needs.
+
+### Step-by-Step Calculation:
+
+1. **Daily PHE Target Intake:**
+   - Your daily PHE target intake is 240 mg, which is within the range of 120-360 mg/day.
+
+2. **Breast Milk PHE Content:**
+   - Breast milk contains 46 mg of PHE per 100 grams.
+
+3. **Calculate Breast Milk Volume:**
+   - To find out how much breast milk you can have, we divide your daily PHE target by the PHE content of breast milk.
+   - 240 mg (daily PHE target) / 46 mg (PHE per 100g of breast milk) = approximately 5.22 (rounded to two decimal places).
+   - This means you can have about 522 grams of breast milk per day.
+
+4. **Phenex-1 Formula:**
+   - Phenex-1 contains 0 mg of PHE, so you can consume it freely to meet your fluid and protein needs without affecting your PHE intake.
+
+5. **Fluid Needs:**
+   - Your total fluid need is 510 mL per day.
+   - If you consume 522 grams of breast milk, you will meet your PHE target, but you need to ensure you meet your fluid needs too.
+
+6. **Adjusting for Fluid Needs:**
+   - Since breast milk is close to 1:1 with water in terms of weight and volume, 522 grams is approximately 522 mL.
+   - You can consume the remaining fluid needs with Phenex-1 formula.
+
+### Summary:
+
+- **Breast Milk:** You can safely consume about 522 grams (or mL) of breast milk per day to meet your PHE target.
+- **Phenex-1 Formula:** Use Phenex-1 to make up the rest of your fluid needs, which would be about (510 mL - 522 mL) = 0 mL, but you can still use Phenex-1 to meet your protein needs.
+
+Feel free to adjust the amounts slightly to ensure you're comfortable and meeting your nutritional needs. If you have any more questions or need further assistance, just let me know!",240
+2,"Breast Milk, human (mature), Phenex-1","Hi Eval User 2! Let's work through this together to ensure you're getting the right amount of nutrition.
+
+### Current Situation:
+- Your current blood Phe level is 3.5 mg/dL (approximately 212 μmol/L), which is within the target range.
+- Your daily Phe tolerance is 180 mg.
+
+### Foods You Want to Include:
+1. **Breast Milk, human (mature)**
+2. **Phenex-1 PKU Formula**
+
+### Step-by-Step Calculation:
+
+#### 1. **Breast Milk:**
+- Breast milk contains 46 mg of Phe per 100 grams.
+- To find out how much breast milk you can consume within your Phe tolerance, we calculate:
+  - 180 mg (your Phe tolerance) divided by 46 mg (Phe in 100g of breast milk) equals approximately 3.91.
+  - So, you can have about 391 grams of breast milk.
+
+#### 2. **Phenex-1 PKU Formula:**
+- Phenex-1 contains 0 mg of Phe, so you can consume as much as needed to meet your fluid and protein needs without affecting your Phe intake.
+
+### Total Daily Intake:
+- **Breast Milk:** Approximately 391 grams (or mL, since 1g ≈ 1mL for liquids).
+- **Phenex-1 PKU Formula:** The remainder of your fluid needs, which is 480 mL total daily fluid need minus the breast milk volume (391 mL), equals 89 mL.
+
+### Mixing Instructions:
+- For Phenex-1, mix according to the standard formula instructions to meet your protein and energy needs.
+
+### Summary:
+You can safely consume about 391 mL of breast milk and 89 mL of Phenex-1 PKU Formula daily. This will keep you within your Phe tolerance while meeting your nutritional needs. Keep up the great work managing your diet!",3.5
+3,"Breast Milk, human (mature), Phenex-1","Hi there! Let's work through your daily intake plan together. Your current blood Phe level is 5 mg/dL, which is approximately 303 μmol/L, and your daily Phe tolerance is 210 mg. We'll use this information to calculate how much breast milk and Phenex-1 formula you can safely consume.
+
+### Step-by-Step Calculation:
+
+1. **Daily Phe Target Intake:**
+   - Your daily Phe target intake is 120 mg, which is within the range of 120-360 mg/day.
+
+2. **Breast Milk Phe Content:**
+   - Breast milk contains 46 mg of Phe per 100 grams.
+
+3. **Calculate Breast Milk Volume:**
+   - To find out how much breast milk you can consume, we use the formula:
+     - Breast Milk Volume = (Daily Phe Target Intake / Phe Content per 100g) * 100
+     - Breast Milk Volume = (120 mg / 46 mg) * 100 = 260.87 grams (approximately 261 grams)
+
+4. **Phenex-1 Formula:**
+   - Phenex-1 is a Phe-free formula, so you can consume it freely to meet your fluid and protein needs without affecting your Phe intake.
+
+5. **Fluid Needs:**
+   - Your total fluid need is 675 mL per day.
+
+6. **Calculate Phenex-1 Volume:**
+   - Since breast milk provides approximately 261 mL (as 1 gram of breast milk is roughly equivalent to 1 mL), the remaining fluid need is:
+     - Phenex-1 Volume = Total Fluid Need - Breast Milk Volume
+     - Phenex-1 Volume = 675 mL - 261 mL = 414 mL
+
+### Summary:
+
+- **Breast Milk:** You can safely consume approximately 261 grams (or mL) of breast milk daily.
+- **Phenex-1 Formula:** You can consume about 414 mL of Phenex-1 formula to meet your remaining fluid and protein needs.
+
+This plan ensures you stay within your Phe tolerance while meeting your nutritional needs. If you have any more questions or need further assistance, feel free to ask!",5
+4,Aptamil First Infant Milk (Powder),"Hi Eval User 4! Let's work through this together to find out how much Aptamil First Infant Milk you can safely consume based on your current blood Phe level and daily Phe tolerance.
+
+### Step-by-Step Calculation:
+
+1. **Daily Phe Tolerance:** You mentioned your daily Phe tolerance is 200 mg.
+
+2. **Phe Content in Aptamil First Infant Milk:** This formula contains 403 mg of Phe per 100 grams.
+
+3. **Calculate Safe Amount of Formula:**
+   - We need to find out how much formula you can consume to stay within your 200 mg Phe limit.
+   - To do this, we'll set up a simple proportion:
+     - If 100 grams of formula contains 403 mg of Phe, how many grams contain 200 mg of Phe?
+   - Calculation: 
+     - 200 mg Phe / 403 mg Phe = X grams / 100 grams
+     - Solving for X gives us: X = (200 / 403) * 100
+     - X ≈ 49.63 grams
+
+4. **Convert Grams to Milliliters:**
+   - Since the formula is typically mixed with water, let's convert this to milliliters for practical use.
+   - The standard mix for Aptamil is 19.5 grams of powder with 111 mL of water.
+   - Therefore, 49.63 grams of powder would mix with approximately (49.63 / 19.5) * 111 mL of water.
+   - This equals about 282.5 mL of prepared formula.
+
+### Conclusion:
+You can safely consume approximately 49.63 grams of Aptamil First Infant Milk powder, which when mixed with water, will give you about 282.5 mL of prepared formula. This keeps you within your 200 mg daily Phe tolerance. 
+
+If you have any more questions or need further assistance, feel free to ask!",200
+5,"Breast Milk, human (mature)","Hi Eval User 5! Let's work through this together to find out how much breast milk you can safely consume based on your current blood Phe level and daily Phe tolerance.
+
+### Step-by-Step Calculation:
+
+1. **Daily Phe Tolerance:** You mentioned your daily Phe tolerance is 240 mg.
+
+2. **Phe Content in Breast Milk:** Breast milk contains 46 mg of Phe per 100 grams.
+
+3. **Calculate Safe Amount of Breast Milk:**
+   - To find out how much breast milk you can consume, we need to divide your daily Phe tolerance by the Phe content in breast milk.
+   - Calculation: 240 mg (your tolerance) divided by 46 mg (Phe per 100g of breast milk) equals approximately 5.22.
+
+4. **Convert to Grams:**
+   - This means you can safely consume about 522 grams of breast milk per day.
+
+5. **Convert to Milliliters:**
+   - Since breast milk is mostly water, 1 gram is roughly equivalent to 1 milliliter. Therefore, you can consume about 522 milliliters of breast milk per day.
+
+### Friendly Summary:
+
+You can safely enjoy about 522 grams or 522 milliliters of breast milk each day. This amount will keep you within your daily Phe tolerance of 240 mg. Keep up the great work managing your diet! If you have any more questions or need further assistance, feel free to ask. 😊",240
+6,Aptamil First Infant Milk (Powder),"Hello Eval User 6! Your current blood Phe level is 3.75 mg/dL, which is approximately 227 μmol/L. That's within your target range, so great job maintaining it!
+
+Let's calculate how much Aptamil First Infant Milk you can safely consume based on your daily Phe tolerance of 280 mg.
+
+### Step-by-Step Calculation:
+
+1. **Phe Content in Aptamil First Infant Milk:**
+   - Aptamil contains 403 mg of Phe per 100 grams of powder.
+
+2. **Determine How Much Powder You Can Have:**
+   - We need to find out how many grams of Aptamil powder will give you exactly 280 mg of Phe.
+   - Calculation: (280 mg Phe / 403 mg Phe) * 100 grams = 69.5 grams
+
+3. **Mixing Instructions:**
+   - For every 100 grams of powder, you mix it with water to make the formula.
+   - Since you can have 69.5 grams of powder, you will mix it with the appropriate amount of water to prepare your formula.
+
+### Friendly Summary:
+
+You can safely consume 69.5 grams of Aptamil First Infant Milk powder per day. Mix this with water according to the standard mixing instructions to prepare your formula. This amount will keep you within your daily Phe tolerance of 280 mg.
+
+Keep up the great work managing your levels! If you have any more questions or need further assistance, feel free to ask.",3.75
+7,"Breast Milk, human (mature)","Hi Eval User 7! Your current blood Phe level is 4.5 mg/dL, which is approximately 272 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much breast milk you can safely consume based on your daily Phe tolerance of 260 mg.
+
+1. **Understand the Phe Content:** Breast milk contains 46 mg of Phe per 100 grams.
+
+2. **Calculate the Amount of Breast Milk:** 
+   - You want to consume 260 mg of Phe.
+   - To find out how much breast milk this equals, divide your Phe tolerance by the Phe content of breast milk.
+   - 260 mg (your Phe tolerance) divided by 46 mg (Phe in 100g of breast milk) equals approximately 5.65.
+
+3. **Convert to Grams:** 
+   - This means you can consume about 565 grams of breast milk to reach your daily Phe tolerance of 260 mg.
+
+So, you can safely have around 565 grams of breast milk each day. Keep up the great work managing your levels! If you have any more questions or need further assistance, feel free to ask.",4.5
+8,Aptamil First Infant Milk (Powder),"Hi Eval User 8! Your current blood Phe level is 5 mg/dL, which is approximately 303 μmol/L. That's within a stable range, so great job maintaining it!
+
+Now, let's calculate how much Aptamil First Infant Milk you can safely consume based on your daily Phe tolerance of 550 mg.
+
+**Step-by-Step Calculation:**
+
+1. **Aptamil Phe Content:** Aptamil First Infant Milk contains 403 mg of Phe per 100 grams.
+
+2. **Daily Phe Tolerance:** You can have up to 550 mg of Phe per day.
+
+3. **Calculate Safe Amount:** 
+   - To find out how much Aptamil you can consume, we divide your daily Phe tolerance by the Phe content of Aptamil.
+   - 550 mg (your tolerance) divided by 403 mg (Phe content per 100g) equals approximately 1.365.
+
+4. **Convert to Grams:** 
+   - This means you can consume about 136.5 grams of Aptamil First Infant Milk powder per day.
+
+So, you can safely have around 136.5 grams of Aptamil First Infant Milk powder each day. This will keep you within your Phe tolerance while providing the nutrition you need. Keep up the great work managing your diet!",5
+9,"Breast Milk, human (mature)","Hi Eval User 9! Your current blood Phe level is 4.2 mg/dL, which is approximately 254 μmol/L. That's within the target range, so you're doing well!
+
+Let's calculate how much breast milk you can safely consume based on your daily Phe tolerance of 280 mg.
+
+1. **Understand Breast Milk Phe Content:** 
+   - Breast milk contains 46 mg of Phe per 100 grams.
+
+2. **Calculate Maximum Breast Milk Intake:**
+   - To find out how much breast milk you can have, divide your daily Phe tolerance by the Phe content in breast milk.
+   - 280 mg (your Phe tolerance) divided by 46 mg (Phe in 100g of breast milk) equals approximately 6.09.
+
+3. **Convert to Grams:**
+   - This means you can consume about 609 grams of breast milk daily.
+
+4. **Convert to Milliliters:**
+   - Since breast milk is mostly water, 1 gram is roughly equivalent to 1 milliliter.
+   - Therefore, you can have about 609 milliliters of breast milk each day.
+
+So, you can safely enjoy up to 609 ml of breast milk daily while staying within your Phe tolerance. Keep up the great work managing your diet!",4.2
+10,Aptamil First Infant Milk (Powder),"Hi Eval User 10! Your current blood Phe level is 3.9 mg/dL, which is approximately 236 μmol/L. That's within the target range, so great job maintaining it!
+
+Now, let's calculate how much Aptamil First Infant Milk (Powder) you can safely consume based on your daily Phe tolerance of 300 mg.
+
+1. **Understand the Phe Content:** Aptamil First Infant Milk (Powder) contains 403 mg of Phe per 100 grams.
+
+2. **Calculate the Amount You Can Consume:**
+   - You want to consume up to 300 mg of Phe.
+   - To find out how much powder you can have, we set up a simple proportion:
+     - If 100 grams of powder contains 403 mg of Phe, how many grams contain 300 mg of Phe?
+
+3. **Do the Math:**
+   - Divide your Phe tolerance (300 mg) by the Phe content per 100 grams (403 mg).
+   - 300 mg / 403 mg = 0.744 grams per gram of powder.
+   - Multiply this by 100 to find the total grams of powder you can consume.
+   - 0.744 x 100 = 74.4 grams.
+
+So, you can safely consume approximately 74.4 grams of Aptamil First Infant Milk (Powder) to stay within your daily Phe tolerance of 300 mg. Keep up the great work managing your diet!",3.9
+11,"Cucumber (Baby Food), Banana (Baby Food)","Hi Eval User 11! Your current blood Phe level is 5.2 mg/dL, which is approximately 315 μmol/L. That's within your target range, so you're doing great!
+
+Let's calculate how much Cucumber and Banana (Baby Food) you can safely consume within your daily Phe tolerance of 310 mg.
+
+### Step-by-Step Calculation:
+
+1. **Cucumber (Baby Food):**
+   - Contains 29 mg of Phe per 100 grams.
+   - Let's say you want to consume X grams of cucumber.
+   - The Phe contribution from cucumber will be: (X grams / 100 grams) * 29 mg Phe.
+
+2. **Banana (Baby Food):**
+   - Contains 40 mg of Phe per 100 grams.
+   - Let's say you want to consume Y grams of banana.
+   - The Phe contribution from banana will be: (Y grams / 100 grams) * 40 mg Phe.
+
+3. **Total Phe Intake:**
+   - Your total Phe intake from both foods should not exceed 310 mg.
+   - So, (X / 100) * 29 + (Y / 100) * 40 = 310 mg.
+
+### Let's Distribute:
+
+To make it simple, let's assume you want to have equal portions of both foods. 
+
+- **Cucumber and Banana:**
+  - If you consume 200 grams of cucumber, it will contribute: (200 / 100) * 29 = 58 mg Phe.
+  - If you consume 200 grams of banana, it will contribute: (200 / 100) * 40 = 80 mg Phe.
+  - Total Phe from both: 58 mg + 80 mg = 138 mg.
+
+Since 138 mg is well below your 310 mg limit, you can safely consume more. Let's increase the portions:
+
+- **Cucumber: 400 grams**
+  - Phe: (400 / 100) * 29 = 116 mg
+
+- **Banana: 400 grams**
+  - Phe: (400 / 100) * 40 = 160 mg
+
+- **Total Phe:**
+  - 116 mg (Cucumber) + 160 mg (Banana) = 276 mg
+
+This total of 276 mg is still within your 310 mg limit, leaving you some room for other foods or snacks.
+
+### Conclusion:
+
+You can safely enjoy up to 400 grams each of Cucumber and Banana (Baby Food) today. This will keep you within your daily Phe tolerance while allowing you to enjoy a variety of foods. Keep up the great work managing your diet!",5.2
+12,"Lettuce (Baby Food), Blueberries (Baby Food)","Hi Eval User 12! Your current blood Phe level is 8 mg/dL, which is approximately 484 μmol/L. That's within a stable range, so you're doing great! Let's work on your daily intake with Lettuce (Baby Food) and Blueberries (Baby Food) while keeping your Phe tolerance of 250 mg in mind.
+
+### Step-by-Step Calculation:
+
+1. **Lettuce (Baby Food):**
+   - Contains 40 mg of Phe per 100 grams.
+   - Let's say you want to consume X grams of Lettuce.
+   - The Phe from Lettuce would be: (X grams / 100) * 40 mg Phe.
+
+2. **Blueberries (Baby Food):**
+   - Contains 30 mg of Phe per 100 grams.
+   - Let's say you want to consume Y grams of Blueberries.
+   - The Phe from Blueberries would be: (Y grams / 100) * 30 mg Phe.
+
+3. **Total Phe Intake:**
+   - Your total Phe intake from both foods should not exceed your daily tolerance of 250 mg.
+   - So, (X grams / 100) * 40 mg + (Y grams / 100) * 30 mg = 250 mg.
+
+### Let's Distribute Your Phe Intake:
+
+- **Lettuce (Baby Food):** 
+  - If you consume 200 grams, you get (200 / 100) * 40 mg = 80 mg of Phe.
+
+- **Blueberries (Baby Food):**
+  - If you consume 300 grams, you get (300 / 100) * 30 mg = 90 mg of Phe.
+
+- **Total Phe from Both:**
+  - 80 mg (Lettuce) + 90 mg (Blueberries) = 170 mg of Phe.
+
+This leaves you with 80 mg of Phe to spare for other foods or adjustments throughout the day. You can safely enjoy these amounts of Lettuce and Blueberries while staying within your Phe tolerance. Keep up the great work managing your diet!",8
+13,"Acorn squash (Baby Food), Cauliflower (Baby Food)","Hi Eval User 13! Your current blood Phe level is 4.5 mg/dL, which is approximately 272 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Acorn squash and Cauliflower you can safely consume within your daily Phe tolerance of 330 mg.
+
+### Step-by-Step Calculation:
+
+1. **Acorn Squash (Baby Food):**
+   - Contains 30 mg of Phe per 100g.
+   - To find out how much you can eat, divide your total Phe tolerance by the Phe content per 100g.
+   - 330 mg (total Phe tolerance) / 30 mg (Phe per 100g) = 11 servings of 100g.
+   - So, you can consume up to 1100g of Acorn squash.
+
+2. **Cauliflower (Baby Food):**
+   - Contains 62 mg of Phe per 100g.
+   - Again, divide your total Phe tolerance by the Phe content per 100g.
+   - 330 mg (total Phe tolerance) / 62 mg (Phe per 100g) = approximately 5.32 servings of 100g.
+   - So, you can consume up to 532g of Cauliflower.
+
+### Combining Both Foods:
+
+If you want to eat both Acorn squash and Cauliflower, you need to distribute your Phe tolerance between them. Here's a simple way to do it:
+
+- **Example Distribution:**
+  - 500g of Acorn squash: 500g / 100g * 30 mg = 150 mg Phe
+  - 290g of Cauliflower: 290g / 100g * 62 mg = 179.8 mg Phe
+
+This combination totals approximately 329.8 mg of Phe, which fits perfectly within your 330 mg daily tolerance.
+
+Feel free to adjust the amounts as you like, as long as the total Phe intake stays within your limit. Enjoy your meals!",4.5
+14,"Carrot (Baby Food, cooked), Cauliflower (Baby Food)","Hi there! Your current blood Phe level is 4.0 mg/dL, which is approximately 242 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Carrot (Baby Food, cooked) and Cauliflower (Baby Food) you can safely consume within your daily Phe tolerance of 340 mg.
+
+### Step-by-Step Calculation:
+
+1. **Carrot (Baby Food, cooked):**
+   - Contains 5 mg of Phe per 100 grams.
+
+2. **Cauliflower (Baby Food):**
+   - Contains 62 mg of Phe per 100 grams.
+
+### Total Daily Phe Allowance: 340 mg
+
+#### Let's distribute this allowance between the two foods:
+
+**Carrot (Baby Food, cooked):**
+- If you want to consume 200 grams of Carrot, it would provide:
+  - 200 grams x 5 mg Phe/100 grams = 10 mg Phe
+
+**Cauliflower (Baby Food):**
+- Now, let's calculate how much Cauliflower you can have with the remaining Phe allowance:
+  - Remaining Phe after Carrot = 340 mg - 10 mg = 330 mg
+  - Cauliflower provides 62 mg Phe per 100 grams.
+  - To find out how much Cauliflower you can eat: 
+    - 330 mg Phe / 62 mg Phe per 100 grams = approximately 532 grams
+
+### Summary:
+- **Carrot (Baby Food, cooked):** 200 grams
+- **Cauliflower (Baby Food):** Approximately 532 grams
+
+You can enjoy these amounts while staying within your daily Phe tolerance. Keep up the great work managing your diet! If you have any more questions or need further assistance, feel free to ask.",4.0
+15,"Cherries (Baby Food), Eggplant (Baby Food)","Hi Eval User 15! Your current blood Phe level is 6.7 mg/dL, which is approximately 406 μmol/L. That's within a stable range, so you're doing well! Let's calculate how much Cherries and Eggplant you can enjoy while staying within your daily Phe tolerance of 300 mg.
+
+### Step-by-Step Calculation:
+
+1. **Cherries (Baby Food):**
+   - Phe Content: 35 mg per 100g
+   - Let's say you want to consume X grams of cherries.
+   - Phe from Cherries = (X grams / 100) * 35 mg
+
+2. **Eggplant (Baby Food):**
+   - Phe Content: 34 mg per 100g
+   - Let's say you want to consume Y grams of eggplant.
+   - Phe from Eggplant = (Y grams / 100) * 34 mg
+
+3. **Total Phe Intake:**
+   - Total Phe = Phe from Cherries + Phe from Eggplant
+   - We want this total to be 300 mg or less.
+
+### Let's Distribute Your Phe:
+
+To make it simple, let's assume you want equal amounts of both foods. We'll solve for X and Y when they are equal:
+
+- Total Phe = (X / 100) * 35 + (X / 100) * 34 = 300 mg
+- Simplifying: (X / 100) * 69 = 300 mg
+- X = (300 mg / 69) * 100
+- X ≈ 434.78 grams
+
+### Conclusion:
+
+You can safely consume approximately 435 grams of Cherries and 435 grams of Eggplant combined, keeping your total Phe intake at 300 mg. You can split this amount equally or adjust as you prefer, as long as the total Phe doesn't exceed 300 mg.
+
+Enjoy your meal planning, and keep up the great work managing your Phe levels!",6.7
+16,"Cherries (Baby Food), Cucumber (Baby Food)","Hi Eval User 16! Your current blood Phe level is 6.3 mg/dL, which is approximately 381 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Cherries (Baby Food) and Cucumber (Baby Food) you can safely consume within your daily Phe tolerance of 280 mg.
+
+### Step-by-Step Calculation:
+
+1. **Cherries (Baby Food):**
+   - Phe Content: 35 mg Phe per 100g
+   - To find out how much you can eat, divide your total Phe tolerance by the Phe content per 100g.
+   - Calculation: 280 mg (total Phe tolerance) / 35 mg (Phe per 100g) = 8
+   - You can eat up to 800g of Cherries (Baby Food).
+
+2. **Cucumber (Baby Food):**
+   - Phe Content: 29 mg Phe per 100g
+   - Calculation: 280 mg (total Phe tolerance) / 29 mg (Phe per 100g) = 9.66
+   - You can eat up to 966g of Cucumber (Baby Food).
+
+### Summary:
+- **Cherries (Baby Food):** Up to 800g
+- **Cucumber (Baby Food):** Up to 966g
+
+Feel free to mix and match these amounts to stay within your 280 mg Phe tolerance. Enjoy your meals, and keep up the great work managing your levels!",6.3
+17,"Pear (Baby Food), Banana (Baby Food)","Hi Eval User 17! Your current blood Phe level is 6 mg/dL, which is approximately 363 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Pear and Banana baby food you can safely consume within your daily Phe tolerance of 650 mg.
+
+### Step-by-Step Calculation:
+
+1. **Pear (Baby Food):**
+   - Phe content: 20 mg per 100g
+   - Let's say you want to consume X grams of Pear.
+   - Phe from Pear = (X grams / 100) * 20 mg
+
+2. **Banana (Baby Food):**
+   - Phe content: 40 mg per 100g
+   - Let's say you want to consume Y grams of Banana.
+   - Phe from Banana = (Y grams / 100) * 40 mg
+
+3. **Total Phe Intake:**
+   - Total Phe = Phe from Pear + Phe from Banana
+   - You want this total to be less than or equal to your daily Phe tolerance of 650 mg.
+
+### Example Calculation:
+
+Let's distribute your Phe tolerance equally between Pear and Banana for simplicity:
+
+- **Pear:**
+  - If you consume 500 grams of Pear, the Phe intake would be:
+  - (500 / 100) * 20 mg = 100 mg Phe
+
+- **Banana:**
+  - If you consume 500 grams of Banana, the Phe intake would be:
+  - (500 / 100) * 40 mg = 200 mg Phe
+
+- **Total Phe Intake:**
+  - 100 mg (Pear) + 200 mg (Banana) = 300 mg Phe
+
+This example shows that you can safely consume 500 grams of each, totaling 300 mg of Phe, which is well within your 650 mg daily tolerance. You can adjust the amounts as needed, ensuring the total Phe does not exceed 650 mg.
+
+Feel free to adjust the portions to your liking, and enjoy your meals! If you have any more questions or need further assistance, just let me know!",6
+18,"Blueberries (Baby Food), Beets (Baby Food)","Hi Eval User 18! Your current blood Phe level is 3.8 mg/dL, which is approximately 230 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Blueberries (Baby Food) and Beets (Baby Food) you can safely consume within your daily Phe tolerance of 350 mg.
+
+### Step-by-Step Calculation:
+
+1. **Blueberries (Baby Food):**
+   - Contains 30 mg of Phe per 100 grams.
+   - Let's say you want to consume X grams of blueberries.
+   - The Phe contribution from blueberries would be: (X grams / 100 grams) * 30 mg Phe.
+
+2. **Beets (Baby Food):**
+   - Contains 54 mg of Phe per 100 grams.
+   - Let's say you want to consume Y grams of beets.
+   - The Phe contribution from beets would be: (Y grams / 100 grams) * 54 mg Phe.
+
+3. **Total Phe Intake:**
+   - Your total Phe intake from both foods should not exceed 350 mg.
+   - So, (X grams / 100 grams) * 30 mg Phe + (Y grams / 100 grams) * 54 mg Phe = 350 mg.
+
+### Let's Distribute:
+
+To make it simple, let's assume you want to consume equal amounts of both foods. 
+
+- If you consume 500 grams of Blueberries (Baby Food), you get:
+  - (500 / 100) * 30 mg = 150 mg Phe.
+
+- If you consume 370 grams of Beets (Baby Food), you get:
+  - (370 / 100) * 54 mg = 199.8 mg Phe.
+
+- Total Phe from both: 150 mg + 199.8 mg = 349.8 mg.
+
+This keeps you just under your daily Phe tolerance of 350 mg. 
+
+### Summary:
+
+- **Blueberries (Baby Food):** 500 grams
+- **Beets (Baby Food):** 370 grams
+
+Enjoy your meals, and keep up the great work managing your Phe levels! If you have any more questions or need further adjustments, feel free to ask!",3.8
+19,"Acorn squash (Baby Food), Kale (Baby Food)","Hi Eval User 19! Your current blood Phe level is 4.8 mg/dL, which is approximately 291 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Acorn squash and Kale you can safely consume based on your daily Phe tolerance of 330 mg.
+
+### Step-by-Step Calculation:
+
+1. **Acorn Squash (Baby Food):**
+   - Contains 30 mg of Phe per 100g.
+   - Let's say you want to consume X grams of Acorn squash.
+   - Phe from Acorn squash = (X grams / 100) * 30 mg.
+
+2. **Kale (Baby Food):**
+   - Contains 96 mg of Phe per 100g.
+   - Let's say you want to consume Y grams of Kale.
+   - Phe from Kale = (Y grams / 100) * 96 mg.
+
+3. **Total Phe Intake:**
+   - Total Phe = Phe from Acorn squash + Phe from Kale.
+   - Total Phe = (X / 100) * 30 + (Y / 100) * 96.
+
+4. **Set Total Phe to Your Daily Tolerance:**
+   - 330 mg = (X / 100) * 30 + (Y / 100) * 96.
+
+Now, let's distribute your daily Phe tolerance between these two foods. For simplicity, let's assume you want to consume equal amounts of Phe from both foods.
+
+5. **Equal Phe Distribution:**
+   - Phe from Acorn squash = 165 mg.
+   - Phe from Kale = 165 mg.
+
+6. **Calculate Grams for Each:**
+   - For Acorn squash: 165 mg = (X / 100) * 30.
+     - X = (165 * 100) / 30 = 550 grams.
+   - For Kale: 165 mg = (Y / 100) * 96.
+     - Y = (165 * 100) / 96 = 171.875 grams.
+
+### Conclusion:
+- You can safely consume **550 grams of Acorn squash** and **171.875 grams of Kale** to stay within your daily Phe tolerance of 330 mg.
+
+Feel free to adjust the amounts if you prefer more of one over the other. Enjoy your meal planning! 😊",4.8
+20,"Blueberries (Baby Food), Spinach (Baby Food)","Hi Eval User 20! Your current blood Phe level is 5.5 mg/dL, which is approximately 333 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's calculate how much Blueberries and Spinach you can safely consume within your daily Phe tolerance of 360 mg.
+
+### Step-by-Step Calculation:
+
+1. **Blueberries (Baby Food):**
+   - Phe content: 30 mg per 100g
+   - Since Blueberries are a Free Food, you can enjoy them without counting towards your Phe limit. However, let's calculate a reasonable portion for enjoyment:
+   - Let's say you want to eat 100g of Blueberries. This would contribute 30 mg of Phe.
+
+2. **Spinach (Baby Food):**
+   - Phe content: 140 mg per 100g
+   - To find out how much Spinach you can eat, we need to consider your remaining Phe allowance after Blueberries.
+   - Remaining Phe allowance after 100g of Blueberries: 360 mg - 30 mg = 330 mg
+   - To calculate the amount of Spinach you can eat: 
+     - 330 mg (remaining Phe) / 140 mg (Phe per 100g of Spinach) = approximately 2.36
+     - So, you can eat about 236g of Spinach.
+
+### Summary:
+- **Blueberries:** Enjoy up to 100g (Free Food, so no Phe tracking needed).
+- **Spinach:** You can safely consume up to 236g.
+
+This combination keeps you within your daily Phe tolerance of 360 mg. Enjoy your snacks! If you have any more questions or need further assistance, feel free to ask!",5.5
+21,"Bell Pepper (Red, raw), Sugar (White, granulated), Garlic, Onion (White, raw), Sweet Potato (Baby Food)","Hi Eval User 21! Let's work together to create a delicious and safe lunchbox for you. Your current blood Phe level is 8 mg/dL, which is approximately 484 μmol/L. This is within a stable range, so let's keep it that way by planning your meal carefully.
+
+Your daily Phe tolerance is 280 mg. For a single meal, let's aim for about one-third of your daily tolerance, which is around 93 mg of Phe.
+
+Here's how we can distribute your meal:
+
+1. **Bell Pepper (Red, raw):**
+   - Contains 35 mg Phe per 100g.
+   - Let's use 100g, which gives you 35 mg of Phe.
+
+2. **Garlic:**
+   - Contains 236 mg Phe per 100g.
+   - To keep it low, let's use 10g, which gives you 23.6 mg of Phe.
+
+3. **Onion (White, raw):**
+   - Contains 68 mg Phe per 100g.
+   - Let's use 50g, which gives you 34 mg of Phe.
+
+4. **Sweet Potato (Baby Food):**
+   - Contains 107 mg Phe per 100g.
+   - Let's use 10g, which gives you 10.7 mg of Phe.
+
+Let's add up the Phe content:
+
+- Bell Pepper: 35 mg
+- Garlic: 23.6 mg
+- Onion: 34 mg
+- Sweet Potato: 10.7 mg
+
+**Total Phe for the meal: 103.3 mg**
+
+This total is slightly above our target of 93 mg, so let's adjust the onion portion to 40g instead of 50g, which will give you 27.2 mg of Phe from the onion.
+
+Revised Total Phe:
+
+- Bell Pepper: 35 mg
+- Garlic: 23.6 mg
+- Onion (40g): 27.2 mg
+- Sweet Potato: 10.7 mg
+
+**Revised Total Phe for the meal: 96.5 mg**
+
+This fits well within your meal budget, keeping you safe and satisfied. Enjoy your lunch! If you have any more questions or need further adjustments, feel free to ask.",8
+22,"Bell Pepper (Red, raw), Salt (Table), Carrots (Raw), Acorn Squash (Baked), Coriander (Cilantro)","Hi Eval User 22! Your current blood Phe level is 9 mg/dL, which is approximately 545 μmol/L. That's a bit above your target range, so let's carefully plan your meal to stay within your daily Phe tolerance of 300 mg.
+
+Here's how we can distribute your meal:
+
+1. **Bell Pepper (Red, raw):**
+   - Contains 35 mg PHE per 100g.
+   - Let's use 100g, which gives you 35 mg PHE.
+
+2. **Salt (Table):**
+   - Salt doesn't contain PHE, so you can use it freely for seasoning.
+
+3. **Carrots (Raw):**
+   - Contains 40 mg PHE per 100g.
+   - Let's use 100g, which gives you 40 mg PHE.
+
+4. **Acorn Squash (Baked):**
+   - Unfortunately, I don't have the PHE content for acorn squash in my database. If you have this information, please share it, or we can focus on the other items.
+
+5. **Coriander (Cilantro):**
+   - Contains 173 mg PHE per 100g.
+   - To keep it low, let's use 20g, which gives you about 34.6 mg PHE.
+
+**Total PHE Calculation:**
+- Bell Pepper: 35 mg
+- Carrots: 40 mg
+- Coriander: 34.6 mg
+
+**Total PHE for this meal: 109.6 mg**
+
+This meal uses 109.6 mg of your 300 mg daily Phe tolerance, leaving you with 190.4 mg for the rest of the day. Enjoy your meal, and let me know if you need help with anything else!",9
+23,"Blackberries (Raw), Cucumber (Raw), Orange (Raw)","Hi Eval User 23! Your current blood Phe level is 7 mg/dL, which is approximately 424 μmol/L. That's within a stable range, so let's work on your snack plan with your daily Phe tolerance of 350 mg.
+
+Here's how we can distribute your snack:
+
+### Snack Plan Calculation:
+
+1. **Blackberries (Raw):**
+   - Phe Content: 40 mg per 100g
+   - Let's say you want to use 100 mg of your Phe budget for blackberries.
+   - Calculation: 100 mg Phe / 40 mg Phe per 100g = 2.5
+   - You can have 250g of blackberries.
+
+2. **Cucumber (Raw):**
+   - Phe Content: 25 mg per 100g
+   - Let's use 100 mg of your Phe budget for cucumber.
+   - Calculation: 100 mg Phe / 25 mg Phe per 100g = 4
+   - You can have 400g of cucumber.
+
+3. **Orange (Raw):**
+   - Unfortunately, I don't have the exact Phe content for oranges in my database. However, typically, oranges are moderate in Phe. Let's assume you want to use the remaining 150 mg of your Phe budget for oranges.
+   - If we estimate oranges to have around 30 mg Phe per 100g, then:
+   - Calculation: 150 mg Phe / 30 mg Phe per 100g = 5
+   - You can have approximately 500g of orange.
+
+### Summary:
+- **Blackberries (Raw):** 250g
+- **Cucumber (Raw):** 400g
+- **Orange (Raw):** 500g (estimated)
+
+This snack plan uses your full 350 mg Phe tolerance for the day. Enjoy your snack, and let me know if you need anything else!",7
+24,"Black Pepper (Spice), Bell Pepper (Red, raw), Radish, Salt (Table), Olives (Canned, Black), Arugula","Hi there, Eval User 24! Happy to help you plan a safe and delicious meal for your birthday. Let's make sure we stay within your daily Phe tolerance of 380 mg. Here's how we can distribute your Phe intake with the foods you've chosen:
+
+### Step-by-Step Calculation:
+
+1. **Black Pepper (Spice):** 
+   - Contains 446 mg Phe per 100g.
+   - Let's use a small amount, say 1g, which gives us 4.46 mg Phe.
+
+2. **Bell Pepper (Red, raw):**
+   - Contains 35 mg Phe per 100g.
+   - You can have 100g, which gives you 35 mg Phe.
+
+3. **Radish:**
+   - Contains 26 mg Phe per 100g.
+   - You can have 100g, which gives you 26 mg Phe.
+
+4. **Salt (Table):**
+   - Salt does not contain Phe, so you can use it freely for seasoning.
+
+5. **Olives (Canned, Black):**
+   - Unfortunately, I don't have the Phe content for olives in my database. To be safe, let's skip them for now or use them sparingly.
+
+6. **Arugula:**
+   - Like olives, I don't have the Phe content for arugula. It's generally low in Phe, but let's focus on the other foods for now.
+
+### Total Phe Calculation:
+
+- Black Pepper: 4.46 mg
+- Bell Pepper: 35 mg
+- Radish: 26 mg
+
+**Total Phe for this meal: 65.46 mg**
+
+This leaves you with plenty of room for other meals throughout the day, as your total daily Phe tolerance is 380 mg. Enjoy your meal and have a wonderful birthday celebration! If you have any more questions or need further adjustments, feel free to ask.",380
+25,"Butternut squash puree, Bell Pepper (Red, raw), Couscous (dry), Asparagus (Cooked), Cucumber (Raw, with peel), Tomato (Raw)","Hi Eval User 25! Your current blood Phe level is 6 mg/dL, which is approximately 363 μmol/L. That's within the target range, so you're doing great! Let's work on your meal plan with the foods you've chosen.
+
+Given your daily Phe tolerance of 900 mg, let's calculate how much of each food you can have in a single meal. We'll assume you want to use a portion of your daily allowance for this meal. Let's say you want to use 300 mg of your daily Phe tolerance for this meal.
+
+Here's how we can distribute that 300 mg Phe among your chosen foods:
+
+1. **Butternut Squash Puree**: Contains 50 mg Phe per 100g.
+   - To use 100 mg Phe: 100 mg / 50 mg per 100g = 200g
+
+2. **Bell Pepper (Red, Raw)**: Let's assume it contains about 50 mg Phe per 100g (as a general estimate for raw vegetables).
+   - To use 50 mg Phe: 50 mg / 50 mg per 100g = 100g
+
+3. **Couscous (Dry)**: Contains about 70 mg Phe per 100g (as a general estimate for grains).
+   - To use 70 mg Phe: 70 mg / 70 mg per 100g = 100g
+
+4. **Asparagus (Cooked)**: Let's assume it contains about 60 mg Phe per 100g (as a general estimate for cooked vegetables).
+   - To use 30 mg Phe: 30 mg / 60 mg per 100g = 50g
+
+5. **Cucumber (Raw, with Peel)**: Contains 29 mg Phe per 100g.
+   - To use 29 mg Phe: 29 mg / 29 mg per 100g = 100g
+
+6. **Tomato (Raw)**: Let's assume it contains about 30 mg Phe per 100g (as a general estimate for raw vegetables).
+   - To use 21 mg Phe: 21 mg / 30 mg per 100g = 70g
+
+**Meal Total: 300 mg Phe**
+
+This meal plan uses 300 mg of your daily 900 mg Phe tolerance, leaving you with 600 mg for the rest of the day. Enjoy your meal, and keep up the great work managing your PKU! If you have any more questions or need adjustments, feel free to ask.",6
+26,"Kale (Raw), Cauliflower (Cooked), Black Pepper (Spice), Spinach (Raw), Salt (Table), Radish (Raw)","Hi Eval User 26! Your current blood Phe level is 5.5 mg/dL, which is approximately 333 μmol/L, and that's within your target range. Great job maintaining it!
+
+Let's calculate your meal portions based on your daily Phe tolerance of 320 mg. We'll distribute this across the foods you want to eat. Here's how we can do it:
+
+### Meal Portion Calculation
+
+1. **Kale (Raw):**
+   - Contains 140 mg Phe per 100g.
+   - Let's allocate 100 mg Phe to Kale.
+   - Portion: (100 mg Phe / 140 mg Phe) * 100g = 71.4g
+
+2. **Cauliflower (Cooked):**
+   - Contains 62 mg Phe per 100g.
+   - Let's allocate 50 mg Phe to Cauliflower.
+   - Portion: (50 mg Phe / 62 mg Phe) * 100g = 80.6g
+
+3. **Spinach (Raw):**
+   - Contains 145 mg Phe per 100g.
+   - Let's allocate 100 mg Phe to Spinach.
+   - Portion: (100 mg Phe / 145 mg Phe) * 100g = 69.0g
+
+4. **Radish (Raw):**
+   - Unfortunately, I don't have the exact Phe content for Radish, but it's generally low. Let's assume a small portion for flavor.
+   - Portion: 30g (as a safe estimate)
+
+5. **Black Pepper (Spice) and Salt (Table):**
+   - These are used in very small amounts and typically don't contribute significantly to Phe intake. Use them sparingly for taste.
+
+### Total Phe Calculation
+
+- Kale: 71.4g = 100 mg Phe
+- Cauliflower: 80.6g = 50 mg Phe
+- Spinach: 69.0g = 100 mg Phe
+- Radish: 30g = Estimated low Phe
+
+**Total Phe for Meal: 250 mg Phe**
+
+This meal plan keeps you well within your daily Phe tolerance of 320 mg. Enjoy your meal, and keep up the great work managing your PKU! If you have any more questions or need further assistance, feel free to ask.",5.5
+27,"Almond Milk (Unsweetened), Apple Cinnamon Cookies, Tapioca Pearls (dry)","Hi Eval User 27! Your current blood Phe level is 5 mg/dL, which is approximately 303 μmol/L. That's within your target range, so great job maintaining it!
+
+Let's work on your breakfast plan with your daily Phe tolerance of 300 mg. We'll distribute this amount across the foods you want to eat: Almond Milk (Unsweetened), Apple Cinnamon Cookies, and Tapioca Pearls (dry).
+
+### Step-by-Step Calculation:
+
+1. **Almond Milk (Unsweetened):**
+   - Contains 20 mg Phe per 100g.
+   - Since it's a Free Food, you can have a generous portion without worrying too much about Phe. Let's allocate 100g for a nice drink.
+
+2. **Apple Cinnamon Cookies:**
+   - Contains 310 mg Phe per 100g.
+   - To keep within your Phe tolerance, let's calculate a safe portion:
+   - If you want to use 150 mg of your Phe budget on cookies, you can have about 48g of cookies. (150 mg Phe / 310 mg Phe per 100g = 0.48 * 100g = 48g)
+
+3. **Tapioca Pearls (dry):**
+   - Contains 4 mg Phe per 100g.
+   - You can enjoy a larger portion since it's low in Phe. Let's allocate 100g, which only adds 4 mg Phe to your total.
+
+### Total Phe Calculation:
+- Almond Milk: 20 mg Phe
+- Apple Cinnamon Cookies: 150 mg Phe
+- Tapioca Pearls: 4 mg Phe
+
+**Total Phe for Breakfast: 174 mg**
+
+This breakfast plan uses 174 mg of your 300 mg daily Phe tolerance, leaving you with 126 mg for the rest of the day. Enjoy your meal, and keep up the great work managing your levels!",5
+28,"Black Pepper (Spice), Butternut squash puree, Carrots (Raw), Onion (White, raw), Potato (Baby Food)","Hi Eval User 28! Let's work through your meal plan together. Your current blood Phe level is 7.2 mg/dL (approximately 436 μmol/L), which is within your target range. Great job maintaining that!
+
+Now, let's calculate how much of each food you can have in a single meal, keeping your daily Phe tolerance of 320 mg in mind. We'll distribute this amount across the foods you mentioned.
+
+### Meal Calculation:
+
+1. **Black Pepper (Spice):**
+   - Phe Content: 446 mg PHE per 100g
+   - Since black pepper is very high in Phe, let's use it sparingly. Let's allocate 10 mg of your Phe budget to black pepper.
+   - Calculation: (10 mg PHE / 446 mg PHE) * 100g = approximately 2.2g
+
+2. **Butternut Squash Puree:**
+   - Phe Content: 50 mg PHE per 100g
+   - Let's allocate 50 mg of your Phe budget to butternut squash.
+   - Calculation: (50 mg PHE / 50 mg PHE) * 100g = 100g
+
+3. **Carrots (Raw):**
+   - Unfortunately, I don't have the exact Phe content for raw carrots in the database. If you have this information, we can adjust accordingly. For now, let's focus on the other foods.
+
+4. **Onion (White, Raw):**
+   - Again, I don't have the exact Phe content for raw onion. If you have this information, we can adjust accordingly. Let's focus on the foods we have data for.
+
+5. **Potato (Baby Food):**
+   - Phe Content: 90 mg PHE per 100g
+   - Let's allocate 90 mg of your Phe budget to potato.
+   - Calculation: (90 mg PHE / 90 mg PHE) * 100g = 100g
+
+### Total Phe Used:
+- Black Pepper: 10 mg
+- Butternut Squash: 50 mg
+- Potato: 90 mg
+- Total: 150 mg
+
+You still have 170 mg of Phe left for the day, which you can use for other meals or snacks. If you have the Phe content for carrots and onions, we can adjust the portions to include them as well.
+
+Enjoy your meal, and keep up the great work managing your Phe levels! If you have any more questions or need further adjustments, feel free to ask.",7.2
+29,"Butternut squash puree, Spinach (Raw), Radish, Salt (Table), Olives (Canned, Black), Lettuce (Iceberg)","Hi Eval User 29! Your current blood Phe level is 4.7 mg/dL, which is approximately 285 μmol/L. That's within the target range, so great job maintaining it!
+
+Let's calculate how much of each food you can safely eat in a single meal, given your daily Phe tolerance of 340 mg. We'll distribute this amount across the foods you mentioned.
+
+### Meal Portion Calculation:
+
+1. **Butternut Squash Puree:**
+   - Contains 50 mg Phe per 100g.
+   - Let's allocate 100 mg Phe for this meal.
+   - Calculation: 100 mg Phe / 50 mg Phe per 100g = 200g.
+
+2. **Spinach (Raw):**
+   - Contains 145 mg Phe per 100g.
+   - Let's allocate 100 mg Phe for this meal.
+   - Calculation: 100 mg Phe / 145 mg Phe per 100g ≈ 69g.
+
+3. **Radish:**
+   - Contains 26 mg Phe per 100g.
+   - Let's allocate 40 mg Phe for this meal.
+   - Calculation: 40 mg Phe / 26 mg Phe per 100g ≈ 154g.
+
+4. **Lettuce (Iceberg):**
+   - Contains 40 mg Phe per 100g.
+   - Let's allocate 20 mg Phe for this meal.
+   - Calculation: 20 mg Phe / 40 mg Phe per 100g = 50g.
+
+### Total Phe for Meal:
+- Butternut Squash Puree: 100 mg
+- Spinach (Raw): 100 mg
+- Radish: 40 mg
+- Lettuce (Iceberg): 20 mg
+- **Total: 260 mg Phe**
+
+This meal plan uses 260 mg of your 340 mg daily Phe tolerance, leaving you with 80 mg for other meals or snacks throughout the day.
+
+Enjoy your meal, and keep up the great work managing your Phe levels! If you have any more questions or need further assistance, feel free to ask.",4.7
+30,"Olive Oil, Asparagus (Cooked), Carrots (Raw), Garlic, Sweet Potato (Baked)","Hi Eval User 30! Your current blood Phe level of 4.3 mg/dL (approximately 260 μmol/L) is within a stable range. Let's work on your meal plan with the foods you've chosen, keeping your daily Phe tolerance of 450 mg in mind.
+
+Here's how we can distribute your Phe intake for this meal:
+
+1. **Olive Oil**: Olive oil is typically Phe-free, so you can use it for cooking without worrying about Phe content.
+
+2. **Asparagus (Cooked)**: Contains 80 mg Phe per 100g.
+   - Let's aim for 100 mg Phe from asparagus. 
+   - Calculation: (100 mg Phe / 80 mg Phe per 100g) * 100g = 125g of asparagus.
+
+3. **Carrots (Raw)**: Contains 40 mg Phe per 100g. This is a Free Food, so you can enjoy it without counting towards your Phe limit.
+
+4. **Garlic**: Contains 236 mg Phe per 100g.
+   - Let's aim for 100 mg Phe from garlic.
+   - Calculation: (100 mg Phe / 236 mg Phe per 100g) * 100g = 42g of garlic.
+
+5. **Sweet Potato (Baked)**: Contains 107 mg Phe per 100g.
+   - Let's aim for 100 mg Phe from sweet potato.
+   - Calculation: (100 mg Phe / 107 mg Phe per 100g) * 100g = 93g of sweet potato.
+
+**Meal Summary:**
+- **Olive Oil**: Use as needed for cooking.
+- **Asparagus (Cooked)**: 125g
+- **Carrots (Raw)**: Enjoy freely, as it's a Free Food.
+- **Garlic**: 42g
+- **Sweet Potato (Baked)**: 93g
+
+This meal plan uses approximately 300 mg of your 450 mg Phe tolerance, leaving room for other meals and snacks throughout the day. Enjoy your meal! If you have any more questions or need further adjustments, feel free to ask.",4.3
+31,"Black Pepper (Spice), Bell Pepper (Red, raw), Cucumber (Raw), Couscous (dry), Cucumber (Raw, with peel), Acorn Squash (Baked)","Hi Eval User 31! Let's plan your pizza party meal while keeping your Phe levels in check. Your current blood Phe level is 12 mg/dL (726 μmol/L), which is above the target range. So, we'll need to be careful with your Phe intake.
+
+Your daily Phe tolerance is 250 mg. Since this is a single meal, let's aim to use a portion of that, say around 80 mg, to leave room for other meals throughout the day.
+
+Here's how we can distribute your meal:
+
+1. **Black Pepper (Spice):** This is high in Phe, so we'll use a very small amount.
+   - 1g of Black Pepper contains 4.46 mg Phe.
+   - Let's use 1g, which gives us 4.46 mg Phe.
+
+2. **Bell Pepper (Red, raw):** This is a Free Food, so you can enjoy it without worrying about Phe.
+   - You can have 100g, which adds 0 mg Phe to your total.
+
+3. **Cucumber (Raw, with peel):** Another Free Food.
+   - You can have 100g, which adds 0 mg Phe to your total.
+
+4. **Couscous (dry):** Unfortunately, I don't have the Phe content for Couscous in my database. If you have that information, we can include it.
+
+5. **Acorn Squash (Baked):** I don't have the Phe content for this either. If you have that information, we can include it.
+
+For now, with the Black Pepper, Bell Pepper, and Cucumber, you're at 4.46 mg Phe. If you can provide the Phe content for Couscous and Acorn Squash, we can adjust the portions accordingly to fit your 80 mg Phe target for this meal.
+
+Enjoy your pizza party, and let me know if you have more details or need further adjustments!",12
+32,"Honeydew melon, Grapes (Raw), Strawberries (Raw)","Hi Eval User 32! Let's work out how much Honeydew melon, Grapes (Raw), and Strawberries (Raw) you can enjoy in a single meal while staying within your Phe tolerance.
+
+Your daily Phe tolerance is 300 mg, and we'll distribute this across your meals. Let's assume you want to use a portion of this for one meal. Here's how we can calculate it:
+
+### Step-by-Step Calculation:
+
+1. **Honeydew Melon:**
+   - Contains 20 mg Phe per 100g.
+   - Let's say you want to use 100 mg of your Phe tolerance for Honeydew melon.
+   - Calculation: 100 mg Phe / 20 mg Phe per 100g = 500g of Honeydew melon.
+
+2. **Grapes (Raw):**
+   - Contains 20 mg Phe per 100g.
+   - Let's allocate another 100 mg of your Phe tolerance for Grapes.
+   - Calculation: 100 mg Phe / 20 mg Phe per 100g = 500g of Grapes.
+
+3. **Strawberries (Raw):**
+   - Contains 21 mg Phe per 100g.
+   - Use the remaining 100 mg of your Phe tolerance for Strawberries.
+   - Calculation: 100 mg Phe / 21 mg Phe per 100g ≈ 476g of Strawberries.
+
+### Meal Summary:
+- **Honeydew Melon:** 500g
+- **Grapes (Raw):** 500g
+- **Strawberries (Raw):** 476g
+
+This meal will use up your 300 mg Phe allowance for this meal. Enjoy your fruits, and remember to balance your Phe intake throughout the day! If you have any more questions or need further assistance, feel free to ask.",300
+33,"Banana (Raw), Kiwifruit, Coconut Milk (Canned), Tapioca Pearls (dry)","Hi Eval User 33! Let's work through this together to make sure you can enjoy your meal while staying within your Phe tolerance.
+
+Your current blood Phe level is 11 mg/dL (approximately 666 μmol/L), which is slightly above your target. So, we'll aim to keep your Phe intake balanced.
+
+Your daily Phe tolerance is 320 mg. Since we're focusing on a single meal, let's distribute this wisely among the foods you want to eat: Banana (Raw), Kiwifruit, Coconut Milk (Canned), and Tapioca Pearls (dry).
+
+### Step-by-Step Calculation:
+
+1. **Banana (Raw):**
+   - Contains 49 mg Phe per 100g.
+   - Let's start with 100g, which gives you 49 mg Phe.
+
+2. **Kiwifruit:**
+   - Contains 44 mg Phe per 100g.
+   - Let's add 100g, which gives you 44 mg Phe.
+
+3. **Coconut Milk (Canned):**
+   - Contains 110 mg Phe per 100g.
+   - We'll use 50g, which gives you 55 mg Phe.
+
+4. **Tapioca Pearls (dry):**
+   - Contains 4 mg Phe per 100g.
+   - Let's use 100g, which gives you 4 mg Phe.
+
+### Total Phe Calculation:
+- Banana: 49 mg
+- Kiwifruit: 44 mg
+- Coconut Milk: 55 mg
+- Tapioca Pearls: 4 mg
+
+**Total Phe for this meal: 152 mg**
+
+This meal uses 152 mg of your 320 mg daily Phe tolerance, leaving you with 168 mg for the rest of the day. This is a balanced choice considering your current blood Phe level.
+
+Enjoy your meal, and let me know if you need help with anything else!",11
+34,"Almond Milk (Unsweetened), Pear (Raw), Tapioca Pearls (dry), Spinach (Raw)","Hi Eval User 34! Let's work out how much of each food you can enjoy while staying within your daily Phe tolerance of 350 mg. Your current blood Phe level is 10 mg/dL (approximately 605 μmol/L), which is stable, so let's keep it that way!
+
+Here's how we'll calculate it:
+
+1. **Almond Milk (Unsweetened):**
+   - Contains 20 mg Phe per 100g.
+   - To find out how much you can have, divide your Phe tolerance by the Phe content per 100g.
+   - 350 mg (your total Phe allowance) / 20 mg (Phe per 100g) = 17.5
+   - You can have up to 1750g of Almond Milk, but let's save room for other foods!
+
+2. **Pear (Raw):**
+   - Contains 20 mg Phe per 100g.
+   - Using the same calculation: 350 mg / 20 mg = 17.5
+   - You can have up to 1750g of Pear.
+
+3. **Tapioca Pearls (dry):**
+   - Contains 4 mg Phe per 100g.
+   - 350 mg / 4 mg = 87.5
+   - You can have up to 8750g of Tapioca Pearls, but that's a lot! Let's keep it reasonable.
+
+4. **Spinach (Raw):**
+   - Spinach isn't listed in our database, so let's focus on the other foods for now.
+
+**Friendly Tip:** Since Almond Milk, Pear, and Tapioca Pearls are all ""Free Foods,"" you can enjoy them without worrying too much about the Phe content. Just remember to balance your intake throughout the day.
+
+Would you like to log any of these foods, or do you have any other questions?",350
+35,"Cauliflower (Cooked), Butternut squash puree, Sugar (White, granulated), Celery (Raw), Acorn Squash (Baked), African Eggplant","Hi Eval User 35! Let's work out how much of each food you can enjoy in a single meal while staying within your Phe tolerance. Your current blood Phe level is 10.6 mg/dL (approximately 642 μmol/L), which is slightly above the target range, so we'll aim to keep this meal balanced.
+
+### Step-by-Step Calculation:
+
+1. **Daily Phe Tolerance:** 1100 mg
+2. **Single Meal Phe Budget:** Let's assume you want to distribute your Phe evenly across three meals. So, each meal can have about 366 mg of Phe (1100 mg / 3 meals).
+
+Now, let's calculate the portions for each food:
+
+- **Cauliflower (Cooked):** Contains 70 mg Phe per 100g.
+  - To fit within your meal budget, you can have about 523g of cooked cauliflower.
+  - Calculation: 523g * (70 mg Phe / 100g) = 366 mg Phe
+
+- **Butternut Squash Puree:** Contains 50 mg Phe per 100g.
+  - You can have about 732g of butternut squash puree.
+  - Calculation: 732g * (50 mg Phe / 100g) = 366 mg Phe
+
+- **Acorn Squash (Baked):** Contains 30 mg Phe per 100g.
+  - You can have about 1220g of baked acorn squash.
+  - Calculation: 1220g * (30 mg Phe / 100g) = 366 mg Phe
+
+- **African Eggplant:** Contains 34 mg Phe per 100g.
+  - You can have about 1076g of African eggplant.
+  - Calculation: 1076g * (34 mg Phe / 100g) = 366 mg Phe
+
+- **Celery (Raw):** Contains 20 mg Phe per 100g.
+  - You can have about 1830g of raw celery.
+  - Calculation: 1830g * (20 mg Phe / 100g) = 366 mg Phe
+
+- **Sugar (White, granulated):** Contains 0 mg Phe.
+  - You can use sugar freely as it doesn't contribute to your Phe intake.
+
+### Friendly Summary:
+For a single meal, you can choose one of the following options:
+- 523g of cooked cauliflower
+- 732g of butternut squash puree
+- 1220g of baked acorn squash
+- 1076g of African eggplant
+- 1830g of raw celery
+
+Feel free to mix and match these foods, keeping in mind the total Phe for the meal should not exceed 366 mg. Enjoy your meal!",10.6
+36,"Butternut squash puree, Spinach (Raw), Radish, Cornstarch, Bell pepper (Baby Food), Acorn Squash (Baked)","Hi Eval User 36! Let's work through your meal plan together. Your current blood Phe level is 9.7 mg/dL, which is approximately 587 μmol/L. This is slightly below the typical target range, so you're doing well! Now, let's calculate how much of each food you can have within your daily Phe tolerance of 400 mg.
+
+### Step-by-Step Calculation:
+
+1. **Butternut Squash Puree:**
+   - Contains 50 mg Phe per 100g.
+   - Let's say you want 100g, which would be 50 mg Phe.
+
+2. **Spinach (Raw):**
+   - Unfortunately, I don't have the exact Phe content for raw spinach in the database. If you have a specific amount in mind, let me know, and I can help adjust other foods accordingly.
+
+3. **Radish:**
+   - I don't have the Phe content for radish in the database. If you have this information, please share it, and we can include it in the calculation.
+
+4. **Cornstarch:**
+   - I don't have the Phe content for cornstarch in the database. If you have this information, please share it, and we can include it in the calculation.
+
+5. **Bell Pepper (Baby Food):**
+   - I don't have the Phe content for bell pepper baby food in the database. If you have this information, please share it, and we can include it in the calculation.
+
+6. **Acorn Squash (Baked):**
+   - I don't have the Phe content for acorn squash in the database. If you have this information, please share it, and we can include it in the calculation.
+
+### Current Total:
+- **Butternut Squash Puree:** 50 mg Phe for 100g.
+
+### Remaining Phe Allowance:
+- You have 350 mg Phe left for the other foods.
+
+### Next Steps:
+- If you can provide the Phe content for the other foods or choose from the verified database, I can help you adjust the portions to fit your 400 mg Phe limit.
+
+Feel free to let me know if you have any other foods in mind or if you can provide additional details!",9.7
+37,"Kale (Raw), Cauliflower (Cooked), Black Pepper (Spice), Broccoli (Cooked), Olive Oil, Celery (Raw)","Hi Eval User 37! Let's work out a meal plan for you using the foods you've chosen. Your current blood Phe level is 9.5 mg/dL (approximately 575 μmol/L), which is within a stable range. Your daily Phe tolerance is 450 mg, so we'll make sure your meal fits within this limit.
+
+Here's how we can distribute your Phe intake for this meal:
+
+1. **Kale (Raw):** Contains 140 mg Phe per 100g.
+2. **Cauliflower (Cooked):** Contains 70 mg Phe per 100g. (This is a Free Food, so you can have it without counting towards your Phe limit.)
+3. **Black Pepper (Spice):** Contains 446 mg Phe per 100g.
+4. **Broccoli (Cooked):** Contains 90 mg Phe per 100g.
+5. **Olive Oil:** Typically contains negligible Phe, so it won't count towards your Phe limit.
+6. **Celery (Raw):** Let's assume it's similar to other Free Foods, so it won't count towards your Phe limit.
+
+**Step-by-Step Calculation:**
+
+- **Kale (Raw):** Let's allocate 100 mg of your Phe budget to kale. This means you can have about 71g of kale (100 mg Phe / 140 mg Phe per 100g = 71g).
+
+- **Cauliflower (Cooked):** Since it's a Free Food, you can have as much as you like without counting it towards your Phe limit. Let's say 100g for a good portion.
+
+- **Black Pepper (Spice):** Since it's very high in Phe, let's use it sparingly. A pinch (about 1g) would add about 4.5 mg Phe.
+
+- **Broccoli (Cooked):** Let's allocate 100 mg of your Phe budget to broccoli. This means you can have about 111g of broccoli (100 mg Phe / 90 mg Phe per 100g = 111g).
+
+- **Olive Oil:** Use as needed for cooking or dressing, as it doesn't contribute to your Phe limit.
+
+- **Celery (Raw):** Like cauliflower, you can enjoy this without counting it towards your Phe limit. Let's say 100g for a nice crunch.
+
+**Meal Summary:**
+
+- **Kale (Raw):** 71g
+- **Cauliflower (Cooked):** 100g (Free Food)
+- **Black Pepper (Spice):** 1g
+- **Broccoli (Cooked):** 111g
+- **Olive Oil:** As needed
+- **Celery (Raw):** 100g (Free Food)
+
+This meal uses approximately 204.5 mg of your 450 mg Phe tolerance, leaving you with plenty of room for other meals and snacks throughout the day. Enjoy your meal!",9.5
+38,"Kale (Raw), Cauliflower (Cooked), Spinach (Raw), Salt (Table), Parsley, Couscous (dry)","Hi Eval User 38! Let's work out a meal plan for you using the foods you've chosen. Your current blood Phe level is 9.1 mg/dL (approximately 551 μmol/L), which is within your target range. Your daily Phe tolerance is 480 mg, so we'll make sure your meal fits within this limit.
+
+Here's how we'll calculate the portions for each food:
+
+1. **Kale (Raw):** Contains 140 mg Phe per 100g.
+2. **Cauliflower (Cooked):** Contains 70 mg Phe per 100g.
+3. **Spinach (Raw):** Contains 145 mg Phe per 100g.
+4. **Couscous (Dry):** We don't have the Phe content for couscous in our database, so we'll focus on the other foods.
+
+Let's distribute your 480 mg Phe allowance across these foods:
+
+### Step-by-Step Calculation:
+
+1. **Kale (Raw):**
+   - Let's allocate 100 mg Phe to kale.
+   - 100 mg Phe / 140 mg Phe per 100g = 71.4g of kale.
+
+2. **Cauliflower (Cooked):**
+   - Let's allocate 100 mg Phe to cauliflower.
+   - 100 mg Phe / 70 mg Phe per 100g = 142.9g of cauliflower.
+
+3. **Spinach (Raw):**
+   - Let's allocate 100 mg Phe to spinach.
+   - 100 mg Phe / 145 mg Phe per 100g = 69.0g of spinach.
+
+4. **Remaining Phe for Couscous:**
+   - You have 180 mg Phe left for couscous and any other foods you might want to add.
+
+### Meal Summary:
+
+- **Kale (Raw):** 71.4g
+- **Cauliflower (Cooked):** 142.9g
+- **Spinach (Raw):** 69.0g
+
+This meal uses 300 mg of your Phe allowance, leaving you with 180 mg for couscous or other foods. Since we don't have the exact Phe content for couscous, you might want to check its packaging or consult a verified source to ensure you stay within your limit.
+
+Enjoy your meal, and let me know if you need any more help!",9.1
+39,"Banana (Raw), Cauliflower (Cooked), Pumpkin (Canned)","Hi Eval User 39! Your current blood Phe level is 8.7 mg/dL, which is approximately 527 μmol/L. That's within a stable range, so great job maintaining it!
+
+Let's plan your movie snack with Banana (Raw), Cauliflower (Cooked), and Pumpkin (Canned). Since your daily Phe tolerance is 450 mg, we'll distribute this amount among your chosen foods.
+
+### Step-by-Step Calculation:
+
+1. **Banana (Raw):**
+   - Contains 49 mg Phe per 100g.
+   - Let's allocate 150 mg Phe to Banana.
+   - Calculation: (150 mg Phe / 49 mg Phe per 100g) * 100g = approximately 306g of Banana.
+
+2. **Cauliflower (Cooked):**
+   - Contains 70 mg Phe per 100g.
+   - Let's allocate 150 mg Phe to Cauliflower.
+   - Calculation: (150 mg Phe / 70 mg Phe per 100g) * 100g = approximately 214g of Cauliflower.
+
+3. **Pumpkin (Canned):**
+   - Unfortunately, I don't have the exact Phe content for Pumpkin (Canned) in my database. However, we can allocate the remaining 150 mg Phe to it.
+   - If you have the Phe content for Pumpkin, you can calculate it similarly: (150 mg Phe / [Phe content per 100g]) * 100g.
+
+### Summary:
+- **Banana (Raw):** 306g
+- **Cauliflower (Cooked):** 214g
+- **Pumpkin (Canned):** Allocate 150 mg Phe worth based on its Phe content.
+
+Enjoy your movie snack! If you need more help or have the Phe content for Pumpkin, feel free to let me know!",8.7
+40,"Bell Pepper (Red, raw), Sugar (White, granulated), Asparagus (Cooked), Bell pepper (Baby Food), Sweet Potato (Baked)","Hi there! Let's work together to create a meal plan that fits your daily Phe tolerance of 500 mg. Your current blood Phe level is 7 mg/dL, which is approximately 424 μmol/L, so you're doing well within your target range. Let's make sure your meal fits your needs perfectly.
+
+### Meal Planning Steps:
+
+1. **Daily Phe Budget:** You have a total of 500 mg of Phe to distribute throughout your day. We'll allocate a portion of this for your meal.
+
+2. **Food Choices and Phe Content:**
+   - **Bell Pepper (Red, raw):** 35 mg Phe per 100g
+   - **Sugar (White, granulated):** 0 mg Phe per 100g
+   - **Asparagus (Cooked):** Unfortunately, I don't have the Phe content for asparagus in my database, so let's focus on the other items.
+   - **Bell Pepper (Baby Food):** 20 mg Phe per 100g
+   - **Sweet Potato (Baked):** 107 mg Phe per 100g
+
+3. **Calculate Portions:**
+   - **Bell Pepper (Red, raw):** Let's say you want to use 100g. This would contribute 35 mg of Phe.
+   - **Sugar (White, granulated):** You can use as much as you like since it contains 0 mg of Phe.
+   - **Bell Pepper (Baby Food):** If you use 100g, it adds 20 mg of Phe.
+   - **Sweet Potato (Baked):** If you use 100g, it adds 107 mg of Phe.
+
+4. **Total Phe Calculation:**
+   - **Bell Pepper (Red, raw):** 35 mg Phe
+   - **Bell Pepper (Baby Food):** 20 mg Phe
+   - **Sweet Potato (Baked):** 107 mg Phe
+   - **Sugar:** 0 mg Phe
+
+   Total Phe for this meal: 35 + 20 + 107 = 162 mg Phe
+
+5. **Remaining Phe Budget:**
+   - You have 500 mg - 162 mg = 338 mg of Phe left for the rest of your day.
+
+### Conclusion:
+
+For this meal, you can safely consume:
+- **100g of Bell Pepper (Red, raw)**
+- **100g of Bell Pepper (Baby Food)**
+- **100g of Sweet Potato (Baked)**
+- **Any amount of Sugar you like**
+
+This meal totals 162 mg of Phe, leaving you with 338 mg for other meals and snacks throughout the day. Enjoy your meal, and keep up the great work managing your Phe levels!",500
+41,"Kale (Raw), Cauliflower (Cooked), Butternut squash puree, Salt (Table), Pumpkin (Canned), Arugula","Hi Eval User 41! Let's work together to plan your dinner date meal while keeping your Phe levels in check. Your current blood Phe level is quite high at 35 mg/dL (2119 μmol/L), so it's important to stay within your daily Phe tolerance of 200 mg.
+
+Here's how we can distribute your Phe intake for this meal:
+
+### Step-by-Step Calculation:
+
+1. **Total Phe Allowance for Dinner:**
+   - Since your daily Phe tolerance is 200 mg, let's allocate a safe portion for dinner. We'll aim for about 50% of your daily allowance, which is 100 mg of Phe.
+
+2. **Food Choices and Phe Content:**
+   - **Kale (Raw):** 140 mg Phe per 100g
+   - **Cauliflower (Cooked):** 70 mg Phe per 100g (Free Food)
+   - **Arugula:** 97 mg Phe per 100g
+   - **Butternut Squash Puree, Salt (Table), Pumpkin (Canned):** Not in the database, so we'll focus on the available items.
+
+3. **Portion Calculations:**
+   - **Kale (Raw):** Let's use 50g, which gives you 70 mg Phe (half of 140 mg per 100g).
+   - **Cauliflower (Cooked):** Since it's a Free Food, you can enjoy 100g without worrying about Phe.
+   - **Arugula:** Let's use 30g, which gives you about 29 mg Phe (30% of 97 mg per 100g).
+
+4. **Total Phe for the Meal:**
+   - Kale: 70 mg Phe
+   - Cauliflower: 0 mg Phe (Free Food)
+   - Arugula: 29 mg Phe
+   - **Total:** 99 mg Phe
+
+### Friendly Summary:
+
+For your dinner, you can enjoy 50g of raw Kale, 100g of cooked Cauliflower, and 30g of Arugula. This meal will total approximately 99 mg of Phe, keeping you within your safe limit for this meal. Enjoy your dinner date, and remember to savor each bite! If you have any more questions or need further adjustments, feel free to ask.",35
+42,"Butternut squash puree, Acorn squash (Baby Food), Bell Pepper (Red, raw), Sugar (White, granulated), Asparagus (Cooked), Acorn Squash (Baked)","Hi Eval User 42! Let's work through this together to make sure you can enjoy your meal while staying within your Phe tolerance. Your current blood Phe level is quite high, so it's important to be precise.
+
+Your daily Phe tolerance is 220 mg. Since you want to eat a variety of foods, we'll calculate how much of each you can have to fit within this limit. Let's break it down step-by-step:
+
+1. **Butternut Squash Puree**: Contains 50 mg PHE per 100g.
+   - To find out how much you can eat, divide your total Phe allowance by the Phe content per 100g.
+   - Calculation: 220 mg / 50 mg = 4.4
+   - You can have 440g of Butternut Squash Puree.
+
+2. **Acorn Squash (Baby Food)**: Contains 30 mg PHE per 100g.
+   - Calculation: 220 mg / 30 mg = 7.33
+   - You can have 733g of Acorn Squash (Baby Food).
+
+3. **Bell Pepper (Red, raw)**: Contains 20 mg PHE per 100g.
+   - Calculation: 220 mg / 20 mg = 11
+   - You can have 1100g of Bell Pepper.
+
+4. **Sugar (White, granulated)**: Sugar is typically considered a ""Free Food"" with negligible Phe, so you can use it as needed without impacting your Phe intake.
+
+5. **Asparagus (Cooked)**: Let's assume it contains around 50 mg PHE per 100g (as a general estimate).
+   - Calculation: 220 mg / 50 mg = 4.4
+   - You can have 440g of Asparagus.
+
+6. **Acorn Squash (Baked)**: Contains 45 mg PHE per 100g.
+   - Calculation: 220 mg / 45 mg = 4.89
+   - You can have 489g of Acorn Squash (Baked).
+
+Remember, these are maximum amounts for each food if you were to eat them individually. If you plan to combine them, you'll need to adjust the portions so that the total Phe intake does not exceed 220 mg. Let me know if you need help with that!",220
+43,"Spinach (Raw), Olive Oil, Salt (Table), Asparagus (Cooked), Lettuce (Iceberg)","Hi Eval User 43! Let's work through your meal plan together. Given your current blood Phe level of 26 mg/dL (1574 μmol/L), it's important to manage your intake carefully. Your daily Phe tolerance is 1000 mg, so we'll calculate how much of each food you can have in one meal.
+
+### Meal Portion Calculation:
+
+**1. Spinach (Raw):**
+- Contains 145 mg PHE per 100g.
+- Let's aim for a portion that fits within your daily tolerance. If you want to use 200 mg of your daily Phe for spinach:
+  - 200 mg PHE / 145 mg PHE per 100g = 1.38 (approx.)
+  - 1.38 * 100g = 138g of Spinach (Raw)
+
+**2. Olive Oil:**
+- Olive oil is a fat and does not contain Phe, so you can use it freely for cooking or dressing without affecting your Phe intake.
+
+**3. Salt (Table):**
+- Salt does not contain Phe, so you can use it freely for seasoning.
+
+**4. Asparagus (Cooked):**
+- Contains 80 mg PHE per 100g.
+- If you want to use 160 mg of your daily Phe for asparagus:
+  - 160 mg PHE / 80 mg PHE per 100g = 2
+  - 2 * 100g = 200g of Asparagus (Cooked)
+
+**5. Lettuce (Iceberg):**
+- Iceberg lettuce is similar to the ""Lettuce (Baby Food)"" in our database, which is a Free Food.
+- You can consume it freely without worrying about Phe content.
+
+### Summary:
+- **Spinach (Raw):** 138g
+- **Olive Oil:** Use freely
+- **Salt (Table):** Use freely
+- **Asparagus (Cooked):** 200g
+- **Lettuce (Iceberg):** Use freely
+
+This meal plan uses 360 mg of your daily Phe tolerance, leaving you with 640 mg for the rest of the day. Enjoy your meal, and let me know if you need further assistance!",26
+44,"Butternut squash puree, Salt (Table), Cucumber (Raw, with peel), Arugula, Radish (Raw), Tomato (Red, ripe, raw)","Hi Eval User 44! Let's work together to create a meal plan that fits your daily Phe tolerance of 250 mg. Given your current blood Phe level of 23 mg/dL (approximately 1392 μmol/L), it's important to manage your intake carefully.
+
+Here's how we can distribute your meal:
+
+1. **Butternut Squash Puree**: Contains 50 mg Phe per 100g.
+2. **Cucumber (Raw, with peel)**: Contains 25 mg Phe per 100g.
+3. **Tomato (Raw)**: Contains 30 mg Phe per 100g.
+
+Let's calculate how much of each you can have:
+
+### Step-by-Step Calculation:
+
+**1. Butternut Squash Puree:**
+   - If you want to consume 100g, it will contribute 50 mg of Phe.
+
+**2. Cucumber (Raw, with peel):**
+   - If you want to consume 100g, it will contribute 25 mg of Phe.
+
+**3. Tomato (Raw):**
+   - If you want to consume 100g, it will contribute 30 mg of Phe.
+
+### Total Phe Calculation:
+- **Butternut Squash Puree (100g):** 50 mg Phe
+- **Cucumber (100g):** 25 mg Phe
+- **Tomato (100g):** 30 mg Phe
+
+**Total Phe for 100g each: 50 + 25 + 30 = 105 mg Phe**
+
+### Remaining Phe Allowance:
+- Your daily Phe tolerance is 250 mg.
+- After consuming 100g of each, you have 250 - 105 = 145 mg Phe left for the day.
+
+### Additional Foods:
+- **Arugula, Radish (Raw), and Salt (Table)** are generally low in Phe and can be consumed in moderation without significantly impacting your Phe levels.
+
+### Friendly Summary:
+You can safely enjoy 100g each of Butternut Squash Puree, Cucumber, and Tomato, which will total 105 mg of Phe. This leaves you with 145 mg of Phe for the rest of the day. Feel free to add some Arugula and Radish to your meal for extra flavor, as they are low in Phe.
+
+Enjoy your meal, and keep up the great work managing your PKU! If you have any more questions or need further assistance, just let me know.",250
+45,"Banana (Raw), Almond Milk (Unsweetened), Kiwifruit, Sugar (White, granulated)","Hi Eval User 45! Let's create a delicious and safe social mocktail/snack for you. Given your current blood Phe level of 20 mg/dL (1211 μmol/L), it's important to stay within your daily Phe tolerance of 300 mg. Let's calculate how much of each item you can enjoy:
+
+### Step-by-Step Calculation:
+
+1. **Banana (Raw):**
+   - Contains 49 mg Phe per 100g.
+   - Let's allocate 100 mg of your Phe budget to bananas.
+   - Amount you can eat: 100 mg Phe / 49 mg Phe per 100g = approximately 204g of banana.
+
+2. **Almond Milk (Unsweetened):**
+   - Contains 20 mg Phe per 100g.
+   - Let's allocate 40 mg of your Phe budget to almond milk.
+   - Amount you can drink: 40 mg Phe / 20 mg Phe per 100g = 200g (or ml) of almond milk.
+
+3. **Kiwifruit:**
+   - Contains 44 mg Phe per 100g.
+   - Let's allocate 60 mg of your Phe budget to kiwifruit.
+   - Amount you can eat: 60 mg Phe / 44 mg Phe per 100g = approximately 136g of kiwifruit.
+
+4. **Sugar (White, granulated):**
+   - Sugar is a Free Food, meaning it doesn't contribute to your Phe intake.
+   - You can add sugar to taste without worrying about Phe.
+
+### Total Phe Calculation:
+- Banana: 100 mg Phe
+- Almond Milk: 40 mg Phe
+- Kiwifruit: 60 mg Phe
+- Total: 200 mg Phe
+
+This leaves you with 100 mg Phe for the rest of your day. Enjoy your mocktail/snack, and let me know if you need anything else!",20
+46,"Sugar (White, granulated), Almond Milk (Unsweetened), Orange (Raw), Barley (Pearled, Raw)","Hi Eval User 46! Let's create a delightful social mocktail and snack plan for you. Given your current blood Phe level of 19 mg/dL (1150 μmol/L), it's important to stay within your daily Phe tolerance of 300 mg. Let's break down how much of each item you can enjoy:
+
+### Step-by-Step Calculation:
+
+1. **Sugar (White, granulated):**
+   - Sugar contains 0 mg Phe per 100g. 
+   - You can have as much as you like without affecting your Phe intake. Enjoy it freely!
+
+2. **Almond Milk (Unsweetened):**
+   - Contains 20 mg Phe per 100g.
+   - Let's say you want to use 200g (about 200 ml) for your mocktail. This will contribute 40 mg Phe (20 mg Phe x 2).
+
+3. **Orange (Raw):**
+   - Unfortunately, I don't have the exact Phe content for raw oranges in the database. If you have a specific amount in mind, let me know, and I can help estimate based on typical values.
+
+4. **Barley (Pearled, Raw):**
+   - Again, I don't have the exact Phe content for barley in the database. If you have a specific amount in mind, let me know, and I can help estimate based on typical values.
+
+### Total Phe Calculation:
+
+- **Almond Milk:** 40 mg Phe
+- **Sugar:** 0 mg Phe
+
+**Total Phe so far:** 40 mg
+
+### Remaining Phe Allowance:
+
+- You have 260 mg Phe left for the day (300 mg total - 40 mg from Almond Milk).
+
+### Enjoyment Tips:
+
+- Feel free to add sugar to your mocktail without worrying about Phe.
+- If you want to include oranges or barley, let me know the amounts, and I can help you adjust to stay within your Phe limit.
+
+Enjoy your social mocktail and snack! If you have any more questions or need further adjustments, just let me know!",19
+47,"Almond Milk (Unsweetened), Kiwifruit, Oatmeal (Instant, dry)","Hi Eval User 47! Let's work together to create a breakfast plan that fits your daily Phe tolerance of 320 mg, considering your current blood Phe level is 18.5 mg/dL (which is approximately 1120 μmol/L).
+
+### Breakfast Plan Calculation:
+
+**1. Almond Milk (Unsweetened):**
+   - Phe Content: 20 mg PHE per 100g
+   - Let's start with 200g of Almond Milk, which gives you 40 mg PHE (20 mg PHE x 2).
+
+**2. Kiwifruit:**
+   - Phe Content: 44 mg PHE per 100g
+   - Let's use 100g of Kiwifruit, which gives you 44 mg PHE.
+
+**3. Oatmeal (Instant, dry):**
+   - Phe Content: 900 mg PHE per 100g
+   - We need to be careful with this one due to its high Phe content. 
+   - To keep within your breakfast Phe budget, let's use 26g of Oatmeal, which gives you 234 mg PHE (900 mg PHE x 0.26).
+
+### Total Phe Calculation for Breakfast:
+- Almond Milk: 40 mg PHE
+- Kiwifruit: 44 mg PHE
+- Oatmeal: 234 mg PHE
+
+**Total Breakfast Phe: 318 mg PHE**
+
+This breakfast plan uses 318 mg of your 320 mg daily Phe tolerance, which fits perfectly within your limit. Enjoy your meal, and keep up the great work managing your PKU! If you have any more questions or need further assistance, feel free to ask.",320
+48,"Bell Pepper (Red, raw), Allspice (Ground), Asparagus (Cooked), Acorn Squash (Baked), Coriander (Cilantro)","Hi Eval User 48! Let's work out a lunch plan that fits your dietary needs. Your current blood Phe level is 17 mg/dL (approximately 1029 μmol/L), which is above the target range. So, we'll aim to keep this meal within your daily Phe tolerance of 350 mg to help manage your levels.
+
+Here's how we'll distribute your Phe intake for this meal:
+
+### Meal Phe Budget
+- **Daily Phe Tolerance:** 350 mg
+- **Lunch Phe Target:** Let's aim for about 40% of your daily tolerance for lunch, which is 140 mg Phe.
+
+### Food Choices and Calculations
+
+1. **Bell Pepper (Red, raw):** 
+   - Contains 35 mg Phe per 100g.
+   - Let's use 100g, which gives you 35 mg Phe.
+
+2. **Allspice (Ground):** 
+   - Unfortunately, I don't have the Phe content for Allspice in my database. Let's skip this for now to ensure accuracy.
+
+3. **Asparagus (Cooked):**
+   - Contains 80 mg Phe per 100g.
+   - Let's use 50g, which gives you 40 mg Phe.
+
+4. **Acorn Squash (Baked):**
+   - I don't have the Phe content for Acorn Squash in my database. Let's skip this for now to ensure accuracy.
+
+5. **Coriander (Cilantro):**
+   - Contains 173 mg Phe per 100g.
+   - Let's use 20g, which gives you 34.6 mg Phe.
+
+### Total Phe Calculation
+- **Bell Pepper:** 35 mg Phe
+- **Asparagus:** 40 mg Phe
+- **Coriander:** 34.6 mg Phe
+
+**Total Phe for Lunch:** 109.6 mg Phe
+
+This meal fits well within your lunch Phe target of 140 mg. Enjoy your meal, and remember to keep an eye on your total daily intake to manage your levels effectively! If you have any more questions or need adjustments, feel free to ask.",17
+49,"Zucchini (Cooked), Allspice (Ground), Garlic, Pasta (Low Protein, Dry), Tomato (Raw), Coriander (Cilantro)","Hi Eval User 49! Let's work together to create a meal that fits your daily Phe tolerance of 400 mg. Your current blood Phe level is 14 mg/dL (approximately 848 μmol/L), which is above the target range, so we'll be careful with your intake.
+
+Here's how we can distribute your meal:
+
+1. **Zucchini (Cooked):** This is a Free Food, so you can enjoy it without worrying about Phe content. Let's include 100g for flavor and nutrition.
+
+2. **Allspice (Ground):** Unfortunately, I don't have the Phe content for Allspice in the database, so let's skip it to stay safe.
+
+3. **Garlic:** Contains 236 mg Phe per 100g. To keep it minimal, let's use 10g, which will contribute about 23.6 mg Phe.
+
+4. **Pasta (Low Protein, Dry):** Contains 21 mg Phe per 100g. You can have 100g, which will add 21 mg Phe to your meal.
+
+5. **Tomato (Raw):** Another Free Food! You can have 100g without adding to your Phe count.
+
+6. **Coriander (Cilantro):** Contains 173 mg Phe per 100g. Let's use 10g, contributing about 17.3 mg Phe.
+
+**Total Phe Calculation:**
+- Garlic: 23.6 mg Phe
+- Pasta (Low Protein): 21 mg Phe
+- Coriander: 17.3 mg Phe
+
+**Meal Total: 61.9 mg Phe**
+
+This meal fits well within your daily Phe tolerance, leaving you plenty of room for other meals throughout the day. Enjoy your meal, and let me know if you need further assistance!",400
+50,"Black Pepper (Spice), Pumpkin (Canned), Lettuce (Iceberg)","Hi Eval User 50! Let's work through this together to find out how much of each snack you can enjoy while staying within your daily Phe tolerance of 450 mg. Your current blood Phe level is 12 mg/dL (726 μmol/L), which is above the target range, so we'll be careful with our calculations.
+
+### Step-by-Step Calculation:
+
+1. **Black Pepper (Spice):**
+   - Contains 446 mg Phe per 100g.
+   - To keep it simple, let's use a small portion. If you consume 10g, it would be:
+     - (10g / 100g) * 446 mg Phe = 44.6 mg Phe.
+
+2. **Pumpkin (Canned):**
+   - Contains 35 mg Phe per 100g.
+   - If you consume 100g, it would be:
+     - (100g / 100g) * 35 mg Phe = 35 mg Phe.
+
+3. **Lettuce (Iceberg):**
+   - Contains 35 mg Phe per 100g.
+   - If you consume 100g, it would be:
+     - (100g / 100g) * 35 mg Phe = 35 mg Phe.
+
+### Total Phe Calculation:
+- Black Pepper: 44.6 mg Phe
+- Pumpkin: 35 mg Phe
+- Lettuce: 35 mg Phe
+
+**Total Phe for this snack: 44.6 + 35 + 35 = 114.6 mg Phe**
+
+### Conclusion:
+You can safely enjoy 10g of Black Pepper, 100g of Pumpkin, and 100g of Lettuce. This snack will total 114.6 mg of Phe, which fits well within your daily tolerance of 450 mg. Enjoy your snack! If you have any more questions or need further assistance, feel free to ask.",450
+51,"Butternut squash puree, Olive Oil, Lettuce (Iceberg), Olives (Canned, Black), Arugula, Tomato (Red, ripe, raw)","Hi Eval User 51! Let's work out your office lunch together. Your current blood Phe level is 11.5 mg/dL (approximately 696 μmol/L), which is a bit high. So, we'll aim to keep your Phe intake within your daily tolerance of 450 mg.
+
+For this meal, we'll distribute your Phe intake across the foods you mentioned. Here's how we can do it:
+
+### Meal Plan Calculation:
+
+1. **Butternut Squash Puree**:
+   - Contains 50 mg Phe per 100g.
+   - Let's use 100g, which gives you 50 mg Phe.
+
+2. **Olive Oil**:
+   - Olive oil is typically low in Phe, but since it's not in our database, we'll focus on the other items.
+
+3. **Lettuce (Iceberg)**:
+   - Contains 35 mg Phe per 100g.
+   - Let's use 100g, which gives you 35 mg Phe.
+
+4. **Olives (Canned, Black)**:
+   - Contains 40 mg Phe per 100g.
+   - Let's use 100g, which gives you 40 mg Phe.
+
+5. **Arugula**:
+   - Contains 97 mg Phe per 100g.
+   - Let's use 50g, which gives you 48.5 mg Phe.
+
+6. **Tomato (Red, ripe, raw)**:
+   - Contains 30 mg Phe per 100g.
+   - Let's use 100g, which gives you 30 mg Phe.
+
+### Total Phe Calculation:
+
+- Butternut Squash Puree: 50 mg
+- Lettuce (Iceberg): 35 mg
+- Olives (Canned, Black): 40 mg
+- Arugula: 48.5 mg
+- Tomato (Red, ripe, raw): 30 mg
+
+**Total Phe for Meal: 203.5 mg**
+
+This meal plan keeps you well within your daily Phe tolerance of 450 mg, allowing you to enjoy a balanced lunch while managing your Phe levels effectively. Enjoy your meal, and keep up the great work managing your PKU!",11.5
+52,"Black Pepper (Spice), Zucchini (Cooked), Spinach (Raw), Pasta (Low Protein, Dry), Onion (White, raw), Coriander (Cilantro)","Hi Eval User 52! Let's work together to create a meal plan that fits your daily Phe tolerance of 500 mg. Your current blood Phe level is 10 mg/dL (approximately 605 μmol/L), which is slightly above your target range. We'll make sure your meal fits within your tolerance to help manage your levels.
+
+Here's how we'll distribute your 500 mg Phe allowance across the foods you want to eat:
+
+1. **Black Pepper (Spice):** This is quite high in Phe, with 446 mg per 100g. To keep it minimal, let's use just 1g, which gives you about 4.46 mg Phe.
+
+2. **Zucchini (Cooked):** This is a Free Food, so you can enjoy it without worrying about Phe. Let's add 100g, which contributes 45 mg Phe.
+
+3. **Spinach (Raw):** Contains 145 mg Phe per 100g. Let's use 50g, which gives you 72.5 mg Phe.
+
+4. **Pasta (Low Protein, Dry):** A great low-Phe option with 21 mg per 100g. You can have 100g, which adds 21 mg Phe.
+
+5. **Onion (White, raw):** Not listed in our database, so let's skip it to stay safe.
+
+6. **Coriander (Cilantro):** Contains 173 mg Phe per 100g. Let's use 10g, which gives you 17.3 mg Phe.
+
+Now, let's add up the Phe from these foods:
+
+- Black Pepper: 4.46 mg
+- Zucchini: 45 mg
+- Spinach: 72.5 mg
+- Pasta: 21 mg
+- Coriander: 17.3 mg
+
+**Total Phe for the meal: 160.26 mg**
+
+This meal uses 160.26 mg of your 500 mg daily Phe allowance, leaving you with 339.74 mg for the rest of the day. Enjoy your meal, and keep up the great work managing your levels! If you have any more questions or need further adjustments, feel free to ask.",500
+53,"Kale (Raw), Black Pepper (Spice), Radish, Olive Oil, Cucumber (Raw, with peel), Celery (Raw)","Hi Eval User 53! Let's work through your meal plan together. Your current blood Phe level is 10.6 mg/dL, which is approximately 642 μmol/L. Given your daily Phe tolerance of 1400 mg, we'll calculate how much of each food you can enjoy in a single meal.
+
+### Step-by-Step Calculation:
+
+1. **Meal Phe Budget:**
+   - Let's assume you want this meal to be about 25% of your daily Phe intake. 
+   - 25% of 1400 mg = 350 mg Phe for this meal.
+
+2. **Food Choices and Phe Content:**
+   - **Kale (Raw):** 140 mg Phe per 100g
+   - **Radish:** 26 mg Phe per 100g
+   - **Olive Oil:** Contains no Phe, so it's free to use for flavor.
+   - **Cucumber (Raw, with peel):** Let's assume it's similar to other low-Phe veggies, around 20 mg Phe per 100g.
+   - **Celery (Raw):** Also low in Phe, around 20 mg Phe per 100g.
+   - **Black Pepper (Spice):** Minimal Phe, negligible in small amounts.
+
+3. **Portion Calculations:**
+   - **Kale (Raw):** Let's use 100g, which gives you 140 mg Phe.
+   - **Radish:** 100g gives you 26 mg Phe.
+   - **Cucumber (Raw, with peel):** 100g gives you approximately 20 mg Phe.
+   - **Celery (Raw):** 100g gives you approximately 20 mg Phe.
+
+4. **Total Phe Calculation:**
+   - Kale: 140 mg
+   - Radish: 26 mg
+   - Cucumber: 20 mg
+   - Celery: 20 mg
+   - **Total Phe for Meal:** 206 mg
+
+This meal totals 206 mg of Phe, which fits comfortably within your 350 mg budget for this meal. You can enjoy these portions without exceeding your target. Feel free to add olive oil and a sprinkle of black pepper for flavor, as they won't impact your Phe intake.
+
+Enjoy your meal, and keep up the great work managing your PKU! If you have any more questions or need further adjustments, just let me know!",10.6
+54,"Plum, Almond Milk (Unsweetened), Kiwi (Fresh), Sugar (White, granulated)","Hi Eval User 54! Your current blood Phe level is 9 mg/dL, which is approximately 545 μmol/L. That's within a stable range, so well done on maintaining it!
+
+Let's plan your social mocktail and snack using your daily Phe tolerance of 550 mg. Here's how you can enjoy Plum, Almond Milk (Unsweetened), Kiwi (Fresh), and Sugar (White, granulated):
+
+### Step-by-Step Calculation:
+
+1. **Plum:**
+   - Phe content: 43 mg per 100g
+   - Let's say you want to use 100g of Plum. This will contribute 43 mg of Phe.
+
+2. **Almond Milk (Unsweetened):**
+   - Phe content: 20 mg per 100g
+   - If you use 200 ml (which is about 200g), it will contribute 40 mg of Phe.
+
+3. **Kiwi (Fresh):**
+   - Phe content: 50 mg per 100g
+   - Using 100g of Kiwi will add 50 mg of Phe.
+
+4. **Sugar (White, granulated):**
+   - Sugar is a Free Food, meaning it doesn't contribute to your Phe intake. You can use it freely to sweeten your mocktail.
+
+### Total Phe Calculation:
+- Plum: 43 mg
+- Almond Milk: 40 mg
+- Kiwi: 50 mg
+
+**Total Phe from this meal: 133 mg**
+
+This meal fits well within your daily Phe tolerance of 550 mg. You still have plenty of room for other meals throughout the day. Enjoy your mocktail and snack! If you have any more questions or need further adjustments, feel free to ask.",9
+55,"Kale (Raw), Black Pepper (Spice), Spinach (Raw), Olive Oil, Olives (Canned, Black), Radish (Raw)","Hi Eval User 55! Let's work through your meal plan together. Your current blood Phe level is 9.5 mg/dL (approximately 575 μmol/L), and your daily Phe tolerance is 500 mg. We'll distribute this tolerance across the foods you want to eat. Here's how you can safely enjoy your meal:
+
+### Meal Plan Calculation:
+
+1. **Kale (Raw):**
+   - Contains 140 mg Phe per 100g.
+   - Let's allocate 100 mg Phe to Kale.
+   - Calculation: (100 mg Phe / 140 mg Phe) * 100g = 71.4g
+
+2. **Black Pepper (Spice):**
+   - Contains 446 mg Phe per 100g.
+   - Let's allocate 50 mg Phe to Black Pepper.
+   - Calculation: (50 mg Phe / 446 mg Phe) * 100g = 11.2g
+
+3. **Spinach (Raw):**
+   - Contains 145 mg Phe per 100g.
+   - Let's allocate 100 mg Phe to Spinach.
+   - Calculation: (100 mg Phe / 145 mg Phe) * 100g = 69.0g
+
+4. **Olive Oil:**
+   - Olive Oil is not listed in the database, but typically contains negligible Phe. Use sparingly for flavor.
+
+5. **Olives (Canned, Black):**
+   - Contains 40 mg Phe per 100g.
+   - Let's allocate 50 mg Phe to Olives.
+   - Calculation: (50 mg Phe / 40 mg Phe) * 100g = 125.0g
+
+6. **Radish (Raw):**
+   - Not listed in the database, but typically low in Phe. Assume a small portion for flavor.
+
+### Total Phe Calculation:
+- Kale: 100 mg
+- Black Pepper: 50 mg
+- Spinach: 100 mg
+- Olives: 50 mg
+- Total Phe: 300 mg
+
+This meal plan uses 300 mg of your 500 mg daily Phe tolerance, leaving you with 200 mg for other meals or snacks throughout the day. Enjoy your meal, and keep up the great work managing your Phe levels!",9.5
+56,"Bell Pepper (Red, raw), Plum, Lettuce (Iceberg)","Hi Eval User 56! Your current blood Phe level is 8 mg/dL, which is approximately 484 μmol/L. That's within a stable range, so well done on maintaining it!
+
+Let's calculate how much of each snack you can enjoy while staying within your daily Phe tolerance of 500 mg. We'll distribute this amount across the three foods you mentioned: Bell Pepper (Red, raw), Plum, and Lettuce (Iceberg).
+
+### Step-by-Step Calculation:
+
+1. **Bell Pepper (Red, raw):**
+   - Contains 35 mg of Phe per 100g.
+   - Let's allocate 200 mg of your Phe tolerance to Bell Pepper.
+   - Calculation: (200 mg Phe / 35 mg Phe per 100g) = approximately 571 grams.
+
+2. **Plum:**
+   - Contains 43 mg of Phe per 100g.
+   - Let's allocate 150 mg of your Phe tolerance to Plum.
+   - Calculation: (150 mg Phe / 43 mg Phe per 100g) = approximately 349 grams.
+
+3. **Lettuce (Iceberg):**
+   - Contains 35 mg of Phe per 100g.
+   - Let's allocate the remaining 150 mg of your Phe tolerance to Lettuce.
+   - Calculation: (150 mg Phe / 35 mg Phe per 100g) = approximately 429 grams.
+
+### Summary:
+- **Bell Pepper (Red, raw):** You can have about 571 grams.
+- **Plum:** You can have about 349 grams.
+- **Lettuce (Iceberg):** You can have about 429 grams.
+
+Enjoy your snacks! These amounts will keep you within your daily Phe tolerance. If you have any more questions or need further assistance, feel free to ask!",8
+57,"Olive Oil, Carrots (Raw), Potato (Baby Food), Bell Pepper (Red, raw)","Hi Eval User 57! Let's work out how much of each food you can enjoy while staying within your daily Phe tolerance of 500 mg. Your current blood Phe level is 7.9 mg/dL, which is approximately 478 μmol/L, so you're doing well in managing your levels. Here's how we can distribute your Phe intake for this meal:
+
+### Meal Calculation:
+
+1. **Olives (Canned, Black):**
+   - Phe Content: 40 mg per 100g
+   - Let's say you want to use 100g of olives. This will contribute 40 mg of Phe.
+
+2. **Carrots (Raw):**
+   - Phe Content: 40 mg per 100g
+   - If you use 100g of raw carrots, it will add another 40 mg of Phe.
+
+3. **Potato (Baby Food):**
+   - Phe Content: 90 mg per 100g
+   - For 100g of potato baby food, you'll get 90 mg of Phe.
+
+4. **Bell Pepper (Red, raw):**
+   - Phe Content: 20 mg per 100g
+   - Using 100g of bell pepper will add 20 mg of Phe.
+
+### Total Phe Calculation:
+- Olives: 40 mg
+- Carrots: 40 mg
+- Potato: 90 mg
+- Bell Pepper: 20 mg
+
+**Total Phe for this meal: 190 mg**
+
+### Remaining Phe Allowance:
+- Your daily Phe tolerance is 500 mg.
+- After this meal, you'll have 310 mg of Phe left for the rest of the day.
+
+### Friendly Summary:
+You can enjoy 100g each of olives, raw carrots, potato baby food, and bell pepper. This meal will total 190 mg of Phe, leaving you with 310 mg for the rest of your day. Enjoy your meal, and keep up the great work managing your Phe levels!",500
+58,"Black Pepper (Spice), Butternut squash puree, Carrots (Raw), Onion (White, raw), Sweet Potato (Baked)","Hi Eval User 58! Let's work out how much of each food you can enjoy for your dessert while staying within your daily Phe tolerance of 500 mg. Your current blood Phe level is 8.7 mg/dL (approximately 527 μmol/L), which is stable, so let's keep it that way!
+
+### Step-by-Step Calculation:
+
+1. **Black Pepper (Spice):**
+   - Contains 446 mg Phe per 100g.
+   - To keep it simple, let's use a small amount since it's a spice. 
+   - If you use 1g, it will contribute about 4.46 mg Phe.
+
+2. **Butternut Squash Puree:**
+   - Contains 50 mg Phe per 100g.
+   - If you eat 100g, it will contribute 50 mg Phe.
+
+3. **Carrots (Raw):**
+   - Let's assume carrots have a similar Phe content to other vegetables, around 50 mg Phe per 100g.
+   - If you eat 100g, it will contribute 50 mg Phe.
+
+4. **Onion (White, Raw):**
+   - Similar to carrots, let's assume around 50 mg Phe per 100g.
+   - If you eat 100g, it will contribute 50 mg Phe.
+
+5. **Sweet Potato (Baked):**
+   - Contains 107 mg Phe per 100g.
+   - If you eat 100g, it will contribute 107 mg Phe.
+
+### Total Phe Calculation:
+
+- **Black Pepper:** 4.46 mg Phe
+- **Butternut Squash Puree:** 50 mg Phe
+- **Carrots:** 50 mg Phe
+- **Onion:** 50 mg Phe
+- **Sweet Potato:** 107 mg Phe
+
+**Total Phe from this meal:** 261.46 mg Phe
+
+### Conclusion:
+
+You can safely enjoy 100g each of Butternut Squash Puree, Carrots, Onion, and Sweet Potato, along with a small 1g sprinkle of Black Pepper. This meal will total approximately 261.46 mg Phe, which fits comfortably within your daily Phe tolerance of 500 mg.
+
+Enjoy your dessert! If you have any more questions or need further adjustments, feel free to ask!",500
+59,"Allspice (Ground), Salt (Table), Asparagus (Cooked), Onion (White, raw), Sweet Potato (Baked)","Hi Eval User 59! Your current blood Phe level is 6 mg/dL, which is approximately 363 μmol/L. That's within your target range, so well done on maintaining it!
+
+Let's calculate how much of each food you can safely consume in a single meal, considering your daily Phe tolerance of 1600 mg. We'll distribute this meal to fit within your daily allowance.
+
+### Meal Portion Calculation:
+
+1. **Allspice (Ground):**
+   - Phe Content: 370 mg PHE per 100g
+   - Let's aim for a small portion due to its high Phe content.
+   - Safe Portion: 10g
+   - Phe Contribution: (370 mg/100g) * 10g = 37 mg PHE
+
+2. **Salt (Table):**
+   - Phe Content: 0 mg PHE per 100g
+   - Safe Portion: Any reasonable amount, as it contains 0 mg PHE.
+   - Phe Contribution: 0 mg PHE
+
+3. **Asparagus (Cooked):**
+   - Phe Content: 80 mg PHE per 100g
+   - Safe Portion: 100g
+   - Phe Contribution: (80 mg/100g) * 100g = 80 mg PHE
+
+4. **Onion (White, raw):**
+   - Phe Content: Not listed, but typically low.
+   - Safe Portion: 50g (as a typical serving)
+   - Phe Contribution: Estimated low, let's assume around 10 mg PHE
+
+5. **Sweet Potato (Baked):**
+   - Phe Content: 107 mg PHE per 100g
+   - Safe Portion: 100g
+   - Phe Contribution: (107 mg/100g) * 100g = 107 mg PHE
+
+### Total Phe for the Meal:
+- Allspice: 37 mg
+- Salt: 0 mg
+- Asparagus: 80 mg
+- Onion: 10 mg
+- Sweet Potato: 107 mg
+
+**Meal Total: 234 mg PHE**
+
+This meal fits well within your daily Phe tolerance of 1600 mg. Enjoy your meal, and keep up the great work managing your PKU! If you have any more questions or need further assistance, feel free to ask.",6
+60,"Bell Pepper (Red, raw), Spinach (Raw), Sugar (White, granulated), Pasta (Regular, Cooked), Onion (White, raw), Tomato (Raw)","Hi there! Let's work through your meal plan together. Your current blood Phe level is 11 mg/dL (approximately 666 μmol/L), which is slightly above the target range. So, we'll aim to keep your meal within your daily Phe tolerance of 450 mg to help manage your levels.
+
+Here's how we can distribute your meal:
+
+1. **Bell Pepper (Red, raw):**
+   - Contains 35 mg Phe per 100g.
+   - Let's use 100g, which gives you 35 mg Phe.
+
+2. **Spinach (Raw):**
+   - Contains 145 mg Phe per 100g.
+   - Let's use 50g, which gives you 72.5 mg Phe (145 mg Phe / 2).
+
+3. **Sugar (White, granulated):**
+   - Sugar is typically Phe-free, so you can use it freely without affecting your Phe intake.
+
+4. **Pasta (Regular, Cooked):**
+   - Contains 247 mg Phe per 100g.
+   - Let's use 100g, which gives you 247 mg Phe.
+
+5. **Onion (White, raw):**
+   - Contains 45 mg Phe per 100g.
+   - Let's use 50g, which gives you 22.5 mg Phe (45 mg Phe / 2).
+
+6. **Tomato (Raw):**
+   - Contains 30 mg Phe per 100g.
+   - Let's use 100g, which gives you 30 mg Phe.
+
+Now, let's add it all up:
+
+- Bell Pepper: 35 mg Phe
+- Spinach: 72.5 mg Phe
+- Pasta: 247 mg Phe
+- Onion: 22.5 mg Phe
+- Tomato: 30 mg Phe
+
+**Total Phe for the meal: 407 mg**
+
+This meal keeps you within your daily Phe tolerance of 450 mg, which is great for managing your levels. Enjoy your meal, and keep up the good work managing your diet! If you have any more questions or need further adjustments, feel free to ask.",11
