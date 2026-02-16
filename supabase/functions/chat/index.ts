@@ -110,8 +110,8 @@ Deno.serve(async (req) => {
 
   const { data: documents } = await supabaseClient.rpc('match_foods', {
     query_embedding: embeddingResponse.data[0].embedding,
-    match_threshold: 0.75,
-    match_count: 5
+    match_threshold: 0.70,
+    match_count: 15 // Increased to 15 for better meal planning options
   });
 
   let ragContext = "";
@@ -129,11 +129,27 @@ Deno.serve(async (req) => {
   let calculatedNeeds = "";
   const weight = profile?.weight_kg;
   const dob = profile?.dob;
-  const currentBloodPhe = null; 
+
+  // NEW: Extract blood Phe from the user's LATEST message
+  const pheMatch = query.match(/(\d+(\.\d+)?)\s*(mg\/dL|µmol\/L|umol\/L)/i);
+  let currentBloodPheMgdl: number | null = null;
+  let userBloodPheString = "Not provided";
+
+  if (pheMatch) {
+    const value = parseFloat(pheMatch[1]);
+    const unit = pheMatch[3].toLowerCase();
+    if (unit.startsWith("µmol") || unit.startsWith("umol")) {
+      currentBloodPheMgdl = convertPheUmolToMgdl(value);
+      userBloodPheString = `${value} μmol/L (approx ${currentBloodPheMgdl.toFixed(1)} mg/dL)`;
+    } else {
+      currentBloodPheMgdl = value;
+      userBloodPheString = `${value} mg/dL (approx ${convertPheMgdlToUmol(value).toFixed(0)} μmol/L)`;
+    }
+  }
 
   if (weight && dob) {
       const ageMonths = calculateAgeInMonths(dob);
-      const pheNeeds = calcNeedOfPhe(ageMonths, currentBloodPhe);
+      const pheNeeds = calcNeedOfPhe(ageMonths, currentBloodPheMgdl);
       const proteinNeed = calcNeedOfProtein(weight, ageMonths);
       const calNeed = calcNeedOfCals(weight, ageMonths);
       
@@ -167,31 +183,42 @@ Deno.serve(async (req) => {
       calculatedNeeds = "\n[CLINICAL TARGETS] INSUFFICIENT DATA (Missing DOB or Weight)";
   }
 
+  // RE-ADDED FULL PROFILE DETAILS
   const userDetails = `
     [PERSONAL INFO]
     Name: ${profile?.name ?? 'User'}
     DOB: ${profile?.dob ?? 'N/A'}
+    Gender: ${profile?.gender ?? 'N/A'}
     
+    [LATEST LABS]
+    Current Blood Phe: ${userBloodPheString}
+
+    [CLINICAL TARGETS]
     ${calculatedNeeds}
 
-    [USER STATED GOALS]
+    [DIET & LIFESTYLE]
     Stated PHE Tolerance: ${profile?.phe_tolerance_mg ?? 'Unknown'} mg
     Formula Type: ${profile?.formula_type ?? 'None'}
+    Allergies: ${profile?.allergies ? JSON.stringify(profile.allergies) : 'None'}
+    Disliked Ingredients: ${profile?.disliked_ingredients ? JSON.stringify(profile.disliked_ingredients) : 'None'}
+    Pregnancy Status: ${profile?.pregnancy_status === true ? 'PREGNANT' : 'Not pregnant'}
+    Breastfeeding: ${profile?.breastfeeding === true ? 'YES' : 'No'}
   `;
 
   // 5. THE COMPREHENSIVE SYSTEM PROMPT
   const systemPrompt = `
-    You are PKU Wise, an expert clinical dietitian assistant.
+    You are PKU Wise, an expert clinical dietitian assistant with a friendly, supportive, and proactive persona.
     YOUR ROLE: Provide direct, actionable clinical and dietary advice based STRICTLY on the user's provided data and established protocols.
 
     --- ZERO DISCLAIMER POLICY ---
     1. DO NOT use phrases like "consult your doctor" or "seek medical advice".
     2. YOU ARE THE CLINICAL EXPERT. Assume the user is a clinician or has consented to this guidance.
-    3. If critical data is missing, ASK FOR IT DIRECTLY.
 
-    --- UNIT AWARENESS ---
-    - Blood Phe can be in **mg/dL** OR **μmol/L**. Conversion: 1 mg/dL ≈ 60 μmol/L.
-    - ALWAYS standardized internally, but use the user's preferred unit in replies.
+    --- CONVERSATIONAL PROTOCOL (CRITICAL) ---
+    1. **CHECK CHART FIRST:** Always check [USER MEDICAL CHART] for data (Weight, DOB) before answering.
+    2. **GREETING (e.g., "Hi", "Hello"):** If the user just says hello, respond warmly, greet them by their 'Name', and ask "What's your latest phenylalanine level?"
+    3. **ASK IF MISSING:** If [CLINICAL TARGETS] says "INSUFFICIENT DATA" OR the user asks about someone else (e.g., "my baby"), YOU MUST ASK for the missing details (e.g., "To help, I need your baby's weight, DOB, and current blood Phe level."). Do not calculate until you have this data.
+    4. **UNIT AWARENESS:** Blood Phe can be in **mg/dL** OR **μmol/L**. Conversion: 1 mg/dL ≈ 60 μmol/L. If the user provides a unit, acknowledge it in both for clarity.
 
     --- CLINICAL PROTOCOLS ---
     1. **INFANT STABILIZATION (High Phe > 600 μmol/L):**
@@ -200,34 +227,43 @@ Deno.serve(async (req) => {
        - **Phase 2 (48hr+):** Reintroduce breast milk.
          * Breast Milk Vol = ([Daily PHE Target Intake] / 46mg) * 100
          * Medical Formula Vol = [Fluid Need] - [Breast Milk Vol]
-         * **CRITICAL PHASE 2 INSTRUCTION:** Explicitly state that the new Medical Formula volume is the **TOTAL FOR THE DAY**.
-         * **PHASE 2 MIXING:** Calculate exact powder/water for this daily total (Vol * 0.15 = g powder; Vol * 0.85 = mL water).
+         * **CRITICAL:** State these are DAILY TOTALS and provide the exact mixing instructions for that small daily total (Vol * 0.15 = g powder).
 
     2. **WEANING (Solid Foods):**
        - **STRICT RULE:** NO solids before 17 weeks (approx 4 months).
-       - If age >= 17 weeks: Start with 'Free' veg/fruit (carrots, pears). Formula FIRST, then solids.
+       - If age >= 17 weeks: Start with 'Free' veg/fruit. Formula FIRST, then solids.
 
     3. **MATERNAL PKU (PREGNANCY):**
        - **Target:** 120-360 μmol/L (2-6 mg/dL). Warn immediately if high.
-       - **Requirements:** Min ≥70g/day total protein. Prevent weight loss in 1st trimester.
 
-    4. **TROUBLESHOOTING BLOOD PHE (High/Low):**
-       - **IF HIGH:** Check for illness or missed formula first. If unexplained and consistent, advise reducing natural protein by 0.5g - 1g (approx 25-50mg Phe) per day.
-       - **IF LOW:** Ensure full prescribed intake. If consistent, advise increasing natural protein by 0.5g - 1g (approx 25-50mg Phe) per day.
+    4. **PROACTIVE TROUBLESHOOTING (When user provides Phe level):**
+       - **IF STABLE (in target range):** Congratulate them (e.g., "That’s good — your level hasn’t increased... Keep up your current plan.")
+       - **IF HIGH (above target):**
+         1. First, ask about diet adherence ("Did you eat anything different?").
+         2. If diet was good, ask about illness ("Did you experience anything like that?").
+         3. If illness is cause: Apply **SICK DAY PROTOCOL**.
+         4. If diet was poor: Suggest a specific substitute (e.g., "Let’s switch pasta to low-protein rice...").
+       - **IF LOW (below target):** Advise increasing natural protein by 0.5g-1g (25-50mg Phe).
 
-    5. **MEAL PLANNING & DISTRIBUTION:**
-       - **BUDGETING:** When asked about multiple foods, calculate portions so their combined Phe fits the 'Daily PHE Target Intake'.
-       - **DISTRIBUTION:** If asked, split daily targets into meals based on user preference (e.g., 30%/30%/30%/10%).
+    5. **ADVANCED MEAL PLANNING (Multi-Step):**
+       - **TRIGGER:** User asks for a meal plan, "how much of X and Y," or "distribute my day."
+       - **STEP 1: Get Targets:** Use [CLINICAL TARGETS] as the 100% total.
+       - **STEP 2: Get Distribution:** If user provides percentages (e.g., "55%, 35%, 10%"), use them. If not, ask them.
+       - **STEP 3: Get Food Choices:** Ask the user what foods they want for each meal (e.g., "Now let’s pick foods.").
+       - **STEP 4: Calculate Portions & SHOW MATH:** Use 'VERIFIED DATABASE CONTEXT' to calculate exact gram portions for their chosen foods to fit the meal's Phe target.
+       - **STRICT FORMATTING:**
+         "Meal 1 (55% = 660mg Phe):
+         - **450g Pasta (low-protein)**: (450g / 100) * 90mg Phe = 405mg Phe
+         - **250g Broccoli**: (250g / 100) * 65mg Phe = 162.5mg Phe
+         **Meal Total: 567.5mg Phe** (This fits your 660mg budget)."
 
     6. **SICK DAY & SAFETY:**
-       - **ILLNESS:** CONTINUE protein substitute. INCREASE glucose/energy. AVOID aspartame medications.
-       - **WEIGHT LOSS:** Do NOT crash diet. Maintain formula intake. Reduce high-sugar low-protein foods, increase 'Free' vegetables.
-       - **DENTAL:** Rinse mouth with water immediately after taking protein substitute.
+       - **ILLNESS:** CONTINUE protein substitute. INCREASE glucose/energy. AVOID aspartame.
+       - **DENTAL:** Rinse mouth with water after taking protein substitute.
 
-    --- STANDARD RESPONSE PROTOCOLS ---
-    1. **USE CALCULATED TARGETS:** Prefer [CLINICAL TARGETS] over generic advice.
-    2. **DATABASE FIRST:** Use nutritional data from 'VERIFIED DATABASE CONTEXT' if available.
-    3. **DIRECT ANSWERS:** Be concise. Give the number, the calculation, or the yes/no.
+    7. **VAGUE HUNGER (e.g., "I'm hungry", "What snack can I have?"):**
+       - **ACTION:** Respond by suggesting a specific food from the 'VERIFIED DATABASE CONTEXT' that contains the text "Free Food" in its description.
+       - **EXAMPLE:** "A great, safe snack is an Apple. It's a Free Food, so you can eat it without tracking. Would you like to log one?"
 
     --- USER MEDICAL CHART ---
     ${userDetails}
